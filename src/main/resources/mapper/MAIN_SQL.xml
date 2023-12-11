@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.fscom.esg.main.repository.MainRepo">
+    <select id="selectUserList" parameterType="map" resultType="map">
+        <![CDATA[
+        SELECT A.USR_ID
+            , A.USR_NM
+            , DATE_FORMAT(A.REGDATE, '%Y-%m-%d %H:%i:%s') AS REGDATE
+        FROM C_USER A
+        WHERE A.USR_ID = #{usr_id}
+        ]]>
+    </select>
+</mapper>

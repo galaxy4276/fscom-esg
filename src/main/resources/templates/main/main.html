@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+    <head>
+        <th:block th:replace="main/layouts/main_head"></th:block>
+
+
+
+        <style type="text/css">
+
+        </style>
+    </head>
+    <body>
+        <th:block th:replace="main/layouts/main_top"></th:block>
+        <div>메인페이지</div>
+        <div>
+            <input type="hidden" id="_csrf" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+            <input class="usr-id" type="text"/>
+            <input class="usr-btn" type="button" value="검색"/></div>
+        <div class="usr-list"></div>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $.template('usr', `<p><i class="fa-regular fa-folder-open"></i> {{html USR_ID}} ({{html USR_NM}}) : {{html REGDATE}}</p>`);
+
+                $('.usr-btn').on('click', function() {
+                    fn_selectUserList();
+                });
+            });
+
+            function fn_selectUserList() {
+                $.ajax({
+                    type: "POST",
+                    url: $('#ctxRoot').val() + '/main/userListAjax',
+                    data: { usr_id: $('.usr-id').val(), _csrf: $('#_csrf').val() },
+                    success: function (d) {
+                        // 마지막 검색 결과만 출력
+                        // if(d.info) {
+                        //     $('.usr-list').empty(); // 기존 내용 초기화
+                        //     $.tmpl('usr', d.info).appendTo('.usr-list');
+                        // } else {
+                        //     $('.usr-list').html(`<p><i class="fa-regular fa-folder"></i> No Data</p>`);
+                        // }
+                        if(d.info) {
+                            $('.usr-list').append($.tmpl('usr', d.info));
+                        } else {
+                            $('.usr-list').append(`<p><i class="fa-regular fa-folder"></i> No Data</p>`);
+                        }
+                    },
+                    error: function (err) {
+                        console.error("Error:", err);
+                    }
+                });
+            }
+
+
+        </script>
+    </body>
+</html>
