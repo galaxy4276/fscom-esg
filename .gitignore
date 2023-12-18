@@ -3,6 +3,7 @@
 
 # Log file
 *.log
+logs
 
 # BlueJ files
 *.ctxt
@@ -30,6 +31,7 @@ replay_pid*
 # Build
 build
 .gradle
+tailwind-out.css
 
 
 # Node.js

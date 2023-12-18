@@ -1,5 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        lang="ko"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="common/templates/layout"
+>
     <head>
         <meta charset="utf-8">
         <title>ESG HOMEPAGE</title>
@@ -18,11 +23,13 @@
         </style>
     </head>
     <body>
-        <div>시작페이지</div>
-        <!-- 버튼 추가 -->
-        <button id="mainPageButton">Main 페이지로 이동</button>
-        <button class="bg-red-600 text-white">tailwind 테스트</button>
-        <span class="text-orange-200">헬로</span>
+        <th:block layout:fragment="content">
+            <div>시작페이지</div>
+            <!-- 버튼 추가 -->
+            <button id="mainPageButton">Main 페이지로 이동</button>
+            <button class="bg-red-600 text-white">tailwind 테스트</button>
+            <span class="text-orange-200">헬로</span>
+        </th:block>
 
         <script type="text/javascript">
             // JavaScript로 버튼 클릭 이벤트 처리
