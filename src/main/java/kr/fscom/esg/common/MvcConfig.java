@@ -27,7 +27,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("file:src/main/resources/templates/");
-        registry.addResourceHandler("/fs/**").addResourceLocations("classpath:/static/fs/");
+        registry.addResourceHandler("/fs/**").addResourceLocations("classpath:/fs/");
     }
 
     // 인터셉터 등록
