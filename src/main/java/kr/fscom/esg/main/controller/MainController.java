@@ -1,9 +1,12 @@
 package kr.fscom.esg.main.controller;
 
 import kr.fscom.esg.main.repository.MainRepo;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,23 +17,20 @@ import java.util.*;
 
 @RestController
 @RequestMapping("/main")
+@RequiredArgsConstructor
+@Slf4j
 public class MainController {
 
-    private static final Logger LOG = LoggerFactory.getLogger(MainController.class);
     private final MainRepo mainRepo;
 
-    @Autowired
-    public MainController(MainRepo mainRepo) {
-        this.mainRepo = mainRepo;
-    }
-
-    @RequestMapping(value = "")
-    public ModelAndView indexPage() throws Exception {
+    @GetMapping
+    public ModelAndView indexPage() {
         ModelAndView mav = new ModelAndView("/index");
         return mav;
     }
+
     @RequestMapping(value = "/main")
-    public ModelAndView mainPage() throws Exception {
+    public ModelAndView mainPage() {
         ModelAndView mav = new ModelAndView("main/main");
         return mav;
     }

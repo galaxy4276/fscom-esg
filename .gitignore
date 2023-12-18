@@ -30,3 +30,7 @@ replay_pid*
 # Build
 build
 .gradle
+
+
+# Node.js
+node_modules
