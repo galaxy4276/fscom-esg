@@ -32,7 +32,8 @@ replay_pid*
 build
 .gradle
 tailwind-out.css
-
+module.out.*
+index.out.js
 
 # Node.js
 node_modules

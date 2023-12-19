@@ -70,6 +70,12 @@ tasks.register('tailwindBuild', NpmTask) {
 	dependsOn tasks.npmInstall
 }
 
+tasks.register('jsBundle', NpmTask) {
+	args = ["run", "bundle"]
+	dependsOn tasks.npmInstall
+}
+
 tasks.processResources {
 	dependsOn(tailwindBuild)
+	dependsOn(jsBundle)
 }
