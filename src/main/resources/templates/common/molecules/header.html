@@ -13,12 +13,6 @@
                 </button>
             </div>
         </header>
-
-        <script>
-            // 로고 클릭 시 / 이동
-            $('#header-button').on('click', () => {
-                location.href = '/';
-            });
-        </script>
+        <script th:src="@{fs/js/out/index.out.js}"></script>
     </th:block>
 </html>
