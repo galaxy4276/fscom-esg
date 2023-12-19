@@ -29,12 +29,45 @@
 
   <body>
     <th:block layout:fragment="content">
-      <section class="h-[749px]" id="main__header-nav">
-        <div class="flex flex-col justify-center mx-[240px]">
-          <div class="flex flex-col items-center py-[120px] whitespace-nowrap">
-            <p class="text-white text-[72px] font-bold">한국ESG협회</p>
-            <span class="text-white text-[42px]">KOREA ESG ASSOCIATION</span>
+      <section class="py-[60px]" id="main__header-nav">
+        <div class="flex flex-col justify-center mx-0 lg:mx-[240px]">
+          <div class="flex flex-col items-center pt-[120px] py-[180px] whitespace-nowrap">
+            <p class="text-white text-[52px] md:text-[72px] font-bold">한국ESG협회</p>
+            <span class="text-white text-[28px] md:text-[42px]">KOREA ESG ASSOCIATION</span>
           </div>
+
+          <div class="w-full flex justify-center">
+            <div class="flex flex-col md:flex-row gap-x-[30px] gap-y-4 text-white font-[20px] w-[400px] md:w-[750px] max-w-[750px]">
+              <div class="flex flex-col justify-center items-center gap-y-2">
+                <img th:src="@{fs/svg/tree.svg}" alt="tree.svg" class="nav--icon">
+                <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porta vehicula urna sed sollicitudin.
+              </span>
+              </div>
+
+              <div class="flex flex-col justify-center items-center gap-y-2">
+                <img th:src="@{fs/svg/tree-on-people.svg}" alt="tree-on-people.svg" class="nav--icon">
+                <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porta vehicula urna sed sollicitudin.
+              </span>
+              </div>
+
+              <div class="flex flex-col justify-center items-center gap-y-2">
+                <img th:src="@{fs/svg/tullip.svg}" alt="tuliip.svg" class="nav--icon">
+                <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porta vehicula urna sed sollicitudin.
+              </span>
+              </div>
+
+              <div class="flex flex-col justify-center items-center gap-y-2">
+                <img th:src="@{fs/svg/tree-on-people.svg}" alt="tree-on-people.svg" class="nav--icon">
+                <span>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce porta vehicula urna sed sollicitudin.
+              </span>
+              </div>
+            </div>
+          </div>
+
         </div>
 
       </section>
