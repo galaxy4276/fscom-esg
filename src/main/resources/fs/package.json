@@ -3,7 +3,9 @@
   "private": true,
   "scripts": {
     "build": "tailwindcss -i ./tailwind.css -o css/tailwind-out.css",
-    "bundle": "webpack build"
+    "build:watch": "tailwindcss -w -i ./tailwind.css -o css/tailwind-out.css",
+    "bundle": "webpack build",
+    "bundle:watch": "webpack build --watch"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",

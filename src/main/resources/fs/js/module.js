@@ -4,3 +4,6 @@
 import './common';
 import './test';
 import './utils/redirect';
+
+// page.js
+import './page/main';

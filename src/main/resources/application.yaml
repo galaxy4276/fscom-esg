@@ -21,6 +21,10 @@ spring:
     username: root
     password: dpvmdptm1!
   sql.init.platform: mariadb
+  web:
+    resources:
+      chain:
+        cache: false
 server:
   port: 8088
   servlet:

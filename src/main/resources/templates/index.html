@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html
-        xmlns:th="http://www.thymeleaf.org"
-        lang="ko"
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-        layout:decorate="common/templates/layout"
+  xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="common/templates/layout"
 >
-    <head>
-        <meta charset="utf-8">
-        <title>ESG HOMEPAGE</title>
-        <link rel="icon" type="image/png" sizes="32x32" th:href="@{/fs/img/favicon/favicon.ico}"/>
-        <meta name="description" content="Analytics Dashboard"/>
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui"/>
+  <head>
+    <meta charset="utf-8">
+    <title>ESG HOMEPAGE</title>
+    <link rel="icon" type="image/png" sizes="32x32" th:href="@{/fs/img/favicon/favicon.ico}"/>
+    <meta name="description" content="Analytics Dashboard"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui"/>
 
-        <link rel="stylesheet" th:href="@{/fs/css/common.css}"/>
-        <link rel="stylesheet" th:href="@{/fs/css/tailwind-out.css}"/>
-        <script type="text/javascript" th:src="@{/fs/js/jquery.js}"></script>
-        <script type="text/javascript" th:src="@{/fs/js/common.js}"></script>
+    <link rel="stylesheet" th:href="@{/fs/css/common.css}"/>
+    <link rel="stylesheet" th:href="@{/fs/css/tailwind-out.css}"/>
+    <script type="text/javascript" th:src="@{/fs/js/jquery.js}"></script>
+    <script type="text/javascript" th:src="@{/fs/js/common.js}"></script>
 
-        <style type="text/css">
+    <style>
+      #main__header-nav {
+          background-image: url("/fs/img/main-top-nav-bg.png");
+          background-size: cover;
+      }
+    </style>
 
-        </style>
-    </head>
-    <body>
-        <th:block layout:fragment="content">
-            <div>시작페이지</div>
-            <!-- 버튼 추가 -->
-            <button id="mainPageButton">Main 페이지로 이동</button>
-            <button class="bg-red-600 text-white">tailwind 테스트</button>
-            <span class="text-orange-200">헬로</span>
-        </th:block>
+  </head>
 
-        <script type="text/javascript">
-            // JavaScript로 버튼 클릭 이벤트 처리
-            document.getElementById('mainPageButton').addEventListener('click', function() {
-                // /main 페이지로 이동
-                window.location.href = '/main/main';
-            });
-        </script>
-    </body>
+  <body>
+    <th:block layout:fragment="content">
+      <section class="h-[749px]" id="main__header-nav">
+        <div class="flex flex-col justify-center mx-[240px]">
+          <div class="flex flex-col items-center py-[120px] whitespace-nowrap">
+            <p class="text-white text-[72px] font-bold">한국ESG협회</p>
+            <span class="text-white text-[42px]">KOREA ESG ASSOCIATION</span>
+          </div>
+        </div>
+
+      </section>
+    </th:block>
+  </body>
 </html>
