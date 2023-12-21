@@ -1,0 +1,47 @@
+.nav--icon {
+    width: 100px;
+    height: 100px;
+}
+
+.mock-woman {
+    background-image: url("/fs/img/mock-woman-0.png");
+    background-size: cover;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.vertical-divider {
+    padding-left: 10px;
+    padding-right: 10px;
+    left: 50%;
+    height: 147px;
+    /*border-left: 1px solid red;*/
+    border-left: 1px solid #cbd5e1;
+}
+
+.chatbot-button {
+    z-index: 10;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: #06B6D4;
+    color: white;
+    border-radius: 99em;
+}
+
+#chatbot__container {
+    display: flex;
+    position: fixed;
+    flex-direction: column;
+    padding: 12px;
+    background-color: white;
+    border-radius: 8px;
+    width: 300px;
+    height: 520px;
+    bottom: 110px;
+    right: 30px;
+}

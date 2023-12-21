@@ -31,7 +31,7 @@ public class MainController {
 
     @RequestMapping(value = "/main")
     public ModelAndView mainPage() {
-        ModelAndView mav = new ModelAndView("main/main");
+        ModelAndView mav = new ModelAndView("/index");
         return mav;
     }
 

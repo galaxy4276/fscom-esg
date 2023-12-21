@@ -5,10 +5,15 @@
   <link rel="stylesheet" th:href="@{/fs/css/tailwind-out.css}"/>
   <script type="text/javascript" th:src="@{/fs/js/jquery.js}"></script>
   <script type="text/javascript" th:src="@{/fs/js/common.js}"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 <th:block th:replace="common/molecules/header :: header"></th:block>
   <body class="font-pretendard">
     <th:block layout:fragment="content"></th:block>
     <script th:src="@{fs/js/out/index.out.js}" defer></script>
   </body>
+<th:block th:replace="common/molecules/footer :: footer"></th:block>
 </html>

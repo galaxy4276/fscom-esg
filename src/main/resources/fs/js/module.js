@@ -7,3 +7,7 @@ import './utils/redirect';
 
 // page.js
 import './page/main';
+
+// component.js
+import './components/main';
+import './components/header';

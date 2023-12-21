@@ -65,6 +65,12 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+tasks.register('copyStaticResources', Copy) {
+	def cssLib = new File(rootDir, "src/main/resources/fs")
+	from "$cssLib/**"
+	into "$projectDir/build/resources/main"
+}
+
 tasks.register('tailwindBuild', NpmTask) {
 	args = ["run", "build"]
 	dependsOn tasks.npmInstall
@@ -78,4 +84,18 @@ tasks.register('jsBundle', NpmTask) {
 tasks.processResources {
 	dependsOn(tailwindBuild)
 	dependsOn(jsBundle)
+	dependsOn(copyStaticResources)
+}
+
+bootRun {
+	doFirst {
+		println("bootRun!")
+		dependsOn(tasks.copyTailwindBuild)
+	}
+}
+
+sourceSets {
+	main {
+		output.dir(copyStaticResources.destinationDir, builtBy: copyStaticResources)
+	}
 }

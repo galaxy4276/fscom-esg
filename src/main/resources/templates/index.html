@@ -13,11 +13,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui"/>
 
-    <link rel="stylesheet" th:href="@{/fs/css/common.css}"/>
-    <link rel="stylesheet" th:href="@{/fs/css/tailwind-out.css}"/>
-    <script type="text/javascript" th:src="@{/fs/js/jquery.js}"></script>
-    <script type="text/javascript" th:src="@{/fs/js/common.js}"></script>
-
     <style>
       #main__header-nav {
           background-image: url("/fs/img/main-top-nav-bg.png");
@@ -27,17 +22,18 @@
 
   </head>
 
-  <body>
+  <body id="body">
     <th:block layout:fragment="content">
       <section class="py-[60px]" id="main__header-nav">
-        <div class="flex flex-col justify-center mx-0 lg:mx-[240px]">
+        <div class="flex flex-col justify-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn">
           <div class="flex flex-col items-center pt-[120px] py-[180px] whitespace-nowrap">
             <p class="text-white text-[52px] md:text-[72px] font-bold">한국ESG협회</p>
             <span class="text-white text-[28px] md:text-[42px]">KOREA ESG ASSOCIATION</span>
           </div>
 
           <div class="w-full flex justify-center">
-            <div class="flex flex-col md:flex-row gap-x-[30px] gap-y-4 text-white font-[20px] w-[400px] md:w-[750px] max-w-[750px]">
+            <div class="flex flex-col md:flex-row gap-x-[50px] gap-y-[30px] text-white font-[20px] w-[500px] md:w-[750px] max-w-[750px]">
+
               <div class="flex flex-col justify-center items-center gap-y-2">
                 <img th:src="@{fs/svg/tree.svg}" alt="tree.svg" class="nav--icon">
                 <span>
@@ -69,8 +65,286 @@
           </div>
 
         </div>
-
       </section>
+
+      <main class="mx-[15px] md:mx-[120px] flex flex-col gap-y-[200px]">
+        <section id="main__introduce" class="mt-[120px]">
+
+          <div class="pb-8">
+            <h1 class="text-slate-800 font-bold text-[48px]">임원 소개</h1>
+          </div>
+
+          <div class="flex flex-wrap gap-x-8 gap-y-8 justify-center">
+
+            <div class="rounded-xl drop-shadow-lg bg-white w-[209px] px-[22px] py-[24px] flex flex-col items-center">
+              <img th:src="@{/fs/img/mock-woman-0.png}" class="w-[150px] h-[150px] rounded-full mb-5" />
+
+              <div class="mb-4">
+                <p class="font-bold">최승진</p>
+                <p class="text-[#88BD55]">담당자</p>
+              </div>
+
+              <a href="#" class="text-[#06B6D4]">약력 보기</a>
+            </div>
+
+            <div class="rounded-xl drop-shadow-lg bg-white w-[209px] px-[22px] py-[24px] flex flex-col items-center">
+              <img th:src="@{/fs/img/mock-woman-0.png}" class="w-[150px] h-[150px] rounded-full mb-5" />
+
+              <div class="mb-4">
+                <p class="font-bold">최승진</p>
+                <p class="text-[#88BD55]">담당자</p>
+              </div>
+
+              <a href="#" class="text-[#06B6D4]">약력 보기</a>
+            </div>
+
+            <div class="rounded-xl drop-shadow-lg bg-white w-[209px] px-[22px] py-[24px] flex flex-col items-center">
+              <img th:src="@{/fs/img/mock-woman-0.png}" class="w-[150px] h-[150px] rounded-full mb-5" />
+
+              <div class="mb-4">
+                <p class="font-bold">최승진</p>
+                <p class="text-[#88BD55]">담당자</p>
+              </div>
+
+              <a href="#" class="text-[#06B6D4]">약력 보기</a>
+            </div>
+
+            <div class="rounded-xl drop-shadow-lg bg-white w-[209px] px-[22px] py-[24px] flex flex-col items-center">
+              <img th:src="@{/fs/img/mock-woman-0.png}" class="w-[150px] h-[150px] rounded-full mb-5" />
+
+              <div class="mb-4">
+                <p class="font-bold">최승진</p>
+                <p class="text-[#88BD55]">담당자</p>
+              </div>
+
+              <a href="#" class="text-[#06B6D4]">약력 보기</a>
+            </div>
+
+            <div class="rounded-xl drop-shadow-lg bg-white w-[209px] px-[22px] py-[24px] flex flex-col items-center">
+              <img th:src="@{/fs/img/mock-woman-0.png}" class="w-[150px] h-[150px] rounded-full mb-5" />
+
+              <div class="mb-4">
+                <p class="font-bold">최승진</p>
+                <p class="text-[#88BD55]">담당자</p>
+              </div>
+
+              <a href="#" class="text-[#06B6D4]">약력 보기</a>
+            </div>
+
+            <div class="rounded-xl drop-shadow-lg bg-white w-[209px] px-[22px] py-[24px] flex flex-col items-center">
+              <img th:src="@{/fs/img/mock-woman-0.png}" class="w-[150px] h-[150px] rounded-full mb-5" />
+
+              <div class="mb-4">
+                <p class="font-bold">최승진</p>
+                <p class="text-[#88BD55]">담당자</p>
+              </div>
+
+              <a href="#" class="text-[#06B6D4]">약력 보기</a>
+            </div>
+
+          </div>
+          <!--    임원소개 종료    -->
+
+
+        </section>
+
+        <!--  연구 동향 -->
+        <section id="main__history" class="mt-[120px]">
+          <div class="pb-8">
+            <h1 class="text-slate-800 font-bold text-[48px]">연구 동향</h1>
+          </div>
+
+          <article class="w-full flex justify-center">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-8 justify-center w-fit">
+
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap justify-center bg-white">
+                <div class="rounded-xl drop-shadow-lg bg-white w-[250px] pt-[10px] flex flex-col">
+                  <div class="px-[10px] flex flex-col">
+                    <p class="font-bold text-slate-800">ESG 신규 페이지 개설</p>
+                    <p class="text-slate-500">2023. 11. 10.</p>
+                  </div>
+                  <div class="w-full pt-[10px]">
+                    <img th:src="@{/fs/img/mock-bg-0.png}" class="w-full rounded-b-xl" />
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </article>
+
+        </section>
+
+        <!--  통계 -->
+        <section id="main__statis" class="mt-[120px]">
+          <div class="pb-8">
+            <h1 class="text-slate-800 font-bold text-[48px]">통계</h1>
+          </div>
+
+          <div class="flex flex-col justify-center items-center">
+            <section class="flex flex-wrap justify-center flex-col md:flex-row">
+              <div class="flex flex-col w-[340px]">
+                <h1 class="font-bold text-[#06B6D4] text-[42px]">32</h1>
+                <h3 class="text-slate-800 font-bold text-[24px]">Stats A</h3>
+                <span>
+                  국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다.
+                </span>
+              </div>
+
+<!--              <div class="vertical-divider"></div>-->
+
+              <div class="flex flex-col w-[340px]">
+                <h1 class="font-bold text-[#06B6D4] text-[42px]">999+</h1>
+                <h3 class="text-slate-800 font-bold text-[24px]">Stats B</h3>
+                <span>
+                  국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다.
+                </span>
+              </div>
+
+              <div class="flex flex-col w-[340px]">
+                <h1 class="font-bold text-[#06B6D4] text-[42px]">556</h1>
+                <h3 class="text-slate-800 font-bold text-[24px]">Stats C</h3>
+                <span>
+                  국회의원은 현행범인인 경우를 제외하고는 회기중 국회의 동의없이 체포 또는 구금되지 아니한다.
+                </span>
+              </div>
+            </section>
+
+            <div class="pt-6"></div>
+
+            <section class="flex justify-center gap-x-[30px] flex-col md:flex-row gap-y-6 max-w-[1300px]">
+              <div class="p-[42px] border border-slate-200 rounded-xl flex flex-col gap-y-6 flex-auto md:flex-[0.3]">
+                <div class="flex flex-col">
+                  <h3 class="text-slate-800 font-bold text-[32px]">Stats D</h3>
+                  <h1 class="font-bold text-[#06B6D4] text-[32px]">550</h1>
+                </div>
+
+                <div class="flex flex-col">
+                  <h3 class="text-slate-800 font-bold text-[32px]">Stats D</h3>
+                  <h1 class="font-bold text-[#06B6D4] text-[32px]">550</h1>
+                </div>
+
+                <div class="flex flex-col">
+                  <h3 class="text-slate-800 font-bold text-[32px]">Stats D</h3>
+                  <h1 class="font-bold text-[#06B6D4] text-[32px]">550</h1>
+                </div>
+              </div>
+
+              <div class="p-[42px] border border-slate-200 rounded-xl flex flex-col gap-y-6 flex-auto md:flex-[0.3]">
+                <div class="flex flex-col">
+                  <h3 class="text-slate-800 font-bold text-[32px]">Stats D</h3>
+                  <h1 class="font-bold text-[#06B6D4] text-[32px]">550</h1>
+                </div>
+
+                <div class="flex flex-col">
+                  <h3 class="text-slate-800 font-bold text-[32px]">Stats D</h3>
+                  <h1 class="font-bold text-[#06B6D4] text-[32px]">550</h1>
+                </div>
+
+                <div class="flex flex-col">
+                  <h3 class="text-slate-800 font-bold text-[32px]">Stats D</h3>
+                  <h1 class="font-bold text-[#06B6D4] text-[32px]">550</h1>
+                </div>
+              </div>
+
+              <img th:src="@{/fs/img/mock-nature-0.png}" class="flex-[0.4] hidden md:block drop-shadow-md rounded-md">
+            </section>
+          </div>
+
+        </section>
+      </main>
+
+        <button class="chatbot-button">
+          <div class="relative">
+            <div class="drop-shadow-md text-slate-700 invisible" id="chatbot__container">
+              <div class="text-left">
+                <img th:src="@{/fs/img/header_logo.png}" alt="header_logo" />
+                <p>안녕하세요! ESG 협회입니다.</p>
+                <p>문의 할 유형을 선택해주시면 자세히 안내 드릴게요!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex justify-center items-center">
+            <img th:src="@{/fs/svg/chatbot.svg}" alt="chatbot_button">
+          </div>
+        </button>
     </th:block>
   </body>
 </html>

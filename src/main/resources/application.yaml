@@ -9,6 +9,8 @@ spring:
     suffix: .html
     cache: false
   devtools:
+    restart:
+      additional-paths: file:src/main/resources/fs/
     livereload:
       enabled: true
       restart:
@@ -26,12 +28,14 @@ spring:
       chain:
         cache: false
       static-locations: file:src/main/resources/fs/
+      add-mappings: false
 server:
   port: 8088
   servlet:
     session:
       timeout: 108000 # 60s * 60m * 30h
       tracking-modes: cookie # url에 jsession 처리
+  address: 0.0.0.0
 logging:
   pattern.file: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n"
   logback.rollingpolicy.file-name-pattern: "./logs/archives/app.log.%d{yyyy-MM-dd}.%i.log.gz"
