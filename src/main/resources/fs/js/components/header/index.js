@@ -19,5 +19,6 @@ drawerOverlay.addEventListener('click', () => {
 
   if (url.includes('introduce')) {
     intro.style.fontWeight = '600';
+    intro.style.borderBottom = '4px solid #00c7b5';
   }
 })();

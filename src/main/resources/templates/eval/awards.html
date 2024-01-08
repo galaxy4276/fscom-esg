@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="common/templates/layout"
+>
+<head>
+  <meta charset='UTF-8'>
+  <title>시상안내</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <div class="w-full forest-bg">
+    <div class="flex flex-col justify-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn">
+      <div class="flex flex-col items-center pt-[120px] py-[180px] whitespace-nowrap">
+        <p class="text-white text-[52px] md:text-[72px] font-bold">사업 안내</p>
+      </div>
+    </div>
+  </div>
+
+  <main class="mx-[15px] md:mx-[120px] flex flex-col gap-y-[200px]">
+    <img th:src="@{/fs/img/awards.png}" class="w-full" alt="시연용">
+  </main>
+</th:block>
+</body>
+</html>
