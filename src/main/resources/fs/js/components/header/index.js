@@ -9,3 +9,15 @@ drawerOpenCloseButton.addEventListener('click', () => {
 drawerOverlay.addEventListener('click', () => {
   hiddenInput.click();
 });
+
+/**
+ * url 경로에 따라 상단 네비게이션 메뉴의 fontWeight bold 처리
+ */
+(() => {
+  const intro = document.getElementById('top-nav__dropdown--intro');
+  const url = location.href;
+
+  if (url.includes('introduce')) {
+    intro.style.fontWeight = '600';
+  }
+})();

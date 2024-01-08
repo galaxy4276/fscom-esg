@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 <head>
+  <script src="http://localhost:35729/livereload.js"></script>
   <link rel="stylesheet" th:href="@{/fs/css/common.css}"/>
   <link rel="stylesheet" th:href="@{/fs/css/tailwind-out.css}"/>
   <script type="text/javascript" th:src="@{/fs/js/jquery.js}"></script>
@@ -13,7 +14,7 @@
 <th:block th:replace="common/molecules/header :: header"></th:block>
   <body class="font-pretendard">
     <th:block layout:fragment="content"></th:block>
-    <script th:src="@{fs/js/out/index.out.js}" defer></script>
+    <script th:src="@{/fs/js/out/index.out.js}" defer></script>
   </body>
 <th:block th:replace="common/molecules/footer :: footer"></th:block>
 </html>

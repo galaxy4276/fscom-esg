@@ -31,7 +31,7 @@ module.exports = {
     ],
   },
   output: {
-    path: path.join(__dirname, 'js', 'out'),
+    path: path.join(__dirname, '../../../../build/resources/main/fs/js/out'),
     publicPath,
     filename: 'index.out.js',
   },

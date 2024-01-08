@@ -1,20 +1,48 @@
 <!-- Header Molecules Component  -->
 <!doctype html>
 <html xmlns:th="http://www.thymeleaf.org">
+    <style>
+
+    </style>
     <th:block th:fragment="header">
         <header class="w-full h-[72px] flex justify-between bg-white">
             <button class="flex items-center px-[25px]" id="header-button">
                 <img th:src="@{/fs/img/header_logo.png}" alt="header_logo" />
             </button>
 
+            <ul class="flex gap-x-20 text-xl items-center">
+                <li>
+                    <p class="under top-nav__dropdown" id="top-nav__dropdown--intro">소개</p>
+                    <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-intro">
+                        <ul class="dropdown-content">
+                            <li class="top-nav__dropdown--menu" id="go-hello">인사말</li>
+                            <li class="top-nav__dropdown--menu" id="go-intro">임원 소개</li>
+                            <li class="top-nav__dropdown--menu" id="go-goals">설립 목적</li>
+                            <li class="top-nav__dropdown--menu" id="go-vision">비전 전략 체계</li>
+                            <li class="top-nav__dropdown--menu" id="go-core">핵심 가치</li>
+                            <li class="top-nav__dropdown--menu" id="go-org">조직도</li>
+                            <li class="top-nav__dropdown--menu" id="go-ci">CI 안내</li>
+                            <li class="top-nav__dropdown--menu" id="go-intro-map">오시는 길</li>
+                        </ul>
+                    </nav>
+                </li>
+                <li>
+                    <a href='/evaluation' class="under">평가</a>
+                </li>
+                <li>
+                    <a href='/news' class="under">사업소식</a>
+                </li>
+                <li>
+                    <a href='/sponsor' class="under">후원</a>
+                </li>
+            </ul>
+
             <button class="w-[72px] h-[72px] bg-black flex justify-center items-center" id="header__drawer--open-button">
-                <img th:src="@{fs/svg/hamburger.svg}" />
+                <img th:src="@{/fs/svg/hamburger.svg}" />
             </button>
 
-
-
-
         </header>
+
         <div>
             <div id="header__drawer" class="drawer drawer-end">
                 <input id="header__drawer--button" type="checkbox" class="drawer-toggle" />
@@ -24,8 +52,10 @@
                     <label for="header__drawer" aria-label="close sidebar" class="drawer-overlay"></label>
                     <ul class="menu p-4 w-80 min-h-full bg-white text-base-content">
                         <!-- Sidebar content here -->
-                        <li><a>찾아오는 길</a></li>
-                        <li><a>협회 안내</a></li>
+                        <li><a>소개</a></li>
+                        <li><a>평가</a></li>
+                        <li><a>사업소식</a></li>
+                        <li><a>후원</a></li>
                     </ul>
                 </div>
             </div>

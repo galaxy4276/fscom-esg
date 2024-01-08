@@ -4,7 +4,7 @@
   "scripts": {
     "build": "tailwindcss -i ./tailwind.css -o css/tailwind-out.css",
     "build:postcss": "postcss -r ./js/",
-    "build:watch": "tailwindcss -w -i ./tailwind.css -o css/tailwind-out.css",
+    "build:watch": "tailwindcss -w -i ./tailwind.css -o ../../../../build/resources/main/fs/css/tailwind-out.css",
     "bundle": "webpack build",
     "bundle:watch": "webpack build --watch",
     "vite:build": "vite --config js/module.js"

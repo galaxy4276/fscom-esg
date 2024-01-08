@@ -6,7 +6,7 @@ import './test';
 import './utils/redirect';
 
 // page.js
-import './page/main';
+// import './page/main';
 
 // component.js
 import './components/main';

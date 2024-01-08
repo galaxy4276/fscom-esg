@@ -11,6 +11,7 @@ spring:
   devtools:
     restart:
       additional-paths: file:src/main/resources/fs/
+      enabled: true
     livereload:
       enabled: true
       restart:
@@ -25,10 +26,16 @@ spring:
   sql.init.platform: mariadb
   web:
     resources:
+      cache:
+        period: 0
       chain:
         cache: false
-      static-locations: file:src/main/resources/fs/
+#      static-locations[0]: file:src/main/resources/fs/
+#      static-locations[1]: classpath:/fs/
+#      static-locations[2]: file:src/main/resources/fs/js/out/
+#      static-locations[3]: file:src/main/resources/fs/css/
       add-mappings: false
+      static-locations: file:src/main/resources
 server:
   port: 8088
   servlet:
