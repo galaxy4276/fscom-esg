@@ -6,36 +6,52 @@ const goHome = () => {
 
 $('#header-button').on('click', goHome);
 
+const scrollToSection = (section) => {
+  window.scrollTo({
+    top: section.offsetTop,
+    left: section.offsetLeft,
+    behavior: 'smooth',
+  });
+};
+
 document.getElementById('go-hello').onclick = () => {
-  location.href = '/introduce/greet';
+  const greetSection = document.getElementById('intro-section');
+  scrollToSection(greetSection);
 }
 
 document.getElementById('go-intro').onclick = () => {
-  location.href = '/introduce/executive';
+  const executiveSection = document.getElementById('executive-section');
+  scrollToSection(executiveSection);
 }
 
 document.getElementById('go-goals').onclick = () => {
-  location.href = '/introduce/goals';
+  const goalsSection = document.getElementById('goals-section');
+  scrollToSection(goalsSection);
 }
 
 document.getElementById('go-vision').onclick = () => {
-  location.href = '/introduce/vision';
+  const visionSection = document.getElementById('vision-section');
+  scrollToSection(visionSection);
 }
 
 document.getElementById('go-core').onclick = () => {
-  location.href = '/introduce/core';
+  const coreSection = document.getElementById('core-section');
+  scrollToSection(coreSection);
 }
 
 document.getElementById('go-org').onclick = () => {
-  location.href = '/introduce/org';
+  const orgSection = document.getElementById('org-section');
+  scrollToSection(orgSection);
 }
 
 document.getElementById('go-ci').onclick = () => {
-  location.href = '/introduce/ci';
+  const ciSection = document.getElementById('ci-section');
+  scrollToSection(ciSection);
 }
 
 document.getElementById('go-intro-map').onclick = () => {
-  location.href = '/introduce/map';
+  const mapSection = document.getElementById('map-section');
+  scrollToSection(mapSection);
 }
 
 document.getElementById('go-awards').onclick = () => {

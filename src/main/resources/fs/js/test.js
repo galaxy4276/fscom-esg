@@ -12,6 +12,8 @@ const topNavMenus = [
 
 topNavMenus.forEach(([content, dropdown]) => {
     let introEntered = false;
+    let visitContent = false;
+
     const enter = () => {
         introEntered = true;
     };
@@ -31,10 +33,15 @@ topNavMenus.forEach(([content, dropdown]) => {
         if (!introEntered) {
             leave();
         }
+
+        if (!visitContent) {
+            leave();
+        }
     });
 
     // dropdown content mouse event
     content.addEventListener('mouseenter', (e) => {
+        visitContent = true;
         const mouseOverEv = new MouseEvent('mouseover', { bubbles: false });
         dropdown.dispatchEvent(mouseOverEv);
         console.log('content entered');
@@ -43,6 +50,7 @@ topNavMenus.forEach(([content, dropdown]) => {
 
     content.addEventListener('mouseleave', (e) => {
         e.stopPropagation();
+        visitContent = false;
         console.log('content leave');
         leave();
     });
