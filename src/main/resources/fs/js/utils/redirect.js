@@ -62,3 +62,10 @@ document.getElementById('go-cert').onclick = () => {
   location.href = '/evaluation/cert';
 }
 
+document.getElementById('top-nav__dropdown--intro').onclick = () => {
+ location.href = '/introduce/greet';
+}
+
+document.getElementById('top-nav__dropdown--eval').onclick = () => {
+ location.href = '/evaluation';
+}

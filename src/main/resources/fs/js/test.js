@@ -22,7 +22,7 @@ topNavMenus.forEach(([content, dropdown]) => {
     };
 
     dropdown.addEventListener('mouseover', () => {
-        dropdown.click();
+        enter();
         content.style.visibility = 'visible';
     });
 
@@ -33,11 +33,10 @@ topNavMenus.forEach(([content, dropdown]) => {
         }
     });
 
-    dropdown.onclick = () => enter();
-
     // dropdown content mouse event
     content.addEventListener('mouseenter', (e) => {
-        e.stopPropagation();
+        const mouseOverEv = new MouseEvent('mouseover', { bubbles: false });
+        dropdown.dispatchEvent(mouseOverEv);
         console.log('content entered');
         enter();
     });

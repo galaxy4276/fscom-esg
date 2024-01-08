@@ -49,10 +49,25 @@
     display: block;
     position: relative;
     padding: .1em 0;
+    text-decoration: none;
 }
 
 .under:hover {
-    border-bottom: 4px solid #00c7b5;
+    opacity: 1;
+}
+
+.under:before {
+    transition: 300ms;
+    height: 5px;
+    content: "";
+    position: absolute;
+    background-color: #00c7b5;
+    width: 100%;
+    bottom: 0px;
+}
+
+.under:hover::before {
+    height: 5px;
 }
 
 /*.under::after {*/
@@ -131,12 +146,12 @@
     column-gap: 5px;
 }
 
-#go-hello {
+#go-hello, #go-awards {
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
 }
 
-#go-intro-map {
+#go-intro-map, #go-cert {
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
 }
