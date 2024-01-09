@@ -29,12 +29,6 @@ public class MainController {
         return mav;
     }
 
-    @RequestMapping(value = "/main")
-    public ModelAndView mainPage() {
-        ModelAndView mav = new ModelAndView("/index");
-        return mav;
-    }
-
     @RequestMapping(value = "/userListAjax")
     @ResponseBody
     public HashMap<String, Object> userListAjax(HttpServletRequest req) throws Exception {
