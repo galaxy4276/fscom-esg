@@ -7,4 +7,9 @@
         FROM users u
         WHERE u.email = #{email}
     </select>
+
+    <insert id="createUser" parameterType="kr.fscom.esg.authentication.domain.dto.UserCreate">
+        INSERT INTO users (email, password, name, tel, address, active, role, created_at, enterprise_id)
+        VALUES (#{email}, #{password}, #{name}, #{tel}, #{address}, #{active}, #{role}, #{createdAt}, #{enterpriseId})
+    </insert>
 </mapper>
