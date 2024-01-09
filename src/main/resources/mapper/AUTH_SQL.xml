@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.fscom.esg.authentication.repository.AuthMapper">
+    <select id="getEnterpriseDetails" parameterType="map" resultType="map">
+        SELECT *
+        FROM user_enterprise_details ud
+        WHERE ud.license_number = #{licenseNumber}
+    </select>
+
+    <insert id="createEnterpriseDetails" parameterType="kr.fscom.esg.authentication.domain.dto.EnterpriseCreate">
+        INSERT INTO user_enterprise_details (license_number, address, represent, tel, name)
+        VALUES (#{licenseNumber}, #{address}, #{represent}, #{tel}, #{name});
+    </insert>
+</mapper>

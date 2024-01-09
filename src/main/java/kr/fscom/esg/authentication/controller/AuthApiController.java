@@ -2,6 +2,7 @@ package kr.fscom.esg.authentication.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import javax.validation.Valid;
 import kr.fscom.esg.authentication.domain.dto.JoinRequest;
 import kr.fscom.esg.authentication.service.JoinService;
 import lombok.RequiredArgsConstructor;
@@ -24,9 +25,8 @@ public final class AuthApiController {
 
   @Operation(summary = "회원가입 API")
   @PostMapping
-  public ResponseEntity<Void> createUser(@RequestBody JoinRequest req) {
+  public ResponseEntity<Void> createUser(@RequestBody @Valid JoinRequest req) {
     log.info("[POST] /api/auth controller");
-    log.info("requestBody: {}", req.toString());
     service.join(req);
     return new ResponseEntity<>(HttpStatus.OK);
   }
