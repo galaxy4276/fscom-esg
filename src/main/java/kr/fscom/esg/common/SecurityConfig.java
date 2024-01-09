@@ -19,9 +19,11 @@ public class SecurityConfig {
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
     http.formLogin().disable();
-    http.authorizeRequests().anyRequest().permitAll();
+    http.authorizeRequests()
+        .anyRequest().permitAll();
     http.exceptionHandling()
         .accessDeniedHandler(accessDeniedHandler);
+    http.csrf().disable();
     return http.build();
   }
 

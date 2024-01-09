@@ -5,8 +5,10 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import kr.fscom.esg.utils.JsonResWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.MediaType;
 import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.stereotype.Component;
@@ -23,11 +25,12 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
                      AccessDeniedException accessDeniedException)
       throws IOException, ServletException {
     String uri = request.getRequestURI();
-    log.info("[AccessDenied] uri: {}", uri);
+    log.error("[AccessDenied] uri: {}", uri);
+    log.error(accessDeniedException.toString());
+    JsonResWriter jsonResWriter = new JsonResWriter(response);
 
     BasicException ex = ApplicationException.FORBIDDEN.create();
-    String ret = objectMapper.writeValueAsString(ex.getErrorResponse());
-    response.getWriter().write(ret);
+    jsonResWriter.setJson(ex);
   }
 
 }
