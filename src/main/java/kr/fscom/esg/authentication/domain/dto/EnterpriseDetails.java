@@ -1,14 +1,16 @@
 package kr.fscom.esg.authentication.domain.dto;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class EnterpriseDetails {
-  private final String licenseNumber;
-  private final String address;
-  private final String represent;
-  private final String tel;
-  private final String name;
+  private String licenseNumber;
+  private String address;
+  private String represent;
+  private String tel;
+  private String name;
 }

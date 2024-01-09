@@ -1,16 +1,29 @@
 package kr.fscom.esg.authentication.domain.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import kr.fscom.esg.authentication.domain.UserRole;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 @Getter
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class JoinRequest {
-  private final UserRole role;
-  private final String email;
-  private final String name;
-  private final String tel;
-  private final String address;
-  private final EnterpriseDetails enterpriseDetails;
+  @Schema(description = "사용자 권한")
+  @NotBlank
+  private UserRole role;
+  @Email
+  private String email;
+  private String rawPassword;
+  private String name;
+  @Schema(required = true,  description = "휴대폰 번호")
+  @Pattern(regexp = "^[0-9]{11}", message = "휴대폰 번호는 010XXXXXXXX 형식이어야 합니다.")
+  private String tel;
+  private String address;
+  private EnterpriseDetails enterpriseDetails;
 }

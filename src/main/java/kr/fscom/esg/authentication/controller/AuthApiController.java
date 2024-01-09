@@ -26,6 +26,7 @@ public final class AuthApiController {
   @PostMapping
   public ResponseEntity<Void> createUser(@RequestBody JoinRequest req) {
     log.info("[POST] /api/auth controller");
+    log.info("requestBody: {}", req.toString());
     service.join(req);
     return new ResponseEntity<>(HttpStatus.OK);
   }
