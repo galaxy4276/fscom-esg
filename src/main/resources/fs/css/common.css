@@ -90,7 +90,7 @@
 
 .top-nav__dropdown {
     position: relative;
-    padding: 1em 0;
+    padding: 1em;
     display: inline-block;
     cursor: pointer;
 }
