@@ -10,12 +10,10 @@ spring:
     cache: false
   devtools:
     restart:
-      additional-paths: file:src/main/resources/fs/
       enabled: true
+      additional-paths: file:src/main/resources/fs/
     livereload:
       enabled: true
-      restart:
-        enabled: true
       thymeleaf:
         cache: false
   datasource:
@@ -30,12 +28,9 @@ spring:
         period: 0
       chain:
         cache: false
-#      static-locations[0]: file:src/main/resources/fs/
-#      static-locations[1]: classpath:/fs/
-#      static-locations[2]: file:src/main/resources/fs/js/out/
-#      static-locations[3]: file:src/main/resources/fs/css/
-      add-mappings: false
-      static-locations: file:src/main/resources
+      static-locations[0]: file:src/main/resources/fs/
+      static-locations[1]: classpath:/fs/
+#      add-mappings: false
 server:
   port: 8088
   servlet:
