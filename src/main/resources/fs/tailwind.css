@@ -23,3 +23,27 @@
     font-weight: normal;
     font-style: normal;
 }
+
+.esg-main__layout {
+    @apply mx-[15px] md:mx-[120px] lg:mx-[240px] xl:mx-[320px] 2xl:mx-[500px] flex flex-col gap-y-[200px];
+}
+
+.esg-top-nav__text--title {
+    @apply text-white text-[52px] md:text-[72px] font-bold;
+}
+
+.btn-slate {
+    @apply bg-slate-800 text-white;
+}
+
+.btn-slate:hover {
+    @apply !bg-slate-600;
+}
+
+.esg-link {
+    @apply text-blue-600 ease-in duration-300;
+}
+
+.esg-link:hover {
+    @apply text-blue-700;
+}
