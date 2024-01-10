@@ -39,6 +39,11 @@ pageHook('/auth/join/agreement', () => {
   let check01Status = false;
   let check02Status = false;
 
+  button.onclick = () => {
+    sessionStorage.setItem('agreement', 'true');
+    location.href = '/auth/join/user';
+  }
+
   const process = () => {
     if (check01Status && check02Status) {
       button.removeAttribute('disabled');
