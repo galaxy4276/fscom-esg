@@ -1,9 +1,7 @@
-const { tailwindTransform } = require('postcss-lit');
-
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: {
-    files: ['../templates/**/*.html', './js/**/*.js', './css/common.css'],
+    files: ['../templates/**/*.html', './js/**/*.js', './css/**/*.css'],
   },
   theme: {
     fontFamily: {
