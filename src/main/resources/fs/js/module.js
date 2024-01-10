@@ -7,6 +7,7 @@ import './utils/redirect';
 
 // page.js
 // import './page/main';
+import './page/login';
 
 // component.js
 import './components/main';

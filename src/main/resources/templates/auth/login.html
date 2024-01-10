@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html
+  xmlns:th='http://www.thymeleaf.org'
+  lang='ko'
+  xmlns:layout='http://www.ultraq.net.nz/thymeleaf/layout'
+  layout:decorate='common/templates/layout'
+>
+<head>
+  <meta charset='UTF-8'>
+  <title>로그인</title>
+</head>
+    <th:block layout:fragment='content'>
+      <section class='forest-bg py-[60px]'>
+        <div class='flex flex-col justify-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn'>
+          <div class="flex justify-center py-[120px] flex-col items-center">
+            <p class="esg-top-nav__text--title">한국ESG협회</p>
+            <span class="text-white text-[28px] md:text-[42px]">KOREA ESG ASSOCIATION</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="w-full h-full flex justify-center items-center">
+        <section class="flex justify-center h-full items-center">
+          <div class="card card-side w-full h-full lg:w-[768px] lg:h-fit shadow-md flex bg-white my-[80px]">
+            <figure class="w-[150px] hidden md:block">
+              <img th:src="@{/fs/img/main-top-nav-bg.png}" alt='forest-bg.png' class="h-full">
+            </figure>
+            <div class='card-body'>
+              <div class='card-title'>로그인/회원가입</div>
+              <div class="flex flex-col gap-y-2">
+                <label class="form-control w-full">
+                  <div class="label">
+                    <span class="label-text">이메일</span>
+                  </div>
+                  <input type='text' class='input input-bordered w-full'>
+                </label>
+                <a href="/auth/find/email" class="esg-link">아이디(이메일) 찾기</a>
+              </div>
+
+              <div class="flex flex-col gap-y-2">
+                <label class="form-control w-full">
+                  <div class="label">
+                    <span class="label-text">비밀번호</span>
+                  </div>
+                  <input type='password' class='input input-bordered w-full'>
+                </label>
+                <a href="/auth/find/password" class="esg-link">비밀번호가 기억이 안나시나요? (일회성 패스워드 발급)</a>
+                <a href="/auth/join" class="esg-link">회원이 아니신가요? (회원가입)</a>
+              </div>
+
+              <div class="flex justify-end pt-[30px]">
+                <button class="btn btn-slate btn-wide !w-[140px]" id="login-btn" disabled="disabled">로그인</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+    </th:block>
+</html>
