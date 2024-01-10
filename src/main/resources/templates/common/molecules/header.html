@@ -5,51 +5,59 @@
 
     </style>
     <th:block th:fragment="header">
-        <header class="w-full h-[72px] flex justify-between bg-white sticky top-0 shadow-sm z-50">
+        <header class="w-full h-[72px] flex justify-between bg-white sticky top-0 shadow-sm z-50 whitespace-nowrap">
             <button class="flex items-center px-[25px]" id="header-button">
                 <img th:src="@{/fs/img/header_logo.png}" alt="header_logo"/>
             </button>
 
-            <ul class="flex gap-x-20 text-xl items-center">
-                <li>
-                    <p class="under top-nav__dropdown" id="top-nav__dropdown--intro">소개</p>
-                    <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-intro">
-                        <ul class="dropdown-content">
-                            <li class="top-nav__dropdown--menu" id="go-hello">인사말</li>
-                            <li class="top-nav__dropdown--menu" id="go-intro">임원 소개</li>
-                            <li class="top-nav__dropdown--menu" id="go-goals">설립 목적</li>
-                            <li class="top-nav__dropdown--menu" id="go-vision">비전 전략 체계</li>
-                            <li class="top-nav__dropdown--menu" id="go-core">핵심 가치</li>
-                            <li class="top-nav__dropdown--menu" id="go-org">조직도</li>
-                            <li class="top-nav__dropdown--menu" id="go-ci">CI 안내</li>
-                            <li class="top-nav__dropdown--menu" id="go-intro-map">오시는 길</li>
-                        </ul>
-                    </nav>
-                </li>
-                <li>
-                    <p class="under top-nav__dropdown" id="top-nav__dropdown--eval">평가</p>
-                    <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-eval">
-                        <ul class="dropdown-content">
-                            <li class="top-nav__dropdown--menu" id="go-awards">시상제도</li>
-                            <li class="top-nav__dropdown--menu" id="go-consult">컨설팅/자문</li>
-                            <li class="top-nav__dropdown--menu" id="go-eval">평가</li>
-                            <li class="top-nav__dropdown--menu" id="go-research">연구</li>
-                            <li class="top-nav__dropdown--menu" id="go-edu">교육</li>
-                            <li class="top-nav__dropdown--menu" id="go-cert">인증</li>
-                        </ul>
-                    </nav>
-                </li>
-                <li>
-                    <a href='/news' class="under">사업소식</a>
-                </li>
-                <li>
-                    <a href='/sponsor' class="under">후원</a>
-                </li>
-            </ul>
+            <div class="hidden md:block">
+                <ul class="flex gap-x-20 text-xl items-center">
+                    <li>
+                        <p class="under top-nav__dropdown" id="top-nav__dropdown--intro">소개</p>
+                        <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-intro">
+                            <ul class="dropdown-content">
+                                <li class="top-nav__dropdown--menu" id="go-hello">인사말</li>
+                                <li class="top-nav__dropdown--menu" id="go-intro">임원 소개</li>
+                                <li class="top-nav__dropdown--menu" id="go-goals">설립 목적</li>
+                                <li class="top-nav__dropdown--menu" id="go-vision">비전 전략 체계</li>
+                                <li class="top-nav__dropdown--menu" id="go-core">핵심 가치</li>
+                                <li class="top-nav__dropdown--menu" id="go-org">조직도</li>
+                                <li class="top-nav__dropdown--menu" id="go-ci">CI 안내</li>
+                                <li class="top-nav__dropdown--menu" id="go-intro-map">오시는 길</li>
+                            </ul>
+                        </nav>
+                    </li>
+                    <li>
+                        <p class="under top-nav__dropdown" id="top-nav__dropdown--eval">평가</p>
+                        <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-eval">
+                            <ul class="dropdown-content">
+                                <li class="top-nav__dropdown--menu" id="go-awards">시상제도</li>
+                                <li class="top-nav__dropdown--menu" id="go-consult">컨설팅/자문</li>
+                                <li class="top-nav__dropdown--menu" id="go-eval">평가</li>
+                                <li class="top-nav__dropdown--menu" id="go-research">연구</li>
+                                <li class="top-nav__dropdown--menu" id="go-edu">교육</li>
+                                <li class="top-nav__dropdown--menu" id="go-cert">인증</li>
+                            </ul>
+                        </nav>
+                    </li>
+                    <li>
+                        <a href='/news' class="under">사업소식</a>
+                    </li>
+                    <li>
+                        <a href='/sponsor' class="under">후원</a>
+                    </li>
+                </ul>
+            </div>
 
-            <button class="w-[72px] h-[72px] bg-black flex justify-center items-center" id="header__drawer--open-button">
-                <img th:src="@{/fs/svg/hamburger.svg}" />
-            </button>
+
+            <div class="flex">
+                <div id="user-identity" class="px-[30px] font-bold h-full flex items-center justify-center">
+                    로그인
+                </div>
+                <button class="w-[72px] h-[72px] bg-black flex justify-center items-center" id="header__drawer--open-button">
+                    <img th:src="@{/fs/svg/hamburger.svg}" />
+                </button>
+            </div>
 
         </header>
 
