@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html
+  xmlns:th='http://www.thymeleaf.org'
+  lang='ko'
+  xmlns:layout='http://www.ultraq.net.nz/thymeleaf/layout'
+  layout:decorate='common/templates/layout'
+>
+<head>
+  <meta charset='UTF-8'>
+  <title>title</title>
+</head>
+    <th:block layout:fragment='content'>
+      <section class='forest-bg py-[60px]'>
+        <div class='flex flex-col justify-center items-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn my-[120px]'>
+          <span class="esg-top-nav__text--title">회원가입</span>
+        </div>
+      </section>
+
+      <section class="w-full flex flex-col items-center justify-center mt-[120px]">
+        <ul class='steps pb-6 w-[360px]'>
+          <li class='step step-accent'>회원 선택</li>
+          <li class='step'>이용 약관</li>
+          <li class='step'>개인 정보</li>
+          <li class='step'>회원 가입</li>
+        </ul>
+
+        <div class='esg-card'>
+          <div class='card-body'>
+            <div class="flex justify-center">
+              <span class="text-2xl pb-8">어떤 회원이신가요?</span>
+            </div>
+
+            <div class="flex flex-col md:flex-row flex-wrap gap-x-5 gap-y-5 justify-center pb-5">
+              <button class="esg-user-role__btn" id="join-personal__btn">
+                <div class="layout-full-center gap-y-1.5 text-xl">
+                  <img th:src="@{/fs/svg/user.svg}" class="w-[50px] h-[50px]">
+                  <span>개인</span>
+                </div>
+              </button>
+              <button class="esg-user-role__btn" id="join-enterprise__btn">
+                <div class="layout-full-center gap-y-1.5 text-xl">
+                  <img th:src="@{/fs/svg/building.svg}" class="w-[50px] h-[50px]">
+                  <span>기업</span>
+                </div>
+              </button>
+              <button class="esg-user-role__btn" id="join-pro__btn">
+                <div class="layout-full-center gap-y-1.5 text-xl">
+                  <img th:src="@{/fs/svg/user-cog.svg}" class="w-[50px] h-[50px]">
+                  <span>전문가</span>
+                </div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </th:block>
+</html>

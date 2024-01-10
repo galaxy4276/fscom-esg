@@ -21,4 +21,9 @@ public class AuthViewController {
     return new ModelAndView("/auth/join");
   }
 
+  @GetMapping("/join/agreement")
+  public ModelAndView agreementPage() {
+    return new ModelAndView("/auth/agreement");
+  }
+
 }

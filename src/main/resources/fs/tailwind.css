@@ -41,9 +41,29 @@
 }
 
 .esg-link {
-    @apply text-blue-600 ease-in duration-300;
+    @apply text-blue-600 ease-in duration-150;
 }
 
 .esg-link:hover {
-    @apply text-blue-700;
+    @apply text-blue-900;
+}
+
+.esg-login-btn {
+    @apply !px-[15px];
+}
+
+.esg-card {
+    @apply card bg-white shadow-md w-[768px] max-w-[768px] border border-slate-200;
+}
+
+.esg-user-role__btn {
+    @apply w-[200px] h-[200px] rounded-md shadow-md bg-white border border-slate-200 transition duration-150;
+}
+
+.esg-user-role__btn:hover {
+    @apply bg-slate-200;
+}
+
+.layout-full-center {
+    @apply w-full h-full flex flex-col items-center justify-center;
 }

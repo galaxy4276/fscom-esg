@@ -32,3 +32,22 @@ drawerOverlay.addEventListener('click', () => {
     emphasize(evaluation);
   }
 })();
+
+/**
+ * 사용자 헤더 로그인 섹션
+ */
+(() => {
+  const user = localStorage.getItem('user');
+  const userIdentity = document.getElementById('user-identity');
+
+  if (!user) {
+    userIdentity.textContent = '로그인';
+    userIdentity.addEventListener('click', () => {
+      location.href = '/auth/login';
+    });
+    userIdentity.style.cursor = 'pointer';
+    return;
+  }
+
+  userIdentity.textContent = `${user.name}님 환영합니다`;
+})();

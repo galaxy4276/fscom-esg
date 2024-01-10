@@ -29,7 +29,6 @@ public class AuthRepository {
   }
 
   private EnterpriseDetails mapEnterpriseDetails(Map<String, Object> resultMap) {
-    log.error("data: {}", resultMap.toString());
     return EnterpriseDetails.builder()
         .id(mapperSerializer.primaryKey(resultMap.get("id")))
         .licenseNumber((String) resultMap.get("license_number"))
