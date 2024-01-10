@@ -20,4 +20,19 @@ public class UserCreate {
   private boolean active;
   private Date createdAt;
   private Long enterpriseId;
+
+  public static UserCreate create(JoinRequest req, String encodedPassword, boolean active, Long enterpriseDetailsId) {
+    return UserCreate.builder()
+        .email(req.getEmail())
+        .password(encodedPassword)
+        .tel(req.getTel())
+        .name(req.getName())
+        .role(req.getRole())
+        .address(req.getAddress())
+        .active(active)
+        .createdAt(new Date())
+        .enterpriseId(enterpriseDetailsId)
+        .build();
+  }
+
 }

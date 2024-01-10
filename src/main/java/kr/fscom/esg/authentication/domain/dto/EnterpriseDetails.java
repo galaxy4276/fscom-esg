@@ -20,6 +20,7 @@ public class EnterpriseDetails {
 
   public EnterpriseCreate getCreateDto() {
     return EnterpriseCreate.builder()
+        .id(id)
         .licenseNumber(licenseNumber)
         .address(address)
         .represent(represent)

@@ -1,6 +1,5 @@
 package kr.fscom.esg.authentication.service;
 
-import java.util.Date;
 import kr.fscom.esg.authentication.domain.UserRole;
 import kr.fscom.esg.authentication.domain.dto.EnterpriseDetails;
 import kr.fscom.esg.authentication.domain.dto.JoinRequest;
@@ -33,18 +32,7 @@ public class JoinService {
       enterpriseDetailsId = updateEnterpriseDetails(req.getEnterpriseDetails());
     }
 
-    UserCreate userCreate = UserCreate.builder()
-        .email(req.getEmail())
-        .password(encodedPassword)
-        .tel(req.getTel())
-        .name(req.getName())
-        .role(req.getRole())
-        .address(req.getAddress())
-        .active(active)
-        .createdAt(new Date())
-        .enterpriseId(enterpriseDetailsId)
-        .build();
-
+    UserCreate userCreate = UserCreate.create(req, encodedPassword, active, enterpriseDetailsId);
     userRepository.createUser(userCreate);
   }
 

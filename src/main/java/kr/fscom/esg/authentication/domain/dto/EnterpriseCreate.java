@@ -8,6 +8,7 @@ import lombok.Getter;
 @AllArgsConstructor
 @Builder
 public class EnterpriseCreate {
+  private Long id;
   private String licenseNumber;
   private String address;
   private String name;

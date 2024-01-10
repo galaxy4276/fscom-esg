@@ -12,4 +12,9 @@ public class MapperSerializer {
     return b.equals("true");
   }
 
+  public Long primaryKey(Object d) {
+    Integer integerId = (Integer) d;
+    return integerId.longValue();
+  }
+
 }
