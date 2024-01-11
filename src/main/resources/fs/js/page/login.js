@@ -134,11 +134,11 @@ const getComputedEmail = (frontEmail) => {
   const vender = document.querySelector('.email-select').value;
 
   if (vender !== '직접 입력') {
-    return frontEmail + vender;
+    return frontEmail + '@' + vender;
   }
 
   const manual =  document.getElementById('manual-email__input').value;
-  return frontEmail + manual;
+  return frontEmail + '@' + manual;
 };
 
 export const join = async () => {

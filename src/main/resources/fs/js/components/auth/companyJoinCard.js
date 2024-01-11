@@ -1,4 +1,5 @@
 import client from '../../utils/client';
+import { join } from '../../page/login';
 
 /**
  * 기업 회원가입 입력 폼 카드
@@ -64,7 +65,7 @@ class CompanyJoinCard extends HTMLElement {
             </label>
             
             <div class="w-full flex justify-center pt-6">
-              <esg-button class="join-button btn-disabled !esg-btn-disabled" type="button" show="true" text="회원가입"></esg-button>
+              <esg-button class="join-button" type="button" show="true" text="회원가입"></esg-button>
             </div>
         </div>
       </div>
@@ -96,6 +97,8 @@ class CompanyJoinCard extends HTMLElement {
         const enterprise = await client.post(`/api/auth/enterprise?licenseNumber=${value}`);
       }
     });
+
+    this.querySelector('esg-button').addEventListener('click', join);
   }
 }
 
