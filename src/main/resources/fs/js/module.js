@@ -12,3 +12,8 @@ import './page/login';
 // component.js
 import './components/main';
 import './components/header';
+import './components/common/button';
+  // auth
+import './components/auth/companyJoinCard';
+import './components/auth/doneJoinCard';
+

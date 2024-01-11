@@ -7,14 +7,17 @@
 >
 <head>
   <meta charset='UTF-8'>
-  <title>title</title>
+  <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+  <title>회원 정보</title>
 </head>
     <th:block layout:fragment='content'>
+
       <section class='forest-bg py-[60px]'>
         <div class='flex flex-col justify-center items-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn my-[120px]'>
           <span class="esg-top-nav__text--title">회원가입</span>
         </div>
       </section>
+      <main id="join-root">
 
       <section class="w-full flex flex-col items-center justify-center mt-[120px]">
         <ul class='steps pb-6 w-[360px]'>
@@ -29,7 +32,92 @@
             <div class="flex justify-center">
               <span class="text-2xl pb-8">개인 정보</span>
             </div>
+
+              <section class="flex flex-col gap-y-4">
+                <!-- 이메일 -->
+                <label class="form-control w-full">
+                  <div class="label">
+                    <span class="label-text">이메일(아이디)</span>
+                  </div>
+                  <div class="flex gap-x-2">
+                    <input type="text" placeholder="이메일" class="input input-bordered w-[300px] max-w-xs" id="frontEmail" />
+                    <div class="flex items-center">
+                      <span class="font-bold text-xl">@</span>
+                    </div>
+                    <select class="select select-bordered w-[140px] max-w-xs email-select">
+                      <option selected>gmail.com</option>
+                      <option>naver.com</option>
+                      <option>daum.net</option>
+                      <option>kakao.com</option>
+                      <option id="email-manual__option">직접 입력</option>
+                    </select>
+                    <input type='text' class='input input-bordered w-[140px] max-w-xs hidden' id="manual-email__input" placeholder="email.com">
+                  </div>
+                </label>
+
+                <label class="form-control w-full">
+                  <div class='label'>
+                    <span class='label-text'>이름(본명)</span>
+                  </div>
+                  <div>
+                    <input type='text' class='input input-bordered w-[150px]' placeholder="이름" id="join-user-name">
+                  </div>
+                </label>
+
+                <label class="form-contorl w-full">
+                  <div class='label'>
+                    <span class='label-text'>휴대폰 번호</span>
+                  </div>
+                  <div>
+                    <input type='text' class='input input-bordered w-[300px]' placeholder="- 없이 입력하세요" id="tel">
+                  </div>
+                </label>
+
+                <label class="form-contorl w-full">
+                  <div class='label'>
+                    <span class='label-text'>비밀번호</span>
+                  </div>
+                  <div>
+                    <input type='text' class='input input-bordered w-[300px]' placeholder="비밀번호" id="password">
+                  </div>
+                </label>
+
+                <label class="form-contorl w-full">
+                  <div class='label'>
+                    <span class='label-text'>비밀번호 확인</span>
+                  </div>
+                  <div>
+                    <input type='password' class='input input-bordered w-[300px]' placeholder="비밀번호 확인" id="verify-password">
+                  </div>
+                </label>
+
+                <label class="form-contorl w-full flex flex-col gap-y-4">
+                  <div class='label'>
+                    <span class='label-text'>주소(소재지)</span>
+                  </div>
+                  <div class="flex gap-x-4 items-center">
+                    <input type='text' class='input input-bordered w-[120px]' id="zonecode__input" placeholder="우편번호">
+                    <button class='btn btn-slate search-address__btn'>주소 검색</button>
+                  </div>
+                  <div class='flex flex-wrap gap-x-4'>
+                    <input type='text' class='input input-bordered w-[350px]' id="address__input" placeholder="주소" name="address">
+                    <input type='text' class='input input-bordered w-[300px]' id="address-detail__input" placeholder="상세주소" name="address-details">
+                  </div>
+                </label>
+
+                <div class="w-full flex justify-center pt-6">
+                  <esg-button class="join-button" type="button" show="true" text="회원가입" id="removable-join__btn"></esg-button>
+                </div>
+              </section>
+
           </div>
+
         </div>
+
+        <div id="join-company-card__section" class="hidden">
+          <company-join-card></company-join-card>
+        </div>
+      </section>
+      </main>
     </th:block>
 </html>

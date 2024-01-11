@@ -61,9 +61,13 @@
 }
 
 .esg-user-role__btn:hover {
-    @apply bg-slate-200;
+    @apply bg-slate-50;
 }
 
 .layout-full-center {
     @apply w-full h-full flex flex-col items-center justify-center;
+}
+
+.esg-btn-disabled {
+    @apply bg-slate-300 text-white;
 }

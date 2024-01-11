@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+  xmlns:th='http://www.thymeleaf.org'
+  lang='ko'
+  xmlns:layout='http://www.ultraq.net.nz/thymeleaf/layout'
+  layout:decorate='common/templates/layout'
+>
+<head>
+  <meta charset='UTF-8'>
+  <title>회원가입 완료</title>
+</head>
+    <th:block layout:fragment='content'>
+      <section class='forest-bg py-[60px]'>
+        <div class='flex flex-col justify-center items-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn my-[120px]'>
+          <span class="esg-top-nav__text--title">회원가입</span>
+        </div>
+      </section>
+
+      <main id='auth-done-root' class="w-full flex flex-col items-center justify-center mt-[120px]">
+        <ul class='steps pb-6 w-[360px]'>
+          <li class='step step-accent'>회원 선택</li>
+          <li class='step step-accent'>이용 약관</li>
+          <li class='step step-accent'>개인 정보</li>
+          <li class='step step-accent'>회원 가입</li>
+        </ul>
+
+        <done-join-card></done-join-card>
+      </main>
+    </th:block>
+</html>
