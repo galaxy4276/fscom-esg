@@ -97,6 +97,24 @@ const getJoinProperties = () => {
   const address = joinRoot.querySelector('#address__input').value;
   const addressDetails = joinRoot.querySelector('#address-detail__input').value;
 
+  const licenseNumber = joinRoot.querySelector('#license__input').value;
+  const enterpriseName = joinRoot.querySelector('#enterprise-name__input').value;
+  const enterpriseTel = joinRoot.querySelector('#enterprise-tel__input').value;
+  const representName = joinRoot.querySelector('#represent__input').value;
+  const zipCode = joinRoot.querySelector('#enterprise-zonecode__input').value;
+  const enterpriseAddress = joinRoot.querySelector('#enterprise-address__input').value;
+  const enterPriseAddressDetails = joinRoot.querySelector('#enterprise-address-detail__input').value;
+
+  const computedEnterpriseAddress = `(${zipCode}) ${enterpriseAddress} ${enterPriseAddressDetails}`;
+
+  const enterpriseDetails = {
+    licenseNumber,
+    address: computedEnterpriseAddress,
+    represent: representName,
+    tel: enterpriseTel,
+    name: enterpriseName,
+  }
+
   return {
     user: {
       frontEmail,
@@ -108,7 +126,19 @@ const getJoinProperties = () => {
       address,
       addressDetails,
     },
+    enterpriseDetails,
   };
+};
+
+const getComputedEmail = (frontEmail) => {
+  const vender = document.querySelector('.email-select').value;
+
+  if (vender !== '직접 입력') {
+    return frontEmail + vender;
+  }
+
+  const manual =  document.getElementById('manual-email__input').value;
+  return frontEmail + manual;
 };
 
 export const join = async () => {
@@ -118,14 +148,14 @@ export const join = async () => {
   try {
     await client.post('/api/auth', {
       role: formatter.sessionStorageRole(role),
-      email: data.user.frontEmail,
+      email: getComputedEmail(data.user.frontEmail),
       rawPassword: data.user.password,
       name: data.user.username,
       tel: data.user.tel,
       address: data.user.address + data.user.addressDetails,
-      enterpriseDetails: null,
+      enterpriseDetails: data.enterpriseDetails,
     });
-    location.href = '/auth/join/done';
+    // location.href = '/auth/join/done';
   } catch (e) {
 
   }

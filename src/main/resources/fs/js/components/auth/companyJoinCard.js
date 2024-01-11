@@ -1,7 +1,10 @@
+import client from '../../utils/client';
+
 /**
  * 기업 회원가입 입력 폼 카드
  */
 class CompanyJoinCard extends HTMLElement {
+
   connectedCallback() {
     this.innerHTML = `
       <div class="esg-card mt-[30px]">
@@ -15,7 +18,7 @@ class CompanyJoinCard extends HTMLElement {
                 <span class='label-text'>사업자 번호</span>
               </div>
               <div>
-                <input type='text' class='input input-bordered w-[300px]' placeholder="사업자 번호">
+                <input type='text' class='input input-bordered w-[300px]' max="10" placeholder="- 없이 입력하세요 (최대 10글자)" id="license__input">
               </div>
             </label>
 
@@ -24,7 +27,16 @@ class CompanyJoinCard extends HTMLElement {
                 <span class='label-text'>회사명</span>
               </div>
               <div>
-                <input type='text' class='input input-bordered w-[300px]' placeholder="회사명">
+                <input type='text' class='input input-bordered w-[300px]' placeholder="회사명" id="enterprise-name__input">
+              </div>
+            </label>
+
+            <label class="form-contorl w-full">
+              <div class='label'>
+                <span class='label-text'>회사 전화번호</span>
+              </div>
+              <div>
+                <input type='text' class='input input-bordered w-[300px]' max="10" placeholder="- 없이 입력하세요" id="enterprise-tel__input">
               </div>
             </label>
 
@@ -33,7 +45,7 @@ class CompanyJoinCard extends HTMLElement {
                 <span class='label-text'>담당자 성함</span>
               </div>
               <div>
-                <input type='text' class='input input-bordered w-[300px]' placeholder="담당자">
+                <input type='text' class='input input-bordered w-[300px]' placeholder="담당자" id="represent__input">
               </div>
             </label>
 
@@ -69,6 +81,20 @@ class CompanyJoinCard extends HTMLElement {
           addressInput.value = address;
         },
       }).open();
+    });
+
+    const licenseInput = this.querySelector('#license__input');
+
+    licenseInput.addEventListener('input', async () => {
+      const { value } = licenseInput;
+      console.log({ value });
+      if (value.length > 10) {
+        licenseInput.value = value.slice(0, 10);
+      }
+
+      if (value.length === 0) {
+        const enterprise = await client.post(`/api/auth/enterprise?licenseNumber=${value}`);
+      }
     });
   }
 }
