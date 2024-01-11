@@ -1,4 +1,7 @@
 import pageHook from '../utils/pageHook';
+import formatter from '../utils/formatter';
+import validator from '../utils/validator';
+import client from '../utils/client';
 
 const changeBgGray = () => {
   document.querySelector('body').style.backgroundColor = '#FAFAFA';
@@ -16,6 +19,11 @@ pageHook('/auth/join', () => {
   const personalBtn = document.getElementById('join-personal__btn');
   const enterpriseBtn = document.getElementById('join-enterprise__btn');
   const proBtn = document.getElementById('join-pro__btn');
+
+  if (!personalBtn || !enterpriseBtn || !proBtn) {
+    return;
+  }
+
   const persistSessionJoinRole = (r) => {
     sessionStorage.setItem('join-role', r);
   };
@@ -35,6 +43,12 @@ pageHook('/auth/join/agreement', () => {
   const readPart01 = document.getElementById('agree-part-1');
   const readPart02 = document.getElementById('agree-part-2');
   const button = document.getElementById('agree-next-btn');
+
+  // 최초 체크상태 해제 ( 뒤로가기 UI 상태 캐싱 방지 )
+  (() => {
+    readPart01.checked = false;
+    readPart02.checked = false;
+  })();
 
   let check01Status = false;
   let check02Status = false;
@@ -70,4 +84,138 @@ pageHook('/auth/join/agreement', () => {
     check02Status = false;
     return process();
   });
+}, true);
+
+const joinRoot = document.getElementById('join-root');
+const getJoinProperties = () => {
+  const frontEmail = joinRoot.querySelector('#frontEmail').value;
+  const username = joinRoot.querySelector('#join-user-name').value;
+  const tel = joinRoot.querySelector('#tel').value;
+  const password = joinRoot.querySelector('#password').value;
+  const verifyPassword = joinRoot.querySelector('#verify-password').value;
+  const zipcode = joinRoot.querySelector('#zonecode__input').value;
+  const address = joinRoot.querySelector('#address__input').value;
+  const addressDetails = joinRoot.querySelector('#address-detail__input').value;
+
+  return {
+    user: {
+      frontEmail,
+      username,
+      tel,
+      password,
+      verifyPassword,
+      zipcode,
+      address,
+      addressDetails,
+    },
+  };
+};
+
+export const join = async () => {
+  const data = getJoinProperties();
+  const role = sessionStorage.getItem('join-role');
+
+  try {
+    await client.post('/api/auth', {
+      role: formatter.sessionStorageRole(role),
+      email: data.user.frontEmail,
+      rawPassword: data.user.password,
+      name: data.user.username,
+      tel: data.user.tel,
+      address: data.user.address + data.user.addressDetails,
+      enterpriseDetails: null,
+    });
+    location.href = '/auth/join/done';
+  } catch (e) {
+
+  }
+
+};
+
+/**
+ * 사용자 정보 입력 페이지 비즈니스 로직
+ */
+pageHook('/auth/join/user', () => {
+  const emailSelect = document.querySelector('.email-select');
+  const manualEmailInput = document.getElementById('manual-email__input');
+  const searchAddressBtn = document.querySelector('.search-address__btn');
+  const agreement = formatter.toBool(sessionStorage.getItem('agreement'));
+
+  const joinButtons = document.querySelectorAll('.join-button');
+
+  const mutationCallback = () => {
+    const data = getJoinProperties();
+    const pass = validator.checkAtLeastDirtyByStrings(Object.values({
+      ...data.user,
+    }));
+    console.log({ data, pass });
+    // if (pass) {
+    //   joinButtons.forEach(el => {
+    //     el.classList.remove('disabled');
+    //     el.classList.remove('esg-btn-disabled');
+    //   });
+    //   return;
+    // }
+    // joinButtons.forEach(el => {
+    //   const disabled = el.className.includes('disabled');
+    //   if (disabled) {
+    //     el.classList.remove('btn-disabled');
+    //     el.classList.remove('esg-btn-disabled')
+    //   }
+    // });
+  };
+
+  const observer = new MutationObserver(mutationCallback);
+  observer.observe(joinRoot, {
+    childList: true,
+    subtree: true,
+    attributes: true,
+  });
+
+  if (!agreement) {
+    alert('잘못된 접근입니다');
+    location.href = '/auth/login';
+  }
+
+  emailSelect.addEventListener('change', () => {
+    const { value } = emailSelect;
+    if (value === '직접 입력') {
+      emailSelect.classList.add('hidden');
+      manualEmailInput.classList.remove('hidden');
+    } else {
+      manualEmailInput.classList.add('hidden');
+      emailSelect.classList.remove('hidden');
+    }
+  });
+
+  const zoneCodeInput = document.getElementById('zonecode__input');
+  const addressInput = document.getElementById('address__input');
+
+  searchAddressBtn.addEventListener('click', () => {
+    console.log('searchAddressBtn onClick');
+
+    new daum.Postcode({
+      oncomplete: ({ address, zonecode }) => {
+        zoneCodeInput.value = zonecode;
+        zoneCodeInput.readOnly = true;
+        addressInput.value = address;
+      },
+    }).open();
+  });
+
+  const generalJoinBtn = document.getElementById('removable-join__btn');
+
+  // 기업 회원 여부에 따라 입력 폼 카드 박스 렌더링
+  (() => {
+    const joinCompanyCardSection = document.getElementById('join-company-card__section');
+    const role = sessionStorage.getItem('join-role');
+    if (role !== 'enterprise') {
+      return;
+    }
+    generalJoinBtn.remove();
+    joinCompanyCardSection.classList.remove('hidden');
+    joinCompanyCardSection.style.display = 'block';
+  })();
+
+  generalJoinBtn.onclick = join;
 }, true);
