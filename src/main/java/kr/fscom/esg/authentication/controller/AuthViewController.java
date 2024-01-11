@@ -31,4 +31,9 @@ public class AuthViewController {
     return new ModelAndView("/auth/user");
   }
 
+  @GetMapping("/join/done")
+  public ModelAndView joinDonePage() {
+    return new ModelAndView("/auth/done");
+  }
+
 }
