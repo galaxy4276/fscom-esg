@@ -75,3 +75,7 @@
 .esg-dialog-title {
     @apply text-slate-800 font-bold text-2xl mb-4;
 }
+
+.error-form_input {
+    @apply label-text-alt text-red-500 text-[14px] pt-1 pl-[5px] invisible;
+}

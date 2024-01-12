@@ -53,7 +53,7 @@
                     </select>
                     <input type='text' class='input input-bordered w-[140px] max-w-xs hidden' id="manual-email__input" placeholder="email.com">
                   </div>
-                  <span class="label-text-alt text-red-500 text-[14px] pt-1 pl-[5px] invisible" id="email-error__input"></span>
+                  <span class="error-form_input" id="email-error__input"></span>
                 </label>
 
                 <label class="form-control w-full">
@@ -63,6 +63,7 @@
                   <div>
                     <input type='text' class='input input-bordered w-[150px]' placeholder="이름" id="join-user-name">
                   </div>
+                  <span class="error-form_input" id="username-error__input"></span>
                 </label>
 
                 <label class="form-contorl w-full">
@@ -72,6 +73,7 @@
                   <div>
                     <input type='text' class='input input-bordered w-[300px]' placeholder="- 없이 입력하세요" id="tel">
                   </div>
+                  <span class="error-form_input" id="user-tel-error__input"></span>
                 </label>
 
                 <label class="form-contorl w-full">
@@ -81,6 +83,7 @@
                   <div>
                     <input type='text' class='input input-bordered w-[300px]' placeholder="비밀번호" id="password">
                   </div>
+                  <span class="error-form_input" id="password-error__input"></span>
                 </label>
 
                 <label class="form-contorl w-full">
@@ -90,6 +93,7 @@
                   <div>
                     <input type='password' class='input input-bordered w-[300px]' placeholder="비밀번호 확인" id="verify-password">
                   </div>
+                  <span class="error-form_input" id="verify-password-error__input"></span>
                 </label>
 
                 <label class="form-contorl w-full flex flex-col gap-y-4">
@@ -97,11 +101,17 @@
                     <span class='label-text'>주소(소재지)</span>
                   </div>
                   <div class="flex gap-x-4 items-center">
-                    <input type='text' class='input input-bordered w-[120px]' id="zonecode__input" placeholder="우편번호">
+                    <div class="flex flex-col">
+                      <input type='text' class='input input-bordered w-[120px]' id="zonecode__input" placeholder="우편번호">
+                      <span class="error-form_input" id="user-zipcode-error__input"></span>
+                    </div>
                     <button class='btn btn-slate search-address__btn'>주소 검색</button>
                   </div>
                   <div class='flex flex-wrap gap-x-4'>
-                    <input type='text' class='input input-bordered w-[350px]' id="address__input" placeholder="주소" name="address">
+                    <div class="flex flex-col">
+                      <input type='text' class='input input-bordered w-[350px]' id="address__input" placeholder="주소" name="address">
+                      <span class="error-form_input" id="user-address-error__input"></span>
+                    </div>
                     <input type='text' class='input input-bordered w-[300px]' id="address-detail__input" placeholder="상세주소" name="address-details">
                   </div>
                 </label>

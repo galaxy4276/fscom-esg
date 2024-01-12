@@ -142,6 +142,47 @@ const getComputedEmail = (frontEmail) => {
   return frontEmail + '@' + manual;
 };
 
+const userJoinValidator = {
+  email: {
+    message: '이메일을 입력해주세요',
+    id: 'email-error__input',
+    pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+    cb: () => {},
+  },
+  username: {
+    message: '본명을 입력해주세요',
+    id: 'username-error__input',
+    pattern : /[a-zA-Z가-힣]{2}/,
+  },
+  userTel: {
+    message: '휴대전화번호를 입력해주세요',
+    id: 'user-tel-error__input',
+    pattern: /[0-9]{10,11}/,
+  },
+  password: {
+    message: '패스워드는 8글자 이상이어야합니다',
+    id: 'password-error__input',
+    pattern: /.{8,}/,
+  },
+  verifyPassword: {
+    message: '이전 패스워드와 같아야 합니다.',
+    id: 'verify-password-error__input',
+    cb: () => {
+
+    },
+  },
+  zipCode: {
+    message: '우편번호를 작성해주세요',
+    id: 'user-zipcode-error__input',
+    pattern: /[0-9]{5,8}/,
+  },
+  address: {
+    message: '주소를 입력해주세요',
+    id: 'user-address-error__input',
+    pattern: /.{5,}/
+  },
+};
+
 export const join = async () => {
   const data = getJoinProperties();
   const role = sessionStorage.getItem('join-role');
