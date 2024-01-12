@@ -27,7 +27,7 @@ public class JoinService {
     boolean active = true;
     Long enterpriseDetailsId = null;
 
-    if (role.equals(UserRole.ENTERPRISE) || role.equals(UserRole.PROFESSIONAL)) {
+    if (role.equals(UserRole.PROFESSIONAL)) {
       active = false;
     }
 
