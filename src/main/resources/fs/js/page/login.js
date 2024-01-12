@@ -155,9 +155,17 @@ export const join = async () => {
       address: data.user.address + data.user.addressDetails,
       enterpriseDetails: data.enterpriseDetails,
     });
-    // location.href = '/auth/join/done';
+    location.href = '/auth/join/done';
   } catch (e) {
-
+    // FIX ME: 예외처리
+    console.error(e);
+    switch (e?.errorCode) {
+      case 'EXISTS_USER': {
+        const message = document.getElementById('email-error__input');
+        message.textContent = '이미 사용 중인 이메일입니다';
+        message.classList.remove('invisible');
+      }
+    }
   }
 
 };

@@ -4,6 +4,7 @@
 import './common';
 import './test';
 import './utils/redirect';
+import './utils/dialog';
 
 // page.js
 // import './page/main';
@@ -16,4 +17,3 @@ import './components/common/button';
   // auth
 import './components/auth/companyJoinCard';
 import './components/auth/doneJoinCard';
-

@@ -14,6 +14,6 @@ const client = axios.create({
 
 client.interceptors.response.use(res => {
   return res.data;
-});
+}, error => Promise.reject(error.response.data));
 
 export default client;
