@@ -105,12 +105,14 @@ class CompanyJoinCard extends HTMLElement {
         addressInput.readOnly = false;
         addressDetailsInput.value = '';
         addressDetailsInput.readOnly = false;
-        if (addressFixed !== '') {
-          return;
-        }
+        addressFixed = '';
       }
 
       if (value.length === 10) {
+        if (addressFixed === value) {
+          return;
+        }
+
         const { enterprise } = await client.get(`/api/auth/enterprise?licenseNumber=${value}`);
         console.log({ enterprise });
         if (enterprise) {
@@ -123,6 +125,7 @@ class CompanyJoinCard extends HTMLElement {
               <span>기업 정보 수정이 필요한 경우 가입 후 마이페이지에서 수정 바랍니다.</span>
             </div>
           `;
+
           pushDialog(content, {
             okCb: () => {
               zoneCodeInput.value = enterprise.zipCode;
