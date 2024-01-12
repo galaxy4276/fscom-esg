@@ -43,7 +43,7 @@ export const pushDialog = (el, config = undefined) => {
 
   okBtn.onclick = ok;
   window.addEventListener('keydown', e => {
-    if (e.code === 'Escape') {
+    if (e.code === 'Escape' || e.code === 'Enter') {
       if (!config?.cancel) {
         return ok();
       }
