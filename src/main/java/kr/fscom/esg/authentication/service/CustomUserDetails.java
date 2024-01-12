@@ -1,6 +1,8 @@
 package kr.fscom.esg.authentication.service;
 
+import java.util.ArrayList;
 import java.util.Collection;
+import kr.fscom.esg.authentication.domain.UserRole;
 import kr.fscom.esg.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -12,7 +14,10 @@ public class CustomUserDetails implements UserDetails {
 
   @Override
   public Collection<? extends GrantedAuthority> getAuthorities() {
-    return null;
+    ArrayList<GrantedAuthority> list = new ArrayList<>();
+    CustomGrantedAuthority authority = new CustomGrantedAuthority(user.getRole());
+    list.add(authority);
+    return list;
   }
 
   @Override
