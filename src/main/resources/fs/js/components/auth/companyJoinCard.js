@@ -1,5 +1,6 @@
 import client from '../../utils/client';
 import { join } from '../../page/login';
+import { pushDialog } from '../../utils/dialog';
 
 /**
  * 기업 회원가입 입력 폼 카드
@@ -93,8 +94,24 @@ class CompanyJoinCard extends HTMLElement {
         licenseInput.value = value.slice(0, 10);
       }
 
-      if (value.length === 0) {
-        const enterprise = await client.post(`/api/auth/enterprise?licenseNumber=${value}`);
+      if (value.length === 10) {
+        const { enterprise } = await client.get(`/api/auth/enterprise?licenseNumber=${value}`);
+        console.log({ enterprise });
+        if (enterprise) {
+          const content = document.createElement('div');
+          content.innerHTML = `
+            <div class="flex flex-col justify-center text-center">
+              <h1 class="esg-dialog-title">안내</h1>
+              <span>동일한 사업자 번호에 해당하는 기업 사용자가 존재하여 해당정보를 사용합니다.</span>
+              <span>기업 정보 수정이 필요한 경우 가입 후 마이페이지에서 수정 바랍니다.</span>
+            </div>
+          `;
+          pushDialog(content, {
+            okCb: () => {
+
+            },
+          });
+        }
       }
     });
 
