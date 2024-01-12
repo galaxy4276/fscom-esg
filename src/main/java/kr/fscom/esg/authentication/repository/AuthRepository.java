@@ -33,6 +33,8 @@ public class AuthRepository {
         .id(mapperSerializer.primaryKey(resultMap.get("id")))
         .licenseNumber((String) resultMap.get("license_number"))
         .address((String) resultMap.get("address"))
+        .addressDetails((String) resultMap.get("address_details"))
+        .zipCode((String) resultMap.get("zipcode"))
         .represent((String) resultMap.get("represent"))
         .tel((String) resultMap.get("tel"))
         .name((String) resultMap.get("name"))

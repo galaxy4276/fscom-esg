@@ -14,6 +14,8 @@ public class EnterpriseDetails {
   private Long id;
   private String licenseNumber;
   private String address;
+  private String addressDetails;
+  private String zipCode;
   private String represent;
   private String tel;
   private String name;
@@ -23,6 +25,8 @@ public class EnterpriseDetails {
         .id(id)
         .licenseNumber(licenseNumber)
         .address(address)
+        .addressDetails(addressDetails)
+        .zipCode(zipCode)
         .represent(represent)
         .tel(tel)
         .name(name)

@@ -11,6 +11,8 @@ public class EnterpriseCreate {
   private Long id;
   private String licenseNumber;
   private String address;
+  private String addressDetails;
+  private String zipCode;
   private String name;
   private String tel;
   private String represent;
