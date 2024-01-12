@@ -105,15 +105,16 @@ const getJoinProperties = () => {
   const enterpriseAddress = joinRoot.querySelector('#enterprise-address__input').value;
   const enterPriseAddressDetails = joinRoot.querySelector('#enterprise-address-detail__input').value;
 
-  const computedEnterpriseAddress = `(${zipCode}) ${enterpriseAddress} ${enterPriseAddressDetails}`;
 
   const enterpriseDetails = {
     licenseNumber,
-    address: computedEnterpriseAddress,
+    address: enterpriseAddress,
+    zipCode: zipCode,
+    addressDetails: enterPriseAddressDetails,
     represent: representName,
     tel: enterpriseTel,
     name: enterpriseName,
-  }
+  };
 
   return {
     user: {

@@ -74,6 +74,7 @@ class CompanyJoinCard extends HTMLElement {
 
     const zoneCodeInput = document.getElementById('enterprise-zonecode__input');
     const addressInput = document.getElementById('enterprise-address__input');
+    const addressDetailsInput = document.getElementById('enterprise-address-detail__input');
     const searchBtn = document.getElementById('enter-address-search__btn');
     searchBtn.addEventListener('click', () => {
       new daum.Postcode({
@@ -87,17 +88,33 @@ class CompanyJoinCard extends HTMLElement {
 
     const licenseInput = this.querySelector('#license__input');
 
+    let addressFixed = '';
+
     licenseInput.addEventListener('input', async () => {
-      const { value } = licenseInput;
-      console.log({ value });
+      let { value } = licenseInput;
       if (value.length > 10) {
         licenseInput.value = value.slice(0, 10);
+        value = value.slice(0, 10);
+      }
+
+      console.log({ value, addressFixed });
+      if (value !== addressFixed) {
+        zoneCodeInput.value = '';
+        zoneCodeInput.readOnly = false;
+        addressInput.value = '';
+        addressInput.readOnly = false;
+        addressDetailsInput.value = '';
+        addressDetailsInput.readOnly = false;
+        if (addressFixed !== '') {
+          return;
+        }
       }
 
       if (value.length === 10) {
         const { enterprise } = await client.get(`/api/auth/enterprise?licenseNumber=${value}`);
         console.log({ enterprise });
         if (enterprise) {
+          addressFixed = value;
           const content = document.createElement('div');
           content.innerHTML = `
             <div class="flex flex-col justify-center text-center">
@@ -108,7 +125,14 @@ class CompanyJoinCard extends HTMLElement {
           `;
           pushDialog(content, {
             okCb: () => {
-
+              zoneCodeInput.value = enterprise.zipCode;
+              zoneCodeInput.readOnly = true;
+              addressInput.value = enterprise.address;
+              addressInput.readOnly = true;
+              if (enterprise?.addressDetails) {
+                addressDetailsInput.value = enterprise.addressDetails;
+              }
+              addressDetailsInput.readOnly = true;
             },
           });
         }

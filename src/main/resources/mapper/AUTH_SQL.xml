@@ -9,7 +9,7 @@
     </select>
 
     <insert id="createEnterpriseDetails" parameterType="kr.fscom.esg.authentication.domain.dto.EnterpriseCreate">
-        INSERT INTO user_enterprise_details (license_number, address, represent, tel, name)
-        VALUES (#{licenseNumber}, #{address}, #{represent}, #{tel}, #{name});
+        INSERT INTO user_enterprise_details (license_number, address, zipcode, address_details, represent, tel, name)
+        VALUES (#{licenseNumber}, #{address}, #{address}, #{addressDetails}, #{represent}, #{tel}, #{name});
     </insert>
 </mapper>
