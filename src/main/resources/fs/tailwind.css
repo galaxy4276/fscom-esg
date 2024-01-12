@@ -77,5 +77,5 @@
 }
 
 .error-form_input {
-    @apply label-text-alt text-red-500 text-[14px] pt-1 pl-[5px] invisible;
+    @apply label-text-alt text-red-500 text-[14px] pt-1 pl-[5px] hidden;
 }

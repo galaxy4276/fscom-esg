@@ -147,43 +147,88 @@ const userJoinValidator = {
     message: '이메일을 입력해주세요',
     id: 'email-error__input',
     pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-    cb: () => {},
+    cb: () => {
+      const vender = document.querySelector('.email-select').value;
+      const frontEmail = document.getElementById('frontEmail').value;
+      if (vender !== '직접 입력') {
+        const computed = `${frontEmail}@${vender}`;
+        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(computed);
+      }
+      const manual =  document.getElementById('manual-email__input').value;
+      const computed = `${frontEmail}@${manual}`;
+      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(computed);
+    },
   },
   username: {
     message: '본명을 입력해주세요',
+    targetId: 'join-user-name',
     id: 'username-error__input',
     pattern : /[a-zA-Z가-힣]{2}/,
   },
   userTel: {
     message: '휴대전화번호를 입력해주세요',
+    targetId: 'tel',
     id: 'user-tel-error__input',
     pattern: /[0-9]{10,11}/,
   },
   password: {
     message: '패스워드는 8글자 이상이어야합니다',
+    targetId: 'password',
     id: 'password-error__input',
     pattern: /.{8,}/,
   },
   verifyPassword: {
     message: '이전 패스워드와 같아야 합니다.',
+    targetId: 'verify-password',
     id: 'verify-password-error__input',
-    cb: () => {
-
-    },
+    cb: () => {},
   },
   zipCode: {
     message: '우편번호를 작성해주세요',
+    targetId: 'zonecode__input',
     id: 'user-zipcode-error__input',
     pattern: /[0-9]{5,8}/,
   },
   address: {
     message: '주소를 입력해주세요',
+    targetId: 'address__input',
     id: 'user-address-error__input',
     pattern: /.{5,}/
   },
 };
 
 export const join = async () => {
+
+  let isValid = true;
+  Object.values(userJoinValidator).forEach(valid => {
+    let cbResult = null;
+    if (valid?.cb) {
+      cbResult = valid.cb();
+      return;
+    }
+
+    const { targetId, id, pattern, message } = valid;
+    const target = document.getElementById(targetId);
+    const messageElm = document.getElementById(id);
+
+    const targetValue = target.value;
+    const pass = pattern.test(targetValue);
+    console.log({ target, messageElm, targetValue, pass });
+
+    if (!pass) {
+      console.log('this called');
+      messageElm.style.display = 'block';
+      messageElm.textContent = message;
+      isValid = false;
+    } else {
+      messageElm.style.display = 'none';
+    }
+  });
+
+  if (!isValid) {
+    return;
+  }
+
   const data = getJoinProperties();
   const role = sessionStorage.getItem('join-role');
 
@@ -205,7 +250,7 @@ export const join = async () => {
       case 'EXISTS_USER': {
         const message = document.getElementById('email-error__input');
         message.textContent = '이미 사용 중인 이메일입니다';
-        message.classList.remove('invisible');
+        message.style.display = 'block'
       }
     }
   }
