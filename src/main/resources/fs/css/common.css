@@ -173,3 +173,13 @@ body {
     height: 400px;
     resize: none;
 }
+
+.esg-dialog-box {
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    min-height: 280px;
+    background-color: white;
+    border-radius: 8px;
+    padding: 2em;
+}
