@@ -12,7 +12,6 @@ class Text extends HTMLElement {
     `
 
     const element = this.querySelector('span');
-    console.dir(element);
     element.style.fontSize = this.getSize(sizeProp);
     if (boldProp === 'true') {
       element.style.fontWeight = '600';

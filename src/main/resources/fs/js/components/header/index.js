@@ -1,14 +1,10 @@
 const drawerOpenCloseButton = document.getElementById('header__drawer--open-button');
 const hiddenInput = document.getElementById('header__drawer--button');
-const drawerOverlay = document.querySelector('.drawer-overlay');
 
 drawerOpenCloseButton.addEventListener('click', () => {
   hiddenInput.click();
 });
 
-drawerOverlay.addEventListener('click', () => {
-  hiddenInput.click();
-});
 
 /**
  * url 경로에 따라 상단 네비게이션 메뉴의 fontWeight bold 처리
@@ -31,6 +27,47 @@ drawerOverlay.addEventListener('click', () => {
   if (url.includes('evaluation')) {
     emphasize(evaluation);
   }
+
+  const headerNavMenus = [
+    {
+      opener: document.getElementById('navIntroOpener'),
+      content: document.getElementById('navIntroDropdownContent'),
+      open: false,
+      button: document.getElementById('navIntroButton'),
+    },
+  ]
+
+  /**
+   * @param el {HTMLElement}
+   */
+  const hide = (el) => {
+    el.style.maxHeight = '0';
+    el.style.visibility = 'hidden';
+  }
+
+  const show = (el) => {
+    el.style.maxHeight = 'fit-content';
+    el.style.visibility = 'visible';
+  }
+
+  headerNavMenus.forEach(({ content }) => {
+    hide(content)
+  });
+
+  headerNavMenus.forEach(({ content, open, opener, button }) => {
+    opener.onclick = () => {
+      if (open) {
+        hide(content);
+        open = false;
+        button.classList.remove('flip');
+      } else {
+        show(content);
+        open = true;
+        button.classList.add('flip');
+      }
+    }
+  });
+
 })();
 
 /**

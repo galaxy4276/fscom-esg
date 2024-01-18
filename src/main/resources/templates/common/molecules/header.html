@@ -49,34 +49,47 @@
                 </ul>
             </div>
 
-
             <div class="flex">
                 <div id="user-identity" class="px-[30px] font-bold h-full flex items-center justify-center">
                     로그인
                 </div>
                 <button class="w-[72px] h-[72px] bg-black flex justify-center items-center" id="header__drawer--open-button">
-                    <img th:src="@{/fs/svg/hamburger.svg}" />
+                    <img th:src="@{/fs/svg/hamburger.svg}">
                 </button>
             </div>
 
-        </header>
-
-        <div>
-            <div id="header__drawer" class="drawer drawer-end">
-                <input id="header__drawer--button" type="checkbox" class="drawer-toggle" />
-                <div class="drawer-content">
+            <div id="headerNavOverlay"></div>
+            <div class="header-nav">
+                <div class="flex w-full h-[50px] px-[14px] py-[14px] items-center justify-end">
+                    <button class="w-[32px] h-[32px] flex items-center justify-center">
+                        <img th:src="@{/fs/svg/gray-close-btn.svg}" class="w-[28px] h-[28px]">
+                    </button>
                 </div>
-                <div class="drawer-side z-50">
-                    <label for="header__drawer" aria-label="close sidebar" class="drawer-overlay"></label>
-                    <ul class="menu p-4 w-80 min-h-full bg-white text-base-content">
-                        <!-- Sidebar content here -->
-                        <li><a>소개</a></li>
-                        <li><a>평가</a></li>
-                        <li><a>사업소식</a></li>
-                        <li><a>후원</a></li>
-                    </ul>
+                <div class="flex flex-col p-[15px]">
+                    <div class="layout-full-center">
+                        <img th:src="@{/fs/img/k-esg-logo-01.png}" class="h-[80px] w-[225px] border-b-[1px] border-slate-200 pb-[5px]">
+                    </div>
+
+                    <div>
+                        <div class="w-full flex justify-between p-[15px] cursor-pointer" id="navIntroOpener">
+                            <esg-text text="소개" size="medium" bold="true" color="title"></esg-text>
+                            <img th:src="@{/fs/svg/arrow-down.svg}" id="navIntroButton" class="transition duration-200" />
+                        </div>
+                        <div class="flex flex-col gap-y-[8px] px-[30px] dropdownContent" id="navIntroDropdownContent">
+                            <esg-text size="normal" color="paragraph" text="인사말"></esg-text>
+                            <esg-text size="normal" color="paragraph" text="임원 소개"></esg-text>
+                            <esg-text size="normal" color="paragraph" text="설립 목적"></esg-text>
+                            <esg-text size="normal" color="paragraph" text="비전 전략 체계"></esg-text>
+                            <esg-text size="normal" color="paragraph" text="핵심 가치"></esg-text>
+                            <esg-text size="normal" color="paragraph" text="조직도"></esg-text>
+                            <esg-text size="normal" color="paragraph" text="CI 안내"></esg-text>
+                            <esg-text size="normal" color="paragraph" text="오시는 길"></esg-text>
+                        </div>
+                    </div>
+
                 </div>
             </div>
-        </div>
+        </header>
+
     </th:block>
 </html>

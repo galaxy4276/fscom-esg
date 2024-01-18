@@ -14,6 +14,8 @@ import './page/login';
 import './components/main';
 import './components/header';
 import './components/common/button';
+import './components/common/text';
+
   // auth
 import './components/auth/companyJoinCard';
 import './components/auth/doneJoinCard';
