@@ -17,6 +17,29 @@ drawerOpenCloseButton.addEventListener('click', () => {
 
   const intro = document.getElementById('top-nav__dropdown--intro');
   const evaluation = document.getElementById('top-nav__dropdown--eval');
+  const headerNavOverlay = document.getElementById('headerNavOverlay');
+  const headerNavContainer = document.getElementById('headerNavContainer');
+  let navOpen = false;
+
+
+  const openHeaderNav = () => {
+    headerNavOverlay.style.width = '100%';
+    headerNavContainer.style.width = '300px';
+  };
+
+  const closeHeaderNav = () => {
+    headerNavOverlay.style.width = '0';
+    headerNavContainer.style.width = '0';
+  };
+
+  closeHeaderNav();
+
+  drawerOpenCloseButton.onclick = () => {
+    if (!navOpen) {
+      navOpen = true;
+      openHeaderNav();
+    }
+  }
 
   const url = location.href;
 
@@ -26,6 +49,14 @@ drawerOpenCloseButton.addEventListener('click', () => {
 
   if (url.includes('evaluation')) {
     emphasize(evaluation);
+  }
+
+  const headerNavCloseButton = document.getElementById('headerNavCloseButton');
+  headerNavCloseButton.onclick = () => {
+    if (navOpen) {
+      navOpen = false;
+      closeHeaderNav();
+    }
   }
 
   const headerNavMenus = [
