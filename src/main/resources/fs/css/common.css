@@ -27,16 +27,21 @@ button {
     z-index: 50;
     height: 100%;
     overflow-x: hidden;
+    visibility: visible;
     width: 100%;
-    transition: width .2s, .5s;
+    transition: 0.35s;
     background-color: var(--dirty-white);
+}
+
+.headerNavHidden {
+    width: 0 !important;
 }
 
 .flip {
     transform: rotate(180deg);
 }
 
-@media screen and (min-width: 768px){
+@media screen and (min-width: 768px) {
     .header-nav {
         width: 300px;
     }
