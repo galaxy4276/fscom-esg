@@ -21,15 +21,14 @@ drawerOpenCloseButton.addEventListener('click', () => {
   const headerNavContainer = document.getElementById('headerNavContainer');
   let navOpen = false;
 
-
   const openHeaderNav = () => {
     headerNavOverlay.style.width = '100%';
-    headerNavContainer.style.width = '300px';
+    headerNavContainer.classList.remove('headerNavHidden')
   };
 
   const closeHeaderNav = () => {
     headerNavOverlay.style.width = '0';
-    headerNavContainer.style.width = '0';
+    headerNavContainer.classList.add('headerNavHidden')
   };
 
   closeHeaderNav();
@@ -40,6 +39,19 @@ drawerOpenCloseButton.addEventListener('click', () => {
       openHeaderNav();
     }
   }
+
+  window.addEventListener('keyup', e => {
+    if (e.code === 'Escape') {
+      navOpen = false;
+      closeHeaderNav();
+    }
+  });
+
+  headerNavOverlay.click =() => {
+    navOpen = false;
+    closeHeaderNav()
+  };
+
 
   const url = location.href;
 

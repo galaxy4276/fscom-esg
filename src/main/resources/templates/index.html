@@ -13,26 +13,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui"/>
 
-    <style>
-      #main__header-nav {
-          background-image: url("/fs/img/main-top-nav-bg.png");
-          background-size: cover;
-      }
-    </style>
-
     <link rel='stylesheet' href='../fs/css/common.css'>
-
   </head>
 
   <body id="body">
     <th:block layout:fragment="content">
-      <section class="py-[60px]" id="main__header-nav">
+      <section class="py-[60px]" id="mainHome">
         <div class="flex flex-col justify-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn">
           <div class="flex flex-col items-center pt-[120px] py-[180px] whitespace-nowrap">
             <p class="esg-top-nav__text--title">한국ESG협회</p>
             <span class="text-white text-[28px] md:text-[42px]">KOREA ESG ASSOCIATION</span>
           </div>
 
+          <div class="w-full flex flex-col items-center">
+            <div class="mainSearchContainer">
+              <input type='text' placeholder="ESG 협회에 대해서 설명해줘">
+              <button>
+                <img th:src="@{/fs/svg/main-search.svg}" alt="search.svg" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 

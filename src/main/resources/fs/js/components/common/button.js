@@ -1,5 +1,3 @@
-import formatter from '../../utils/formatter';
-
 /**
  * 회원가입 버튼
  */
