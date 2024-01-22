@@ -79,3 +79,7 @@
 .error-form_input {
     @apply label-text-alt text-red-500 text-[14px] pt-1 pl-[5px] hidden;
 }
+
+.esg-main-question-card {
+    @apply text-white w-[300px] bg-white h-[48px] rounded-[4px] md:w-[630px] flex items-center gap-x-[5px] p-[12px] cursor-pointer;
+}
