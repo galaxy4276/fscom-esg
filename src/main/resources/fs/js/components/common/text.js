@@ -51,6 +51,7 @@ class Text extends HTMLElement {
 const colors = {
   title: '#334155',
   paragraph: '#64748B',
+  white: "white",
 }
 
 
