@@ -5,9 +5,10 @@ import './common';
 import './test';
 import './utils/redirect';
 import './utils/dialog';
+import './utils/api'
 
 // page.js
-// import './page/main';
+import './page/main';
 import './page/login';
 
 // component.js

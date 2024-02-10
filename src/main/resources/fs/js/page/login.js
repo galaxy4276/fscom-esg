@@ -105,7 +105,6 @@ const getJoinProperties = () => {
   const enterpriseAddress = joinRoot.querySelector('#enterprise-address__input').value;
   const enterPriseAddressDetails = joinRoot.querySelector('#enterprise-address-detail__input').value;
 
-
   const enterpriseDetails = {
     licenseNumber,
     address: enterpriseAddress,
@@ -142,21 +141,31 @@ const getComputedEmail = (frontEmail) => {
   return frontEmail + '@' + manual;
 };
 
+const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
 const userJoinValidator = {
   email: {
     message: '이메일을 입력해주세요',
     id: 'email-error__input',
-    pattern: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
+    pattern: emailRegex,
     cb: () => {
       const vender = document.querySelector('.email-select').value;
       const frontEmail = document.getElementById('frontEmail').value;
       if (vender !== '직접 입력') {
         const computed = `${frontEmail}@${vender}`;
-        return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(computed);
+        console.log({ computed });
+        const pass = emailRegex.test(computed);
+        console.log({ emailPass: pass });
+        return { pass, message: '이메일 형식이 아닙니다', };
       }
       const manual =  document.getElementById('manual-email__input').value;
       const computed = `${frontEmail}@${manual}`;
-      return /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(computed);
+      console.log({ computed });
+      const pass = emailRegex.test(computed);
+      return {
+        pass,
+        message: '이메일 형식이 아닙니다',
+      };
     },
   },
   username: {
@@ -181,7 +190,19 @@ const userJoinValidator = {
     message: '이전 패스워드와 같아야 합니다.',
     targetId: 'verify-password',
     id: 'verify-password-error__input',
-    cb: () => {},
+    cb: () => {
+      const passwordElm = document.getElementById('password');
+      const verifyPasswordElm = document.getElementById('verify-password');
+      const password = passwordElm.value;
+      const verifyPassword = verifyPasswordElm.value;
+      if (password !== verifyPassword) {
+        return {
+          pass: false,
+          message: '패스워드가 일치하지 않습니다',
+        };
+      }
+      return { pass: true };
+    },
   },
   zipCode: {
     message: '우편번호를 작성해주세요',
@@ -199,33 +220,40 @@ const userJoinValidator = {
 
 export const join = async () => {
 
-  let isValid = true;
-  Object.values(userJoinValidator).forEach(valid => {
-    let cbResult = null;
+  const userValidation = Object.values(userJoinValidator).reduce((acc, valid) => {
+    const messageElm = document.getElementById(valid.id);
+    console.log({ acc, valid });
     if (valid?.cb) {
-      cbResult = valid.cb();
-      return;
+      const v = valid.cb();
+      if (!pass) {
+        messageElm.style.display = 'block';
+        messageElm.textContent = v.message;
+        return acc.concat(false);
+      }
+      messageElm.style.display = 'none';
+      return acc.concat(true);
     }
 
-    const { targetId, id, pattern, message } = valid;
+    const { targetId, pattern, message } = valid;
     const target = document.getElementById(targetId);
-    const messageElm = document.getElementById(id);
 
     const targetValue = target.value;
     const pass = pattern.test(targetValue);
-    console.log({ target, messageElm, targetValue, pass });
 
     if (!pass) {
-      console.log('this called');
       messageElm.style.display = 'block';
       messageElm.textContent = message;
-      isValid = false;
-    } else {
-      messageElm.style.display = 'none';
+      return acc.concat(false);
     }
-  });
+    messageElm.style.display = 'none';
+    return acc.concat(true);
+  }, []);
 
-  if (!isValid) {
+  const userPass = userValidation.every(b => b === true);
+
+  console.log({ userPass });
+
+  if (!userPass) {
     return;
   }
 

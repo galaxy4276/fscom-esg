@@ -239,18 +239,65 @@ button {
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.50) 0%, rgba(0, 0, 0, 0.00) 83.59%), url("/fs/img/main-top-nav-bg.png"), lightgray 50% / cover no-repeat;
     background-repeat: no-repeat;
     background-size: cover;
+    padding-bottom: 300px;
 }
 
 .mainSearchContainer {
     width: 320px;
     height: 52px;
     display: flex;
-    box-shadow: 0px 4px 12px 3px rgba(0, 0, 0, 0.70);
+    /*box-shadow: 0px 4px 12px 3px rgba(0, 0, 0, 0.70);*/
     transition: width .5s ease-in-out;
+}
+
+.mainChatBoxContainer {
+    visibility: hidden;
+    display: flex;
+    width: 320px;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    padding: 25px 17px;
+    /*box-shadow: 0px 4px 12px 3px rgba(0, 0, 0, 0.70);*/
+    transition: all .5s ease-in-out;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    row-gap: 10px;
+}
+
+.queryBox {
+    color: white;
+    border-radius: 10px;
+    width: fit-content;
+    padding: 8px 9px;
+}
+
+.userQuery {
+    background-color: #34D399;
+    align-self: end;
+}
+
+.botQuery {
+    background-color: #0EA5E9;
+    display: flex;
+    row-gap: 10px;
+    align-self: start;
+}
+
+.chatBoxOpenQueryInput {
+    border-radius: 35px 0 0 0 !important;
+}
+
+.chatBoxOpenSearchButton {
+    border-radius: 0 35px 0 0 !important;
 }
 
 @media screen and (min-width: 768px) {
     .mainSearchContainer {
+        width:630px;
+    }
+
+    .mainChatBoxContainer {
         width:630px;
     }
 }
