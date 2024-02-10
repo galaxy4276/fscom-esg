@@ -3,6 +3,7 @@ import { ChatBotService } from '../utils/api';
 
 const chatbotButton = document.querySelector('.chatbot-button');
 const chatbotContainer = document.getElementById('chatbot__container');
+const MAX_QUERY_LINE_CHARACTER = 57
 
 console.log('hello');
 
@@ -42,6 +43,14 @@ pageHook("/main", () => {
     querySearchButton.classList.add("chatBoxOpenSearchButton")
   }
 
+  const splitQuery = (str) => {
+    const result = [];
+    for (let i = 0; i < str.length; i += MAX_QUERY_LINE_CHARACTER) {
+      result.push(str.substring(i, i + MAX_QUERY_LINE_CHARACTER));
+    }
+    return result;
+  }
+
   const createUserQuery = (query) => {
     const div = document.createElement("div")
     div.classList.add("queryBox")
@@ -56,10 +65,21 @@ pageHook("/main", () => {
     const div = document.createElement("div")
     div.classList.add("queryBox")
     div.classList.add("botQuery")
-    div.innerHTML = `
-<!--        <img th:src="@{/fs/}">-->
-        <esg-text size="12" color="white" text="${query}"></esg-text>
-    `
+    query.replaceAll("\n\n", "")
+
+    const tokens = splitQuery(query)
+    console.log({ tokens });
+    tokens.forEach((p, i) => {
+      const text = document.createElement("esg-text")
+      text.setAttribute("size", "12")
+      text.setAttribute("color", "white")
+      text.setAttribute("text", p)
+      const delay = `${(1 * i)}s`
+      console.log(`delay: ${delay}, p: ${p}`);
+      text.classList.add("textWriting")
+      text.style.animationDelay = delay
+      div.append(text)
+    })
     return div
   }
 
@@ -69,26 +89,38 @@ pageHook("/main", () => {
     const entered = e.key === "Enter"
     const query = e.target.value
     if (!entered || query.trim() === "") return
-    console.log({ query });
+    await chat(query)
+  })
 
+  const chat = async (query) => {
     if (!state.chatbotOpener) {
       chatBoxOpen()
       state.chatbotOpener = true
     }
 
     const userQueryBox = createUserQuery(query)
-    mainChatBoxContainer.append(userQueryBox)
+    mainChatBoxContainer.prepend(userQueryBox)
     queryInput.value = ""
 
     try {
       state.queryFetching = true
       const { answer } = await ChatBotService.search(query)
-      createBotQuery(answer)
+      const botQueryBox = createBotQuery(answer)
+      mainChatBoxContainer.prepend(botQueryBox)
     } catch (error) {
       console.error(error)
       alert("에러가 발생하였습니다")
     } finally {
       state.queryFetching = false
     }
+  }
+
+
+  const questionCards = Array.from(document.getElementsByClassName("esg-main-question-card"))
+  questionCards.forEach(card => {
+    const esgText = card.childNodes[3]
+    const query = esgText.outerText
+    card.addEventListener("click", () => chat(query))
   })
+
 }, true)

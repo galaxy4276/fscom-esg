@@ -269,6 +269,7 @@ button {
     color: white;
     border-radius: 10px;
     width: fit-content;
+    max-width: calc(100% - 65px);
     padding: 8px 9px;
 }
 
@@ -279,7 +280,6 @@ button {
 
 .botQuery {
     background-color: #0EA5E9;
-    display: flex;
     row-gap: 10px;
     align-self: start;
 }
@@ -318,4 +318,13 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+.textWriting {
+    animation: typing 3s steps(40, end);
 }

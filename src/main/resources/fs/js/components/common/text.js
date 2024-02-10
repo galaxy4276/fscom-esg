@@ -6,9 +6,10 @@ class Text extends HTMLElement {
     const boldProp = this.getAttribute('bold');
     const colorProp = this.getAttribute('color');
     const hrefProp = this.getAttribute('href');
+    const classNames = this.getAttribute('class');
 
     this.innerHTML = `
-      <span>${text}</span>
+      <span class="${classNames}">${text}</span>
     `
 
     const element = this.querySelector('span');

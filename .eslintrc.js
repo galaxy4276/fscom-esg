@@ -23,5 +23,6 @@ module.exports = {
   },
   'rules': {
     'valid-jsdoc': 0,
+    camelcase: 0,
   },
 };
