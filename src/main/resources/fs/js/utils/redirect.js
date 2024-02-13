@@ -85,3 +85,7 @@ document.getElementById('top-nav__dropdown--intro').onclick = () => {
 document.getElementById('top-nav__dropdown--eval').onclick = () => {
  location.href = '/evaluation';
 }
+
+document.getElementById('go-news').onclick = () => {
+  location.href = '/evaluation';
+}
