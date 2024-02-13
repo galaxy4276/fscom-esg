@@ -115,7 +115,6 @@ pageHook("/main", () => {
     }
   }
 
-
   const questionCards = Array.from(document.getElementsByClassName("esg-main-question-card"))
   questionCards.forEach(card => {
     const esgText = card.childNodes[3]

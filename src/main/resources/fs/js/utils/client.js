@@ -17,7 +17,7 @@ client.interceptors.response.use(res => {
 }, error => Promise.reject(error.response.data));
 
 export const chatBotClient = axios.create({
-  baseURL: "https://7491-1-223-40-19.ngrok-free.app/docs#/default/generate_product_description_ESG_post",
+  baseURL: "https://7491-1-223-40-19.ngrok-free.app",
   timeout: 20000,
   headers: {
     'Content-Type': 'application/json',

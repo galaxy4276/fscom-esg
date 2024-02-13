@@ -4,9 +4,9 @@ const mockChatBotQueryString = "ESG (Environmental, Social, and Governance)ëŠ” ê
 
 export const ChatBotService = {
   search: note => {
-    return new Promise(resolve => {
-      setTimeout(() => resolve(({ answer: mockChatBotQueryString })), 1500);
-    })
+    // return new Promise(resolve => {
+    //   setTimeout(() => resolve(({ answer: mockChatBotQueryString })), 1500);
+    // })
     return chatBotClient.post("/ESG", { note })
       .then(({ product_description }) => ({ answer: product_description }))
   }
