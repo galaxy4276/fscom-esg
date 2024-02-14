@@ -14,12 +14,9 @@ chatbotButton?.addEventListener('click', e => {
   if (isHidden) {
     chatbotContainer.classList.remove('invisible');
     chatbotContainer.classList.add('visible');
-    // setFadeIn(chatbotContainer);
   } else {
     chatbotContainer.classList.remove('visible');
     chatbotContainer.classList.add('invisible');
-    // removeFadeInUp(chatbotContainer);
-    // removeAllAnimation(chatbotContainer);
   }
 });
 

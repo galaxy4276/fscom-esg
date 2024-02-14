@@ -24,5 +24,4 @@ public class MainInterceptor implements HandlerInterceptor {
         HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
         LOG.error(request.getRequestURI());
     }
-
 }

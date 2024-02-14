@@ -8,6 +8,7 @@ const validator = {
     }
     return true;
   },
+  checkDirty: () => {},
 };
 
 export default validator;
