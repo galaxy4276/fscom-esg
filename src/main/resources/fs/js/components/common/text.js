@@ -36,6 +36,10 @@ class Text extends HTMLElement {
     if (name === 'text') {
       this.element.textContent = newState
     }
+
+    if (name === "color") {
+      this.element.style.color = newState
+    }
   }
 
   getSize(s) {
@@ -65,7 +69,6 @@ const colors = {
   paragraph: '#64748B',
   white: "white",
 }
-
 
 customElements.define("esg-text", Text)
 

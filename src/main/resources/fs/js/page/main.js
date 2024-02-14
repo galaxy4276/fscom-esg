@@ -93,7 +93,7 @@ pageHook("/main", () => {
 
     try {
       state.queryFetching = true
-      const { queryBox: botQueryBox, botText } = createBotQuery(answer)
+      const { queryBox: botQueryBox, botText } = createBotQuery()
       tempBotText = botText
       mainChatBoxContainer.prepend(botQueryBox)
       const { answer } = await ChatBotService.search(query)

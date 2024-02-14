@@ -5,7 +5,6 @@ class EsgButton extends HTMLElement {
   button = null;
 
   connectedCallback() {
-    console.dir(this);
     const buttonText = this.getAttribute('text');
     const disabled = this.getAttribute('disabled');
 
