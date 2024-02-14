@@ -24,4 +24,9 @@ export const chatBotClient = axios.create({
   },
 });
 
+chatBotClient.interceptors.response.use(res => {
+  return res.data;
+}, error => Promise.reject(error.response.data));
+
+
 export default client;
