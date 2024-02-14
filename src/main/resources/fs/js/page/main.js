@@ -5,9 +5,7 @@ const chatbotButton = document.querySelector('.chatbot-button');
 const chatbotContainer = document.getElementById('chatbot__container');
 const MAX_QUERY_LINE_CHARACTER = 57
 
-console.log('hello');
-
-chatbotButton.addEventListener('click', e => {
+chatbotButton?.addEventListener('click', e => {
   e.stopPropagation();
   e.preventDefault();
   const containerStyle = getComputedStyle(chatbotContainer);

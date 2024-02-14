@@ -9,8 +9,7 @@
     <meta charset='UTF-8'>
     <title>인사말</title>
   </head>
-  <body>
-    <th:block layout:fragment="content">
+  <th:block layout:fragment="content">
       <div class="w-full forest-bg">
         <div class="flex flex-col justify-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn">
           <div class="flex flex-col items-center pt-[120px] py-[180px] whitespace-nowrap">
@@ -20,7 +19,6 @@
       </div>
 
       <main class="mx-[15px] md:mx-[120px] lg:mx-[240px] xl:mx-[320px] flex flex-col gap-y-[200px]">
-
         <section id="intro-section">
           <img th:src="@{/fs/img/introduce.png}" class="w-full" alt="시연용">
         </section>
@@ -52,8 +50,6 @@
         <section id="map-section">
           <img th:src="@{/fs/img/map.png}" class="w-full" alt="시연용">
         </section>
-
       </main>
     </th:block>
-  </body>
 </html>

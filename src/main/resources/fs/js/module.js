@@ -12,10 +12,7 @@ import './page/main';
 import './page/login';
 
 // component.js
-import './components/main';
-import './components/header';
-import './components/common/button';
-import './components/common/text';
+import './components';
 
   // auth
 import './components/auth/companyJoinCard';
