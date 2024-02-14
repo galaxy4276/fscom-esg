@@ -200,14 +200,12 @@ button {
     column-gap: 5px;
 }
 
-#go-hello, #go-awards {
-    border-top-left-radius: 6px;
-    border-top-right-radius: 6px;
+.dropdown-content > li:first-child {
+    border-radius: 6px 6px 0 0;
 }
 
-#go-intro-map, #go-cert {
-    border-bottom-left-radius: 6px;
-    border-bottom-right-radius: 6px;
+.dropdown-content > li:last-child {
+    border-radius: 0 0 6px 6px;
 }
 
 .footer {
