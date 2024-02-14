@@ -1,4 +1,5 @@
 class Text extends HTMLElement {
+  element = null
 
   connectedCallback() {
     const text = this.getAttribute('text');
@@ -14,6 +15,7 @@ class Text extends HTMLElement {
     `
 
     const element = this.querySelector('span');
+    this.element = element
     element.style.fontSize = this.getSize(sizeProp);
     if (boldProp === 'true') {
       element.style.fontWeight = '600';
@@ -26,6 +28,14 @@ class Text extends HTMLElement {
       element.onclick = () => location.href = hrefProp
     }
 
+  }
+
+  static observedAttributes = ['text', 'size', 'bold', 'color', 'class']
+
+  attributeChangedCallback(name, oldState, newState) {
+    if (name === 'text') {
+      this.element.textContent = newState
+    }
   }
 
   getSize(s) {

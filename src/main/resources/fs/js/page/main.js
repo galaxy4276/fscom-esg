@@ -59,26 +59,16 @@ pageHook("/main", () => {
     return div
   }
 
-  const createBotQuery = (query) => {
+  const createBotQuery = () => {
     const div = document.createElement("div")
     div.classList.add("queryBox")
     div.classList.add("botQuery")
-    query.replaceAll("\n\n", "")
-
-    const tokens = splitQuery(query)
-    console.log({ tokens });
-    tokens.forEach((p, i) => {
-      const text = document.createElement("esg-text")
-      text.setAttribute("size", "12")
-      text.setAttribute("color", "white")
-      text.setAttribute("text", p)
-      const delay = `${(1 * i)}s`
-      console.log(`delay: ${delay}, p: ${p}`);
-      text.classList.add("textWriting")
-      text.style.animationDelay = delay
-      div.append(text)
-    })
-    return div
+    const text = document.createElement("esg-text")
+    text.setAttribute("size", "12")
+    text.setAttribute("color", "white")
+    text.setAttribute("text", "...")
+    div.append(text)
+    return { queryBox: div, botText: text }
   }
 
   queryInput.addEventListener("keyup", async e => {
@@ -99,15 +89,18 @@ pageHook("/main", () => {
     const userQueryBox = createUserQuery(query)
     mainChatBoxContainer.prepend(userQueryBox)
     queryInput.value = ""
+    let tempBotText;
 
     try {
       state.queryFetching = true
-      const { answer } = await ChatBotService.search(query)
-      const botQueryBox = createBotQuery(answer)
+      const { queryBox: botQueryBox, botText } = createBotQuery(answer)
+      tempBotText = botText
       mainChatBoxContainer.prepend(botQueryBox)
+      const { answer } = await ChatBotService.search(query)
+      botText.setAttribute("text", answer)
     } catch (error) {
       console.error(error)
-      alert("에러가 발생하였습니다")
+      tempBotText.setAttribute("text", "문제가 발생하였습니다. 다시시도해주세요")
     } finally {
       state.queryFetching = false
     }
