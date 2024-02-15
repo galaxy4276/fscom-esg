@@ -1,3 +1,5 @@
+import $ from "jquery"
+
 const drawerOpenCloseButton = document.getElementById('header__drawer--open-button');
 const hiddenInput = document.getElementById('header__drawer--button');
 
@@ -146,6 +148,9 @@ drawerOpenCloseButton.addEventListener('click', () => {
     // 사업
     [document.getElementById('top-nav__dropdown--content-work'), document.getElementById('top-nav__dropdown--work')],
   ];
+
+  // 함께하는 사람들 이동
+  $("#go-intro").click(() => location.href = "/introduce/executors")
 
   topNavMenus.forEach(([content, dropdown]) => {
     let introEntered = false;

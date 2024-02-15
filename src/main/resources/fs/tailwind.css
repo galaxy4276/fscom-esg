@@ -56,6 +56,14 @@
     @apply card bg-white shadow-md w-[768px] max-w-[768px] border border-slate-200;
 }
 
+.big-card {
+    @apply card card-side w-full h-full lg:w-[768px] lg:h-fit shadow-md flex bg-white my-[80px]
+}
+
+.big-card-no-m {
+    @apply card card-side w-full h-full lg:w-[768px] lg:h-fit shadow-md flex bg-white
+}
+
 .esg-user-role__btn {
     @apply w-[200px] h-[200px] rounded-md shadow-md bg-white border border-slate-200 transition duration-150;
 }

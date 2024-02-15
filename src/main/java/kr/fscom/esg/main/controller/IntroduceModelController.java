@@ -16,9 +16,9 @@ public class IntroduceModelController {
     return new ModelAndView("/introduce/index");
   }
 
-  @GetMapping("/executive")
+  @GetMapping("/executors")
   public ModelAndView executiveIntroPage() {
-    return new ModelAndView("/introduce/intro-executive");
+    return new ModelAndView("/introduce/executors");
   }
 
   @GetMapping("/goals")

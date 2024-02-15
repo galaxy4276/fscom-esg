@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="common/templates/layout"
+>
+<head>
+  <meta charset='UTF-8'>
+  <title>함께하는 사람들</title>
+</head>
+<body>
+<th:block layout:fragment="content">
+  <div class="w-full forest-bg">
+    <div class="flex flex-col justify-center mx-0 lg:mx-[240px] animate__animated animate__fadeIn">
+      <div class="flex flex-col items-center pt-[120px] py-[180px] whitespace-nowrap">
+        <p class="text-white text-[52px] md:text-[72px] font-bold">함께하는 사람들</p>
+      </div>
+    </div>
+  </div>
+
+<!--  윤준욱 -->
+  <main class="mx-[15px] md:mx-[120px] flex flex-col items-center !my-[30px]">
+    <div class="big-card-no-m flex-col md:flex-row">
+      <figure class="w-full max-w-[250px] md:w-[200px]">
+        <img th:src="@{/fs/img/executiver/uju.jpg}">
+      </figure>
+
+      <div class="flex flex-col p-[15px] gap-y-[10px]">
+        <div class="flex flex-col">
+          <esg-text size="large" color="title" text="윤준욱" bold="true"></esg-text>
+          <esg-text size="medium" color="paragraph" text="성균관대학교 경영대학 교수"></esg-text>
+        </div>
+
+        <div class='flex flex-col gap-y-[5px]'>
+          <esg-text size="medium" color="title" text="경력사항" bold="true"></esg-text>
+          <div class="flex flex-col">
+            <esg-text size="medium" color="paragraph" text="California State University East Bay, Accounting Professor"></esg-text>
+            <esg-text size="medium" color="paragraph" text="Marshall University, Accounting Professor"></esg-text>
+            <esg-text size="medium" color="paragraph" text="캐나다 공인회계사 (CPA, Manitoba)"></esg-text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    김정성 -->
+    <div class="big-card-no-m flex-col md:flex-row">
+      <figure class="w-full max-w-[250px] md:w-[200px]">
+        <img th:src="@{/fs/img/executiver/kjs.png}">
+      </figure>
+
+      <div class="flex flex-col p-[15px] gap-y-[10px]">
+        <div class="flex flex-col">
+          <esg-text size="large" color="title" text="김정성" bold="true"></esg-text>
+          <esg-text size="medium" color="paragraph" text="Strategy 대표이사"></esg-text>
+          <esg-text size="medium" color="paragraph" text="ESG협회 집행위 이사"></esg-text>
+        </div>
+
+        <div class='flex flex-col gap-y-[5px]'>
+          <esg-text size="medium" color="title" text="경력사항" bold="true"></esg-text>
+          <div class="flex flex-col">
+            <esg-text size="medium" color="paragraph" text="라이언앤코 수석"></esg-text>
+            <esg-text size="medium" color="paragraph" text="제로페이 사외이사"></esg-text>
+            <esg-text size="medium" color="paragraph" text="혁신연구원 대표이사"></esg-text>
+            <esg-text size="medium" color="paragraph" text="SPL 전략기획 팀장"></esg-text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    김호림 -->
+    <div class="big-card-no-m flex-col md:flex-row">
+      <figure class="w-full max-w-[250px] md:w-[200px]">
+        <img th:src="@{/fs/img/executiver/kjl.jpg}">
+      </figure>
+
+      <div class="flex flex-col p-[15px] gap-y-[10px]">
+        <div class="flex flex-col">
+          <esg-text size="large" color="title" text="김호림" bold="true"></esg-text>
+          <esg-text size="medium" color="paragraph" text="동양대 AI빅데이터융합학과 교수"></esg-text>
+          <esg-text size="medium" color="paragraph" text="동양대 AI융합연구센터장"></esg-text>
+          <esg-text size="medium" color="paragraph" text="한국ESG협회 이사, 대외협력단장"></esg-text>
+          <esg-text size="medium" color="paragraph" text="세계ESG학회 부회장"></esg-text>
+          <esg-text size="medium" color="paragraph" text="세계환경과섬연구(WEIS) 편집위원장"></esg-text>
+          <esg-text size="medium" color="paragraph" text="한국인터넷전자상거래학회 이사"></esg-text>
+        </div>
+      </div>
+    </div>
+
+<!--  김시현  -->
+    <div class="big-card-no-m flex-col md:flex-row">
+      <figure class="w-full max-w-[250px] md:w-[200px]">
+        <img th:src="@{/fs/img/executiver/ksh.jpg}">
+      </figure>
+
+      <div class="flex flex-col p-[15px] gap-y-[10px]">
+        <div class="flex flex-col">
+          <esg-text size="large" color="title" text="김시현" bold="true"></esg-text>
+          <esg-text size="medium" color="paragraph" text="법무법인 제이앤피"></esg-text>
+        </div>
+
+        <div class='flex flex-col gap-y-[5px]'>
+          <esg-text size="medium" color="title" text="경력사항" bold="true"></esg-text>
+          <div class="flex flex-col">
+            <esg-text size="medium" color="paragraph" text="법무법인 더함"></esg-text>
+            <esg-text size="medium" color="paragraph" text="세종시 무료법률상담관"></esg-text>
+            <esg-text size="medium" color="paragraph" text="중소벤처기업부 감사관실 법률사무종사"></esg-text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<!--    이형종 -->
+    <div class="big-card-no-m flex-col md:flex-row">
+      <figure class="w-full max-w-[250px] md:w-[200px]">
+        <img th:src="@{/fs/img/executiver/lhj.jpg}">
+      </figure>
+
+      <div class="flex flex-col p-[15px] gap-y-[10px]">
+        <div class="flex flex-col">
+          <esg-text size="large" color="title" text="이형종" bold="true"></esg-text>
+          <esg-text size="medium" color="paragraph" text="한국ESG협회 이사"></esg-text>
+        </div>
+
+        <div class='flex flex-col gap-y-[5px]'>
+          <esg-text size="medium" color="title" text="경력사항" bold="true"></esg-text>
+          <div class="flex flex-col">
+            <esg-text size="medium" color="paragraph" text="한국FPSB 수석연구원"></esg-text>
+            <esg-text size="medium" color="paragraph" text="삼성생명 은퇴연구소 수석연구원"></esg-text>
+            <esg-text size="medium" color="paragraph" text="커리어넷 전직 생애설계연구소장"></esg-text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--    남덕현 -->
+    <div class="big-card-no-m flex-col md:flex-row">
+      <figure class="w-full max-w-[250px] md:w-[200px]">
+        <img th:src="@{/fs/img/executiver/ndh.jpg}">
+      </figure>
+
+      <div class="flex flex-col p-[15px] gap-y-[10px]">
+        <div class="flex flex-col">
+          <esg-text size="large" color="title" text="남덕현" bold="true"></esg-text>
+          <esg-text size="medium" color="paragraph" text="한국ESG협회 이사"></esg-text>
+          <esg-text size="medium" color="paragraph" text="고려대학교 행정전문대학원 원우회장"></esg-text>
+          <esg-text size="medium" color="paragraph" text="K-water 물관리기획처 물관리경영부장"></esg-text>
+        </div>
+
+        <div class='flex flex-col gap-y-[5px]'>
+          <esg-text size="medium" color="title" text="경력사항" bold="true"></esg-text>
+          <div class="flex flex-col">
+            <esg-text size="medium" color="paragraph" text="K-water 운영관리(주) 비상임이사"></esg-text>
+            <esg-text size="medium" color="paragraph" text="K-water 총무부장"></esg-text>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!--    김정학  -->
+    <div class="big-card-no-m flex-col md:flex-row">
+      <figure class="w-full max-w-[250px] md:w-[200px]">
+        <img th:src="@{/fs/img/executiver/kjh.jpg}">
+      </figure>
+
+      <div class="flex flex-col p-[15px] gap-y-[10px]">
+        <div class="flex flex-col">
+          <esg-text size="large" color="title" text="김정학" bold="true"></esg-text>
+          <esg-text size="medium" color="paragraph" text="고려대학교 행정전문대학원 교수 / 입학홍보처장"></esg-text>
+          <esg-text size="medium" color="paragraph" text="축산물품질평가원 비상임이사"></esg-text>
+          <esg-text size="medium" color="paragraph" text="국가보훈부 보훈기금운용심의회 위원"></esg-text>
+          <esg-text size="medium" color="paragraph" text="기상청 자체평가위원회 위원"></esg-text>
+          <esg-text size="medium" color="paragraph" text="통계청 적극행정위원회 위원"></esg-text>
+          <esg-text size="medium" color="paragraph" text="공공데이터분쟁조정위원회 위원"></esg-text>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</th:block>
+</body>
+</html>
