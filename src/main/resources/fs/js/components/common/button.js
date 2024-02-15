@@ -28,4 +28,7 @@ class EsgButton extends HTMLElement {
 
 }
 
-customElements.define('esg-button', EsgButton);
+
+if (!customElements.get("esg-button")) {
+  customElements.define('esg-button', EsgButton);
+}

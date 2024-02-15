@@ -8,6 +8,8 @@
 <head>
   <meta charset='UTF-8'>
   <title>함께하는 사람들</title>
+  <script src='../../fs/js/components/common/button.js'></script>
+  <script src='../../fs/js/components/common/text.js'></script>
 </head>
 <body>
 <th:block layout:fragment="content">
@@ -20,7 +22,7 @@
   </div>
 
 <!--  윤준욱 -->
-  <main class="mx-[15px] md:mx-[120px] flex flex-col items-center !my-[30px]">
+  <article-layout data-tags="소개,함께하는 사람들">
     <div class="big-card-no-m flex-col md:flex-row">
       <figure class="w-full max-w-[250px] md:w-[200px]">
         <img th:src="@{/fs/img/executiver/uju.jpg}">
@@ -43,7 +45,7 @@
       </div>
     </div>
 
-<!--    김정성 -->
+    <!--    김정성 -->
     <div class="big-card-no-m flex-col md:flex-row">
       <figure class="w-full max-w-[250px] md:w-[200px]">
         <img th:src="@{/fs/img/executiver/kjs.png}">
@@ -68,7 +70,7 @@
       </div>
     </div>
 
-<!--    김호림 -->
+    <!--    김호림 -->
     <div class="big-card-no-m flex-col md:flex-row">
       <figure class="w-full max-w-[250px] md:w-[200px]">
         <img th:src="@{/fs/img/executiver/kjl.jpg}">
@@ -87,7 +89,7 @@
       </div>
     </div>
 
-<!--  김시현  -->
+    <!--  김시현  -->
     <div class="big-card-no-m flex-col md:flex-row">
       <figure class="w-full max-w-[250px] md:w-[200px]">
         <img th:src="@{/fs/img/executiver/ksh.jpg}">
@@ -110,7 +112,7 @@
       </div>
     </div>
 
-<!--    이형종 -->
+    <!--    이형종 -->
     <div class="big-card-no-m flex-col md:flex-row">
       <figure class="w-full max-w-[250px] md:w-[200px]">
         <img th:src="@{/fs/img/executiver/lhj.jpg}">
@@ -175,8 +177,7 @@
         </div>
       </div>
     </div>
-
-  </main>
+  </article-layout>
 </th:block>
 </body>
 </html>

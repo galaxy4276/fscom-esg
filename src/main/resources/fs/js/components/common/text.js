@@ -33,6 +33,7 @@ class Text extends HTMLElement {
   static observedAttributes = ['text', 'size', 'bold', 'color', 'class']
 
   attributeChangedCallback(name, oldState, newState) {
+    if (!this?.element) return;
     if (name === 'text') {
       this.element.textContent = newState
     }
@@ -70,6 +71,6 @@ const colors = {
   white: "white",
 }
 
-customElements.define("esg-text", Text)
-
-export default Text
+if (!customElements.get("esg-text")) {
+  customElements.define("esg-text", Text)
+}

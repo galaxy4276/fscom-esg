@@ -326,3 +326,17 @@ button {
 .textWriting {
     animation: typing 3s steps(40, end);
 }
+
+.articleLayout {
+    margin: 16px 15px 100px 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 15px;
+}
+
+@media screen and (min-width: 768px) {
+    .articleLayout {
+        margin: 0 120px 150px;
+    }
+}
