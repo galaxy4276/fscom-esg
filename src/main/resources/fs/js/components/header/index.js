@@ -80,6 +80,12 @@ drawerOpenCloseButton.addEventListener('click', () => {
       open: false,
       button: document.getElementById('navIntroButton'),
     },
+    {
+      opener: document.getElementById('navBusinessIntroOpener'),
+      content: document.getElementById('navBusinessDropdownContent'),
+      open: false,
+      button: document.getElementById('navBusiessButton'),
+    },
   ]
 
   /**
@@ -198,15 +204,16 @@ drawerOpenCloseButton.addEventListener('click', () => {
 
   // redirect
   (() => {
-    $("#go-hello").click(() => location.href = "/introduce")
-    $("#go-intro").click(() => location.href = "/introduce/executors")
-    $("#go-vision").click(() => location.href = "/introduce/vision")
+    $(".go-hello").click(() => location.href = "/introduce")
+    $(".go-intro").click(() => location.href = "/introduce/executors")
+    $(".go-vision").click(() => location.href = "/introduce/vision")
     $("#top-nav__dropdown--eval").click(() => location.href = "/evaluation")
+    $(".go-eval").click(() => location.href = "/evaluation")
     $("#top-nav__dropdown--work").click(() => location.href = "/business/adv")
-    $("#go-jm").click(() => location.href = "/business/adv")
-    $("#go-edu").click(() => location.href = "/business/edu")
-    $("#go-news").click(() => location.href = "/news")
-    $("#go-give").click(() => location.href = "/give")
+    $(".go-jm").click(() => location.href = "/business/adv")
+    $(".go-edu").click(() => location.href = "/business/edu")
+    $(".go-news").click(() => location.href = "/news")
+    $(".go-give").click(() => location.href = "/sponsor")
   })()
 
 })()
