@@ -149,9 +149,6 @@ drawerOpenCloseButton.addEventListener('click', () => {
     [document.getElementById('top-nav__dropdown--content-work'), document.getElementById('top-nav__dropdown--work')],
   ];
 
-  // 함께하는 사람들 이동
-  $("#go-intro").click(() => location.href = "/introduce/executors")
-
   topNavMenus.forEach(([content, dropdown]) => {
     let introEntered = false;
     let visitContent = false;
@@ -197,4 +194,19 @@ drawerOpenCloseButton.addEventListener('click', () => {
       leave();
     });
   });
+
+
+  // redirect
+  (() => {
+    $("#go-hello").click(() => location.href = "/introduce")
+    $("#go-intro").click(() => location.href = "/introduce/executors")
+    $("#go-vision").click(() => location.href = "/introduce/vision")
+    $("#top-nav__dropdown--eval").click(() => location.href = "/evaluation")
+    $("#top-nav__dropdown--work").click(() => location.href = "/business/adv")
+    $("#go-jm").click(() => location.href = "/business/adv")
+    $("#go-edu").click(() => location.href = "/business/edu")
+    $("#go-news").click(() => location.href = "/news")
+    $("#go-give").click(() => location.href = "/give")
+  })()
+
 })()

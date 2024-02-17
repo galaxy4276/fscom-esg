@@ -8,12 +8,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequiredArgsConstructor
-@RequestMapping("/evaluation")
-public class EvaluationModelController {
+@RequestMapping("/news")
+public class NewsModelController {
 
   @GetMapping
-  public ModelAndView evalPage() {
-    return new ModelAndView("/evaluation/index");
+  public ModelAndView redirectMain() {
+    return new ModelAndView("/news/index");
   }
 
 }
