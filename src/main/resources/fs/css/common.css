@@ -373,9 +373,21 @@ button {
 }
 
 .newsLayout {
-    display: flex;
+    display: grid;
+    grid-template-columns: 100%;
     justify-content: center;
     column-gap: 36px;
     row-gap: 46px;
-    flex-wrap: wrap;
+}
+
+@media screen and (min-width: 768px) {
+    .newsLayout {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .newsLayout {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
