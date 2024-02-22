@@ -380,6 +380,15 @@ button {
     row-gap: 46px;
 }
 
+.articleCard {
+    transition: transform .3s ease;
+    cursor: pointer;
+}
+
+.articleCard:hover {
+    transform: translateY(-10px);
+}
+
 @media screen and (min-width: 768px) {
     .newsLayout {
         grid-template-columns: repeat(2, 1fr);

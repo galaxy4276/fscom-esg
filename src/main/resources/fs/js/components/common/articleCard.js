@@ -9,7 +9,7 @@ export class ArticleCard extends HTMLElement {
     const createdDate = dayjs(rawCreatedDate).format('YYYY.MM.DD');
 
     this.innerHTML = `
-      <div class="card shadow-lg w-full md:max-w-[280px]">
+      <div class="card shadow-lg w-full md:max-w-[280px] articleCard">
         <div class="card-body">
           <h2 class="card-title">${title}</h2>
           <span class="text-slate-500">${createdDate}</span>
