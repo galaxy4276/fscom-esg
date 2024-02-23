@@ -9,6 +9,7 @@ import './utils/api'
 // page.js
 import './page/main';
 import './page/login';
+import './page/editor';
 
 // component.js
 import './components';

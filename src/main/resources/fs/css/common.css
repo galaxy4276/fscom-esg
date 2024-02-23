@@ -1,5 +1,6 @@
 :root {
     --dirty-white: #FAFAFA;
+    --primary-blue: #0EA5E9;
 }
 
 * {
@@ -403,4 +404,19 @@ button {
 
 .paginationSection {
     margin-top: 50px;
+}
+
+.newsAdminSection {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+}
+
+.bg-esg-primary {
+    background-color: var(--primary-blue);
+}
+
+.editorLayout {
+    width: 100%;
+    min-height: 580px;
 }
