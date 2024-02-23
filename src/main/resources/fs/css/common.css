@@ -400,3 +400,7 @@ button {
         grid-template-columns: repeat(3, 1fr);
     }
 }
+
+.paginationSection {
+    margin-top: 50px;
+}
