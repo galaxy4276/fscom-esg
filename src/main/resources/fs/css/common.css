@@ -424,5 +424,12 @@ button {
 
 .createArticleTitleSection {
     width: 100%;
-    margin-bottom: 20px;
+}
+
+#editor,
+.ql-editor {
+    height: 600px;
+}
+
+.createArticleForm {
 }
