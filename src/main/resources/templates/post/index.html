@@ -14,11 +14,20 @@
   <th:block layout:fragment="content">
     <content-header title="게시글 작성"></content-header>
 
-    <article-layout data-tags="게시글 작성">
-      <section class='editorLayout'>
-        <div id='editor'></div>
-      </section>
-    </article-layout>
+      <article-layout data-tags="게시글 작성">
+        <form class="flex flex-col w-full">
+          <section class="flex createArticleTitleSection">
+            <label class="input input-bordered flex items-center gap-2 w-full">
+              <esg-text size="medium" bold="true" color="title" text="제목"></esg-text>
+              <input type="text" class="grow articleTitle" placeholder="게시글 제목">
+            </label>
+          </section>
+        <section class='editorLayout'>
+          <div id='editor'></div>
+        </section>
+        </form>
+      </article-layout>
+
   </th:block>
   </body>
 </html>
