@@ -57,3 +57,5 @@ mybatis.mapper-locations: classpath:mapper/**/*.xml
 springdoc:
   swagger-ui:
     path: /doc
+esg:
+  upload-path: classpath:/uploads
