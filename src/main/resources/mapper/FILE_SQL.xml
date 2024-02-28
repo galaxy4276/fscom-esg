@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.fscom.esg.file.repository.FileMapper">
+    <select id="getById" resultType="kr.fscom.esg.file.domain.EsgFile">
+        SELECT *
+        FROM files f
+        WHERE f.id = #{id}
+    </select>
+
+    <select id="getByName" resultType="kr.fscom.esg.file.domain.EsgFile">
+        SELECT *
+        FROM files f
+        WHERE f.name = #{name}
+    </select>
+
+    <insert id="createFile" parameterType="kr.fscom.esg.file.domain.FileCreation">
+        INSERT INTO users (email, password, name, tel, address, active, role, created_at, enterprise_id)
+        VALUES (#{email}, #{password}, #{name}, #{tel}, #{address}, #{active}, #{role}, #{createdAt}, #{enterpriseId})
+    </insert>
+</mapper>
