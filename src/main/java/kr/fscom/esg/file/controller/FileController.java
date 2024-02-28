@@ -1,5 +1,6 @@
 package kr.fscom.esg.file.controller;
 
+import io.swagger.v3.oas.annotations.Operation;
 import kr.fscom.esg.file.domain.EsgFile;
 import kr.fscom.esg.file.service.FileStorageHandler;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,7 @@ public class FileController {
 
   private final FileStorageHandler fileStorageHandler;
 
+  @Operation(summary = "파일 업로드 API")
   @PostMapping(consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
   public ResponseEntity<EsgFile> save(@RequestParam MultipartFile file) {
     EsgFile esgFile = fileStorageHandler.save(file);
