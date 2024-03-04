@@ -11,7 +11,7 @@ public class PostController {
 
   @GetMapping
   public ModelAndView postWritePage() {
-    return new ModelAndView("/post/index");
+    return new ModelAndView("post/index");
   }
 
 }

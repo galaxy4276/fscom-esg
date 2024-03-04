@@ -11,7 +11,7 @@ public class WebController {
 
   @GetMapping("/sponsor")
   public ModelAndView sponsorPage() {
-    return new ModelAndView("/sponsor/index");
+    return new ModelAndView("sponsor/index");
   }
 
 }

@@ -2,6 +2,7 @@ package kr.fscom.esg.authentication.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import kr.fscom.esg.authentication.domain.dto.Enterprise;
 import kr.fscom.esg.authentication.domain.dto.JoinRequest;

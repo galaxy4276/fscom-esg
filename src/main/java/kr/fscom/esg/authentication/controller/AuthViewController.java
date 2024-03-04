@@ -13,27 +13,27 @@ public class AuthViewController {
 
   @GetMapping("/login")
   public ModelAndView loginPage() {
-    return new ModelAndView("/auth/login");
+    return new ModelAndView("auth/login");
   }
 
   @GetMapping("/join")
   public ModelAndView joinPage() {
-    return new ModelAndView("/auth/join");
+    return new ModelAndView("auth/join");
   }
 
   @GetMapping("/join/agreement")
   public ModelAndView joinAgreementPage() {
-    return new ModelAndView("/auth/agreement");
+    return new ModelAndView("auth/agreement");
   }
 
   @GetMapping("/join/user")
   public ModelAndView joinUserPage() {
-    return new ModelAndView("/auth/user");
+    return new ModelAndView("auth/user");
   }
 
   @GetMapping("/join/done")
   public ModelAndView joinDonePage() {
-    return new ModelAndView("/auth/done");
+    return new ModelAndView("auth/done");
   }
 
 }

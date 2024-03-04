@@ -13,7 +13,7 @@ public class EvaluationModelController {
 
   @GetMapping
   public ModelAndView evalPage() {
-    return new ModelAndView("/evaluation/index");
+    return new ModelAndView("evaluation/index");
   }
 
 }

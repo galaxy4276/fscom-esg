@@ -13,17 +13,17 @@ public class BusinessModelController {
 
   @GetMapping
   public ModelAndView redirectMain() {
-    return new ModelAndView("/business/advisor");
+    return new ModelAndView("business/advisor");
   }
 
   @GetMapping("/adv")
   public ModelAndView advisorPage() {
-    return new ModelAndView("/business/advisor");
+    return new ModelAndView("business/advisor");
   }
 
   @GetMapping("/edu")
   public ModelAndView educationPage() {
-    return new ModelAndView("/business/education");
+    return new ModelAndView("business/education");
   }
 
 }

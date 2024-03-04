@@ -25,7 +25,7 @@ public class MainController {
 
     @GetMapping
     public ModelAndView indexPage() {
-        ModelAndView mav = new ModelAndView("/index");
+        ModelAndView mav = new ModelAndView("index");
         return mav;
     }
 

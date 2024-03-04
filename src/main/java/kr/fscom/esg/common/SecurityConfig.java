@@ -30,6 +30,8 @@ public class SecurityConfig {
     http.csrf().disable();
     http.userDetailsService(userDetailsService);
 
+    http.logout(logout -> logout.logoutSuccessUrl("/api/auth/logout"));
+
     return http.build();
   }
 

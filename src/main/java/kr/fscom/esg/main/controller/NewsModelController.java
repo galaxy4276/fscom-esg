@@ -13,7 +13,7 @@ public class NewsModelController {
 
   @GetMapping
   public ModelAndView redirectMain() {
-    return new ModelAndView("/news/index");
+    return new ModelAndView("news/index");
   }
 
 }
