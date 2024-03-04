@@ -58,4 +58,4 @@ springdoc:
   swagger-ui:
     path: /doc
 esg:
-  upload-path: classpath:/uploads
+  upload-path: /Users/user/Documents/dev/esg

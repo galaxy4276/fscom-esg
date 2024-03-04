@@ -1,5 +1,6 @@
 package kr.fscom.esg.common;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.TaskScheduler;
@@ -12,6 +13,8 @@ import org.springframework.web.servlet.config.annotation.*;
 @Configuration
 @EnableScheduling
 public class MvcConfig implements WebMvcConfigurer {
+    @Value("${esg.upload-path}")
+    private String fileUploadPath;
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
@@ -31,7 +34,7 @@ public class MvcConfig implements WebMvcConfigurer {
 
         registry
             .addResourceHandler("/esg-file/**")
-            .addResourceLocations("classpath:/uploads");
+            .addResourceLocations(fileUploadPath);
     }
 
     @Override

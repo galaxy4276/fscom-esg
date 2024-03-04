@@ -15,7 +15,7 @@
     </select>
 
     <insert id="createFile" parameterType="kr.fscom.esg.file.domain.FileCreation">
-        INSERT INTO users (email, password, name, tel, address, active, role, created_at, enterprise_id)
-        VALUES (#{email}, #{password}, #{name}, #{tel}, #{address}, #{active}, #{role}, #{createdAt}, #{enterpriseId})
+        INSERT INTO files (name, ext, size, location)
+        VALUES (#{name}, #{ext}, #{size}, #{location})
     </insert>
 </mapper>

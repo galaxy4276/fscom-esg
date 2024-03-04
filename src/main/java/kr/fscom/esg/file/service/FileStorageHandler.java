@@ -1,5 +1,6 @@
 package kr.fscom.esg.file.service;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -23,10 +24,11 @@ public class FileStorageHandler {
   private final FileMapper repository;
 
   public EsgFile save(MultipartFile multipartFile) {
-    uploadToStorage(multipartFile);
-
     long size = multipartFile.getSize();
     String filename = createUniqueName(multipartFile.getOriginalFilename());
+
+    uploadToStorage(multipartFile, filename);
+
     String contentType = multipartFile.getContentType();
     FileCreation creation = FileCreation.builder()
         .name(filename)
@@ -39,10 +41,10 @@ public class FileStorageHandler {
     return repository.getByName(filename);
   }
 
-  public void uploadToStorage(MultipartFile file) {
+  public void uploadToStorage(MultipartFile file, String filename) {
     try {
-      Path uploadPath = Paths.get(fileUploadPath);
-      file.transferTo(uploadPath);
+      File f = new File(fileUploadPath, filename);
+      file.transferTo(f);
     } catch (IOException ex) {
       ex.printStackTrace();
       throw ApplicationException.SERVER_ERROR.create();
@@ -50,7 +52,7 @@ public class FileStorageHandler {
   }
 
   private String createUniqueName(String name) {
-    return RandomStringUtils.random(5) + "_" + name;
+    return RandomStringUtils.randomAlphabetic(5) + "_" + name;
   }
 
 }

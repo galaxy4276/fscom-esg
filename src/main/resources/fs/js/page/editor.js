@@ -4,10 +4,13 @@ const editorElm = document.getElementById('editor');
 
 (() => {
   if (!editorElm) return;
-  const editor = new Quill('#editor', {
+  const quill = new Quill('#editor', {
     theme: 'snow',
   });
-  console.log({ editor });
+
+  quill.on('text-change', (delta, oldDelta, source) => {
+    console.log({ delta, oldDelta, source });
+  });
 
   const previousBtns = Array.from(document.getElementsByClassName('previous-btn'));
   previousBtns.forEach(b => {
