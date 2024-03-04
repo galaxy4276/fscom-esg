@@ -213,10 +213,19 @@ button {
 }
 
 .footer {
-    min-height: 480px;
     width: 100%;
     color: white;
     position: relative;
+    display: flex;
+    column-gap: 1em;
+    padding: 1em 2em;
+    justify-content: center;
+}
+
+@media screen and (min-width: 768px) {
+    .footer {
+        padding: 4em 10em;
+    }
 }
 
 .esg-agreementation {

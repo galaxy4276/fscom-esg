@@ -3,7 +3,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <th:block th:fragment="footer">
         <footer class="bg-slate-900 footer">
-            FOOTER
+            <section class="flex flex-col text-white text-[18px]">
+                <esg-text text="사단법인 한국ESG협회"></esg-text>
+                <esg-text text="대표자: 김정학 | 고유번호: 618-82-05869"></esg-text>
+                <esg-text text="이메일: admin@korea-esg.or.kr"></esg-text>
+                <esg-text text="주소: 서울시 강남구 광평로 280, 로즈데일빌딩 1938호"></esg-text>
+                <esg-text text="Copyright ⓒ 2022 한국ESG협회 All rights reserved."></esg-text>
+            </section>
+            <section class="flex flex-wrap">
+                <img th:src="@{/fs/img/esg-logo-white.png}">
+                <img th:src="@{/fs/img/linkedin.png}">
+                <img th:src="@{/fs/img/tax-logo.png}">
+                <img th:src="@{/fs/img/civil-logo.png}">
+            </section>
         </footer>
     </th:block>
 </html>
