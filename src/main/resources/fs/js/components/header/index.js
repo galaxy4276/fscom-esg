@@ -204,6 +204,7 @@ drawerOpenCloseButton.addEventListener('click', () => {
 
   // redirect
   (() => {
+    $("#top-nav__dropdown--intro").click(() => location.href = "/introduce")
     $(".go-hello").click(() => location.href = "/introduce")
     $(".go-intro").click(() => location.href = "/introduce/executors")
     $(".go-vision").click(() => location.href = "/introduce/vision")
