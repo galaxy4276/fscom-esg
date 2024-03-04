@@ -16,13 +16,13 @@ public class CommonScheduled {
 
     }
 
-    @Scheduled(cron = "0 0 * * * *") // 1시간 마다 실행
-    public void hour01() throws Exception {
-        LOG.error("hour01");
-    }
-
-    @Scheduled(cron = "0 * * * * *") // 1분 마다 실행
-    public void minute01() throws Exception {
-        LOG.error("minute01");
-    }
+//    @Scheduled(cron = "0 0 * * * *") // 1시간 마다 실행
+//    public void hour01() throws Exception {
+//        LOG.error("hour01");
+//    }
+//
+//    @Scheduled(cron = "0 * * * * *") // 1분 마다 실행
+//    public void minute01() throws Exception {
+//        LOG.error("minute01");
+//    }
 }

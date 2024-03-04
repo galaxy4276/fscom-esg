@@ -4,6 +4,8 @@ import kr.fscom.esg.authentication.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
@@ -27,6 +29,7 @@ public class SecurityConfig {
         .accessDeniedHandler(accessDeniedHandler);
     http.csrf().disable();
     http.userDetailsService(userDetailsService);
+
     return http.build();
   }
 
@@ -34,6 +37,12 @@ public class SecurityConfig {
   public WebSecurityCustomizer webSecurityCustomizer() {
     // 정적 자원에 대해서 Security를 적용하지 않음으로 설정
     return (web) -> web.ignoring().requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+  }
+
+  @Bean
+  public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration)
+      throws Exception {
+    return configuration.getAuthenticationManager();
   }
 
   @Bean

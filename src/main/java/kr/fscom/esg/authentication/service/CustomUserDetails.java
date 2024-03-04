@@ -4,9 +4,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import kr.fscom.esg.user.domain.User;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+@Slf4j
 @RequiredArgsConstructor
 public class CustomUserDetails implements UserDetails {
   private final User user;
@@ -36,17 +38,21 @@ public class CustomUserDetails implements UserDetails {
 
   @Override
   public boolean isAccountNonLocked() {
-    return user.isActive();
+    // TODO: 계정 잠금 구현여부 확인 이 후 재개
+    boolean active = user.isActive();
+    log.info("isAccountNonLocked: {}", active);
+
+    return true;
   }
 
   @Override
   public boolean isCredentialsNonExpired() {
-    return user.isActive();
+    return true;
   }
 
   @Override
   public boolean isEnabled() {
-    return user.isActive();
+    return true;
   }
 
 }

@@ -1,6 +1,8 @@
 package kr.fscom.esg.user.repository;
 
 import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalInt;
 import kr.fscom.esg.authentication.domain.UserRole;
 import kr.fscom.esg.authentication.domain.dto.UserCreate;
 import kr.fscom.esg.user.domain.User;
@@ -21,13 +23,13 @@ public class UserRepository {
     mapper.createUser(userCreate);
   }
 
-  public User getByEmail(String email) {
+  public Optional<User> getByEmail(String email) {
     Map<String, Object> ret = mapper.getByEmail(email);
     if (ret == null) {
-      return null;
+      return Optional.empty();
     }
     log.info(ret.toString());
-    return mapUser(ret);
+    return Optional.of(mapUser(ret));
   }
 
   public User mapUser(Map<String, Object> resultMap) {

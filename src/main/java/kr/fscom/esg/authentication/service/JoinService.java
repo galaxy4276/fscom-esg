@@ -1,5 +1,6 @@
 package kr.fscom.esg.authentication.service;
 
+import java.util.Optional;
 import kr.fscom.esg.authentication.domain.UserRole;
 import kr.fscom.esg.authentication.domain.dto.EnterpriseDetails;
 import kr.fscom.esg.authentication.domain.dto.JoinRequest;
@@ -56,8 +57,8 @@ public class JoinService {
   }
 
   public void checkDuplicateUser(String email) {
-    User user = userRepository.getByEmail(email);
-    if (user != null) {
+    Optional<User> user = userRepository.getByEmail(email);
+    if (user.isPresent()) {
       throw ApplicationException.EXISTS_USER.create();
     }
   }
