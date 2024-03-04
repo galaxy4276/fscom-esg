@@ -5,8 +5,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import javax.validation.Valid;
 import kr.fscom.esg.authentication.domain.dto.Enterprise;
 import kr.fscom.esg.authentication.domain.dto.JoinRequest;
+import kr.fscom.esg.authentication.domain.dto.LoginRequest;
 import kr.fscom.esg.authentication.service.EnterpriseService;
 import kr.fscom.esg.authentication.service.JoinService;
+import kr.fscom.esg.authentication.service.LoginService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -27,6 +29,7 @@ public final class AuthApiController {
 
   private final JoinService joinService;
   private final EnterpriseService enterpriseService;
+  private final LoginService loginService;
 
   @Operation(summary = "회원가입 API")
   @PostMapping
@@ -40,6 +43,13 @@ public final class AuthApiController {
   public ResponseEntity<Enterprise> findEnterpriseApi(@RequestParam("licenseNumber") String licenseNumber) {
     Enterprise enterprise = enterpriseService.findEnterpriseDetails(licenseNumber);
     return ResponseEntity.ok(enterprise);
+  }
+
+  @Operation(summary = "로그인 API")
+  @PostMapping("/login")
+  public ResponseEntity<Void> loginApi(@RequestBody LoginRequest req) {
+    loginService.login(req);
+    return ResponseEntity.ok(null);
   }
 
 }
