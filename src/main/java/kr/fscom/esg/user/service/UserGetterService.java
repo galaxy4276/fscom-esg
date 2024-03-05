@@ -16,10 +16,15 @@ public class UserGetterService {
 
   private final UserMapper userMapper;
 
+  public User getSessionUserWithoutPassword() {
+    String email = getSessionEmail();
+    User user = getUser(email);
+    user.setNullPassword();
+    return user;
+  }
+
   public User getSessionUser() {
-    String email = (String) SecurityContextHolder.getContext()
-        .getAuthentication()
-        .getPrincipal();
+    String email = getSessionEmail();
     log.info("email: {}", email);
     return getUser(email);
   }
@@ -27,6 +32,12 @@ public class UserGetterService {
   public User getUser(String email) {
     return userMapper.getByEmail(email)
         .orElseThrow(ApplicationException.NOT_EXISTS_USER::create);
+  }
+
+  private String getSessionEmail() {
+    return (String) SecurityContextHolder.getContext()
+        .getAuthentication()
+        .getName();
   }
 
 }

@@ -15,10 +15,11 @@ public class User {
   private String password;
   private String name;
   private String tel;
-  private UserRole role;
   private String address;
   private boolean active;
+  private UserRole role;
   private Date createdAt;
+  private Long enterpriseId;
 
   public void setNullPassword() {
     password = null;

@@ -19,7 +19,7 @@ public class UserController {
   @Operation(summary = "사용자 정보 조회 API")
   @GetMapping
   public ResponseEntity<User> getUserApi() {
-    return ResponseEntity.ok(userGetterService.getSessionUser());
+    return ResponseEntity.ok(userGetterService.getSessionUserWithoutPassword());
   }
 
 }
