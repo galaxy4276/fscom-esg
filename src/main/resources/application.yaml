@@ -5,13 +5,13 @@ spring:
     max-file-size: 11MB
     max-request-size: 110MB
   thymeleaf:
-    prefix: file:src/main/resources/templates
+    prefix: classpath:templates/
     suffix: .html
     cache: false
   devtools:
     restart:
       enabled: true
-      additional-paths: file:src/main/resources/fs/
+      additional-paths: classpath:/fs/
     livereload:
       enabled: true
       thymeleaf:
@@ -32,7 +32,7 @@ spring:
       static-locations[1]: classpath:/fs/
 #      add-mappings: false
 server:
-  port: 8088
+  port: 10001
   servlet:
     session:
       timeout: 108000 # 60s * 60m * 30h
@@ -58,4 +58,5 @@ springdoc:
   swagger-ui:
     path: /doc
 esg:
-  upload-path: /Users/user/Documents/dev/esg
+  #  upload-path: /Users/user/Documents/dev/esg
+  upload-path: /home/apps/ESG_HOMEPAGE/uploads

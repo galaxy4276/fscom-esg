@@ -30,7 +30,7 @@ public class MvcConfig implements WebMvcConfigurer {
     @Override
     public void addResourceHandlers(final ResourceHandlerRegistry registry) {
         registry.addResourceHandler("/**").addResourceLocations("file:src/main/resources/templates/");
-        registry.addResourceHandler("/fs/**").addResourceLocations("file:src/main/resources/fs/");
+        registry.addResourceHandler("/fs/**").addResourceLocations("classpath:/fs/");
 
         registry
             .addResourceHandler("/esg-file/**")
