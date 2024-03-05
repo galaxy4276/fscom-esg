@@ -8,6 +8,7 @@ import kr.fscom.esg.authentication.domain.dto.UserCreate;
 import kr.fscom.esg.authentication.repository.AuthRepository;
 import kr.fscom.esg.common.ApplicationException;
 import kr.fscom.esg.user.domain.User;
+import kr.fscom.esg.user.repository.UserMapper;
 import kr.fscom.esg.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -17,7 +18,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class JoinService {
 
-  private final UserRepository userRepository;
+  private final UserMapper userMapper;
   private final AuthRepository authRepository;
   private final PasswordEncoder passwordEncoder;
 
@@ -37,7 +38,7 @@ public class JoinService {
     }
 
     UserCreate userCreate = UserCreate.create(req, encodedPassword, active, enterpriseDetailsId);
-    userRepository.createUser(userCreate);
+    userMapper.createUser(userCreate);
   }
 
   private Long updateEnterpriseDetails(EnterpriseDetails details) {
@@ -57,7 +58,7 @@ public class JoinService {
   }
 
   public void checkDuplicateUser(String email) {
-    Optional<User> user = userRepository.getByEmail(email);
+    Optional<User> user = userMapper.getByEmail(email);
     if (user.isPresent()) {
       throw ApplicationException.EXISTS_USER.create();
     }

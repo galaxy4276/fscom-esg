@@ -24,12 +24,7 @@ public class UserRepository {
   }
 
   public Optional<User> getByEmail(String email) {
-    Map<String, Object> ret = mapper.getByEmail(email);
-    if (ret == null) {
-      return Optional.empty();
-    }
-    log.info(ret.toString());
-    return Optional.of(mapUser(ret));
+    return mapper.getByEmail(email);
   }
 
   public User mapUser(Map<String, Object> resultMap) {
