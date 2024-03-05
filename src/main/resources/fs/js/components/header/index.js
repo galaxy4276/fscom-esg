@@ -1,4 +1,5 @@
 import $ from "jquery"
+import { UserService } from '../../utils/api';
 
 const drawerOpenCloseButton = document.getElementById('header__drawer--open-button');
 const hiddenInput = document.getElementById('header__drawer--button');
@@ -6,7 +7,6 @@ const hiddenInput = document.getElementById('header__drawer--button');
 drawerOpenCloseButton.addEventListener('click', () => {
   hiddenInput.click();
 });
-
 
 /**
  * url 경로에 따라 상단 네비게이션 메뉴의 fontWeight bold 처리
@@ -218,3 +218,17 @@ drawerOpenCloseButton.addEventListener('click', () => {
   })()
 
 })()
+
+  /**
+   * @description 사용자 정보 가져오고 UI와 동기화
+   */
+  (async () => {
+    try {
+      const user = await UserService.getUser();
+      if (!user) return;
+      const userIdentity = document.getElementById('user-identity');
+      userIdentity.innerText = `${user.name}님`;
+    } catch (error) {
+      console.error(error);
+    }
+})();

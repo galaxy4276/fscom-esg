@@ -1,4 +1,4 @@
-import { chatBotClient } from './client';
+import client, { chatBotClient } from './client';
 
 export const ChatBotService = {
   search: notes => {
@@ -6,3 +6,7 @@ export const ChatBotService = {
       .then(({ product_description }) => ({ answer: product_description.result }))
   }
 }
+
+export const UserService = {
+  getUser: () => client.get("/user"),
+};

@@ -8,9 +8,35 @@ const changeBgGray = () => {
 };
 
 pageHook(['/auth/login', '/auth/join'], () => {
-  changeBgGray();
-  // pageWrapper.style.paddingBottom = '480px';
+  changeBgGray()
+  console.log('얄로');
 });
+
+console.log("테스트 로그");
+pageHook('/auth/login', () => {
+  console.log("여기 실행됨");
+  const loginState = {
+    email: '',
+    password: '',
+  };
+
+  const loginButton = document.getElementById('login-btn');
+
+  const emailInput = document.getElementById('emailInput');
+  const passwordInput = document.getElementById('passwordInput');
+
+  emailInput.addEventListener('change', e => {
+    loginState.email = e.target.value;
+    console.log({ loginState });
+  });
+  passwordInput.addEventListener('change', e => {
+    loginState.password = e.target.value;
+  });
+
+  loginButton.onclick = () => {
+
+  };
+}, true);
 
 /**
  * 회원 가입 - 회원 구분 버튼 클릭 이벤트 처리
