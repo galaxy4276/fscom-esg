@@ -159,7 +159,6 @@ drawerOpenCloseButton.addEventListener('click', () => {
     });
 
     dropdown.addEventListener('mouseleave', (e) => {
-      console.log('dropdown mouseleave');
       if (!introEntered) {
         leave();
       }
@@ -174,14 +173,12 @@ drawerOpenCloseButton.addEventListener('click', () => {
       visitContent = true;
       const mouseOverEv = new MouseEvent('mouseover', { bubbles: false });
       dropdown.dispatchEvent(mouseOverEv);
-      console.log('content entered');
       enter();
     });
 
     content.addEventListener('mouseleave', (e) => {
       e.stopPropagation();
       visitContent = false;
-      console.log('content leave');
       leave();
     });
   });

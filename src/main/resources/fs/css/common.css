@@ -451,6 +451,7 @@ button {
     padding-right: 1.5em;
 }
 
-.userNavigatorDropdown {
-    right: 2em;
+#userNavigatorDropdown {
+    width: 120px !important;
+    min-width: 100px !important;
 }
