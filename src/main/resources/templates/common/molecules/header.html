@@ -51,6 +51,15 @@
                 <div id="user-identity" class="text-white px-[30px] font-bold h-full flex items-center justify-center">
                     로그인
                 </div>
+                <section class="userIdentificialSection hidden">
+                    <p class="under top-nav__dropdown" id="userNavigator"></p>
+                    <nav class="top-nav__dropdown--content" id="userNavigatorDropdown">
+                        <ul class="dropdown-content">
+                            <li class="top-nav__dropdown--menu go-user">내 정보</li>
+                            <li class="top-nav__dropdown--menu logout">로그아웃</li>
+                        </ul>
+                    </nav>
+                </section>
                 <button class="w-[72px] h-[72px] bg-black flex justify-center items-center" id="header__drawer--open-button">
                     <img th:src="@{/fs/svg/hamburger.svg}">
                 </button>

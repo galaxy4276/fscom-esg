@@ -442,3 +442,15 @@ button {
 
 .createArticleForm {
 }
+
+.userIdentificialSection {
+    height: 100%;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding-right: 1.5em;
+}
+
+.userNavigatorDropdown {
+    right: 2em;
+}

@@ -1,5 +1,6 @@
 import $ from "jquery"
 import { UserService } from '../../utils/api';
+import userUtils from '../../utils/user';
 
 const drawerOpenCloseButton = document.getElementById('header__drawer--open-button');
 const hiddenInput = document.getElementById('header__drawer--button');
@@ -122,25 +123,6 @@ drawerOpenCloseButton.addEventListener('click', () => {
 })();
 
 /**
- * 사용자 헤더 로그인 섹션
- */
-(() => {
-  const user = localStorage.getItem('user');
-  const userIdentity = document.getElementById('user-identity');
-
-  if (!user) {
-    userIdentity.textContent = '로그인';
-    userIdentity.addEventListener('click', () => {
-      location.href = '/auth/login';
-    });
-    userIdentity.style.cursor = 'pointer';
-    return;
-  }
-
-  userIdentity.textContent = `${user.name}님 환영합니다`;
-})();
-
-/**
  * @variation 헤더 드롭다운 제어
  */
 (() => {
@@ -153,6 +135,9 @@ drawerOpenCloseButton.addEventListener('click', () => {
 
     // 사업
     [document.getElementById('top-nav__dropdown--content-work'), document.getElementById('top-nav__dropdown--work')],
+
+    // 로그인된 사용자
+    [document.getElementById('userNavigatorDropdown'), document.getElementById('userNavigator')],
   ];
 
   topNavMenus.forEach(([content, dropdown]) => {
@@ -204,6 +189,9 @@ drawerOpenCloseButton.addEventListener('click', () => {
 
   // redirect
   (() => {
+    const userIdent = $('#user-identity')
+    userIdent.click(() => location.href = '/auth/login');
+
     $("#top-nav__dropdown--intro").click(() => location.href = "/introduce")
     $(".go-hello").click(() => location.href = "/introduce")
     $(".go-intro").click(() => location.href = "/introduce/executors")
@@ -215,17 +203,32 @@ drawerOpenCloseButton.addEventListener('click', () => {
     $(".go-edu").click(() => location.href = "/business/edu")
     $(".go-news").click(() => location.href = "/news")
     $(".go-give").click(() => location.href = "/sponsor")
+    $('.logout').click(() => {
+      userUtils.logout();
+      location.reload();
+    })
   })()
 
 })()
 
 const syncUser = async () => {
   try {
-    const user = await UserService.getUser();
-    const userIdentity = document.getElementById('user-identity');
+    const user = userUtils.get();
+    const userIdentity = document.getElementById('userNavigator');
     userIdentity.innerText = `${user.name}님`;
   } catch (error) {
     console.error(error);
   }
 };
-syncUser();
+
+(() => {
+  const loggedIn = userUtils.checkLoggedIn()
+  if (loggedIn) {
+    const noneUserSection = document.querySelector('#user-identity');
+    const userIdentificialSection = document.querySelector('.userIdentificialSection');
+    noneUserSection.style.display = 'none';
+    userIdentificialSection.classList.remove('hidden');
+    syncUser();
+  }
+})()
+
