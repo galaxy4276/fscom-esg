@@ -1,8 +1,8 @@
-import client, { chatBotClient } from './client';
+import client from './client';
 
 export const ChatBotService = {
   search: notes => {
-    return chatBotClient.post("/ESG", { notes })
+    return client.post("/chatbot", { notes })
       .then(({ product_description }) => ({ answer: product_description.result }))
   }
 }
