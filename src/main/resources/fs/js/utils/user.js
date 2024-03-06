@@ -6,7 +6,7 @@ const userUtils = {
       ...user,
       isLoggedIn: true
     };
-    localStorage.setItem("user", managed);
+    localStorage.setItem("user", JSON.stringify(managed));
   },
   update: user => {
     const storage = localStorage.getItem("user")
@@ -19,7 +19,8 @@ const userUtils = {
   },
   login: async (email, password) => {
     try {
-      const user = await UserService.login(email, password)
+      await UserService.login(email, password);
+      const user = await UserService.getUser();
       userUtils.save(user);
     } catch (error) {
       throw Error(error);
@@ -27,6 +28,9 @@ const userUtils = {
   },
   logout: () => {
     localStorage.removeItem('user');
+  },
+  checkLoggedIn: () => {
+    return localStorage.getItem("user") !== null;
   }
 }
 

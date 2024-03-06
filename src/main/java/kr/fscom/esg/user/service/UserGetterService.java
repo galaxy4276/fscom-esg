@@ -18,6 +18,7 @@ public class UserGetterService {
 
   public User getSessionUserWithoutPassword() {
     String email = getSessionEmail();
+    log.debug("email: {}", email);
     User user = getUser(email);
     user.setNullPassword();
     return user;

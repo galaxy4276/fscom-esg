@@ -2,6 +2,7 @@ import pageHook from '../utils/pageHook';
 import formatter from '../utils/formatter';
 import validator from '../utils/validator';
 import client from '../utils/client';
+import userUtils from '../utils/user';
 
 const changeBgGray = () => {
   document.querySelector('body').style.backgroundColor = '#FAFAFA';
@@ -12,6 +13,11 @@ pageHook(['/auth/login', '/auth/join'], () => {
 });
 
 pageHook('/auth/login', () => {
+  const loggedIn = userUtils.checkLoggedIn();
+  if (loggedIn) {
+    location.href = '/';
+  }
+
   const loginState = {
     email: '',
     password: '',
@@ -42,7 +48,13 @@ pageHook('/auth/login', () => {
   });
 
   loginButton.onclick = async () => {
-    
+    try {
+      await userUtils.login(loginState.email, loginState.password);
+      location.href = '/';
+    } catch (error) {
+      console.log(error);
+      alert(error.message);
+    }
   };
 }, true);
 
