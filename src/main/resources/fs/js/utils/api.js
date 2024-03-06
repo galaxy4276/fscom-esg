@@ -8,5 +8,6 @@ export const ChatBotService = {
 }
 
 export const UserService = {
-  getUser: () => client.get("/user"),
+  login: (email, password) => client.post('/auth/login', { email, password }),
+  getUser: () => client.get('/user'),
 };

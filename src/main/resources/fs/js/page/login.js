@@ -9,12 +9,9 @@ const changeBgGray = () => {
 
 pageHook(['/auth/login', '/auth/join'], () => {
   changeBgGray()
-  console.log('얄로');
 });
 
-console.log("테스트 로그");
 pageHook('/auth/login', () => {
-  console.log("여기 실행됨");
   const loginState = {
     email: '',
     password: '',
@@ -25,16 +22,27 @@ pageHook('/auth/login', () => {
   const emailInput = document.getElementById('emailInput');
   const passwordInput = document.getElementById('passwordInput');
 
+  const update = () => {
+    console.log({ loginState });
+    const pass = Object.values(loginState).every(v => v.trim() !== '')
+    if (!pass) {
+      loginButton.setAttribute("disabled", "disabled");
+      return;
+    }
+    loginButton.removeAttribute("disabled");
+  }
+
   emailInput.addEventListener('change', e => {
     loginState.email = e.target.value;
-    console.log({ loginState });
+    update();
   });
   passwordInput.addEventListener('change', e => {
     loginState.password = e.target.value;
+    update();
   });
 
-  loginButton.onclick = () => {
-
+  loginButton.onclick = async () => {
+    
   };
 }, true);
 

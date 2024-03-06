@@ -219,16 +219,13 @@ drawerOpenCloseButton.addEventListener('click', () => {
 
 })()
 
-  /**
-   * @description 사용자 정보 가져오고 UI와 동기화
-   */
-  (async () => {
-    try {
-      const user = await UserService.getUser();
-      if (!user) return;
-      const userIdentity = document.getElementById('user-identity');
-      userIdentity.innerText = `${user.name}님`;
-    } catch (error) {
-      console.error(error);
-    }
-})();
+const syncUser = async () => {
+  try {
+    const user = await UserService.getUser();
+    const userIdentity = document.getElementById('user-identity');
+    userIdentity.innerText = `${user.name}님`;
+  } catch (error) {
+    console.error(error);
+  }
+};
+syncUser();
