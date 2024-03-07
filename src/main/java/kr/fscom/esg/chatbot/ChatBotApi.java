@@ -2,6 +2,7 @@ package kr.fscom.esg.chatbot;
 
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,6 +18,7 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 @RequestMapping("/api/chatbot")
 @RequiredArgsConstructor
+@Slf4j
 public class ChatBotApi {
 
   @Operation(summary = "챗봇 질문 요청 API")
@@ -31,7 +33,11 @@ public class ChatBotApi {
     restTemplate.setRequestFactory(factory);
 
     HttpEntity<QueryRequest> httpEntity = new HttpEntity<>(queryRequest, headers);
-    return restTemplate.exchange("http://1.223.40.19:1729/ESG", HttpMethod.POST, httpEntity, QueryResponse.class);
+    QueryResponse res =
+        restTemplate.exchange("http://1.223.40.19:1729/ESG", HttpMethod.POST, httpEntity,
+            QueryResponse.class).getBody();
+    log.debug("res: {}", res.toString());
+    return ResponseEntity.ok(res);
   }
 
 }
