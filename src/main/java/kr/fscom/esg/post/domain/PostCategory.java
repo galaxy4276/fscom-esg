@@ -1,5 +1,13 @@
 package kr.fscom.esg.post.domain;
 
+import lombok.Getter;
+
+@Getter
 public enum PostCategory {
-  NEWS
+  NEWS;
+
+  public static PostCategory from(String s) {
+    return PostCategory.valueOf(s.toUpperCase());
+  }
+
 }
