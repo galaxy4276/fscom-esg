@@ -33,6 +33,7 @@ CREATE TABLE IF NOT EXISTS `user_enterprise_details` (
 
 CREATE TABLE IF NOT EXISTS `posts` (
      `id` integer PRIMARY KEY AUTO_INCREMENT,
+     title varchar NOT NULL COMMENT '게시글 제목',
      `text` text COMMENT '게시글 콘텐츠',
      `category` ENUM ('NEWS') COMMENT '게시글 구분',
     `created_at` timestamp COMMENT '생성일',
@@ -43,3 +44,6 @@ CREATE TABLE IF NOT EXISTS `posts` (
 ALTER TABLE `user_enterprise_details` ADD FOREIGN KEY (`id`) REFERENCES `users` (`enterprise_id`);
 
 ALTER TABLE `users` ADD FOREIGN KEY (`id`) REFERENCES `posts` (`user_id`);
+
+# posts 테이블에 title column 추가
+ALTER TABLE posts ADD title varchar(100);
