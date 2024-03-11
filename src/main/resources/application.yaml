@@ -19,7 +19,7 @@ spring:
       static-locations[1]: classpath:/fs/
 #      add-mappings: false
 server:
-  port: 10001
+  port: 8088
   servlet:
     session:
       timeout: 108000 # 60s * 60m * 30h
@@ -45,5 +45,5 @@ springdoc:
   swagger-ui:
     path: /doc
 esg:
-  #  upload-path: /Users/user/Documents/dev/esg
-  upload-path: /home/apps/ESG_HOMEPAGE/uploads
+    upload-path: /Users/user/Documents/dev/esg
+#  upload-path: /home/apps/ESG_HOMEPAGE/uploads

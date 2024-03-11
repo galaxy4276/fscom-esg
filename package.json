@@ -45,6 +45,7 @@
     "globby": "^14.0.0",
     "graceful-fs": "^4.2.11",
     "hasown": "^2.0.0",
+    "highlight.js": "^11.9.0",
     "ignore": "^5.3.0",
     "inflight": "^1.0.6",
     "inherits": "^2.0.4",
