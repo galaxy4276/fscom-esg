@@ -11,13 +11,15 @@ public class PostCreation {
   private final String content;
   private final PostCategory category;
   private final Date createdAt;
+  private final Long userId;
 
-  public static PostCreation from(PostCreationRequest req) {
+  public static PostCreation from(PostCreationRequest req, Long userId) {
     return new PostCreation(
         req.getTitle(),
         req.getContent(),
         req.getCategory(),
-        new Date()
+        new Date(),
+        userId
     );
   }
 

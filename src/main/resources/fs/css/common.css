@@ -446,6 +446,7 @@ button {
 .userIdentificialSection {
     height: 100%;
     color: white;
+    font-weight: 500;
     display: flex;
     align-items: center;
     padding-right: 1.5em;

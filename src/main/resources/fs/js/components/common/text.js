@@ -9,7 +9,6 @@ class Text extends HTMLElement {
     const hrefProp = this.getAttribute('href');
     const classNames = this.getAttribute('class');
 
-    console.log("[esg-text] connectedCallback 진입");
     this.innerHTML = `
       <span class="${classNames}">${text}</span>
     `

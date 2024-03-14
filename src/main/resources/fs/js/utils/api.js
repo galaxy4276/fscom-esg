@@ -11,3 +11,8 @@ export const UserService = {
   login: (email, password) => client.post('/auth/login', { email, password }),
   getUser: () => client.get('/user'),
 };
+
+
+export const PostService = {
+  create: body => client.post('/posts', body),
+};

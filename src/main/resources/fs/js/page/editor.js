@@ -1,16 +1,55 @@
-import * as Quill from "quill"
+import * as Quill from 'quill';
+import pageHook from '../utils/pageHook';
+import qs from 'query-string';
+import { PostService } from '../utils/api';
 
 const editorElm = document.getElementById('editor');
+
+const state = {
+  title: '',
+  content: '',
+  imageIds: [],
+};
 
 (() => {
   if (!editorElm) return;
   const quill = new Quill('#editor', {
     theme: 'snow',
+    modules: {
+      syntax: true,
+      toolbar: '#toolbar-container',
+    },
+    placeholder: '게시글 내용을 입력해주세요'
   });
 
   quill.on('text-change', (delta, oldDelta, source) => {
-    console.log({ delta, oldDelta, source });
+    console.log({
+      delta,
+      oldDelta,
+      source,
+      innerContent: quill.editor.innerHTML,
+      quill,
+    });
+    const html = quill.getText();
+    state.content = html;
   });
+
+  document.querySelector('.articleTitle').addEventListener('change', e => {
+    state.title = e.target.value;
+  });
+
+  // 이미지 업로드 툴바 메뉴 이벤트 덮어쓰기
+  // const fileUploadInput = document.querySelector('#fileUploadInput');
+  // const imageUploadButton = document.querySelector('.ql-image');
+  // const clonedImageUploadButton = imageUploadButton.cloneNode(true);
+  // imageUploadButton.replaceWith(clonedImageUploadButton);
+  // clonedImageUploadButton.addEventListener('click', () => {
+  //   fileUploadInput.click();
+  // });
+  // fileUploadInput.addEventListener('change', e => {
+  //   const imageFile = e.target.file;
+  //   console.log({ imageFile });
+  // });
 
   const previousBtns = Array.from(document.getElementsByClassName('previous-btn'));
   previousBtns.forEach(b => {
@@ -20,6 +59,43 @@ const editorElm = document.getElementById('editor');
     });
   });
 })();
+
+// 게시글 작성 요청
+pageHook(['post'], () => {
+  const postSubmitButton = document.getElementById('postSubmitButton');
+
+  const submit = async (e) => {
+    e.preventDefault();
+    const emptyTitle = state.title.trim() === '';
+    const emptyContent = state.content.trim() === '';
+
+    if (emptyTitle) {
+      return alert('게시글 제목을 입력하세요');
+    }
+
+    if (emptyContent) {
+      return alert('게시글 내용을 입력하세요');
+    }
+
+    try {
+      const { category } = qs.parse(location.search);
+      console.log({ category });
+      const body = {
+        category,
+        ...state,
+      };
+      await PostService.create(body);
+      alert("게시글이 등록되었습니다.");
+    } catch (error) {
+      console.error(error);
+      alert('서버 오류가 발생하였습니다.');
+    } finally {
+      history.back();
+    }
+  }
+
+  postSubmitButton.addEventListener('click', submit);
+});
 
 (() => {
   const postWriteBtns = Array.from(document.getElementsByClassName('postWriteBtn'));
