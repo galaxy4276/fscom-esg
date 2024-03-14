@@ -6,11 +6,11 @@
         VALUES (#{content}, #{title}, #{category}, #{createdAt}, NULL, #{userId});
     </insert>
 
-    <select id="getPost" parameterType="">
+    <select id="getPost" parameterType="java.lang.Long">
         SELECT * FROM posts p WHERE p.id = #{id}
     </select>
 
-    <select id="getPosts" parameterType="">
+    <select id="getPosts">
         SELECT *
         FROM posts p
         WHERE p.category = #{category}

@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @RequestMapping("/post")
-public class PostController {
+public class PostModelController {
 
   @GetMapping
   public ModelAndView postWritePage() {
