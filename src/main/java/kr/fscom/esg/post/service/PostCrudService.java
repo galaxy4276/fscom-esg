@@ -34,7 +34,7 @@ public class PostCrudService {
     String c = category.name().toLowerCase();
     Long totalCount = postMapper.getTotalCount(c).getCount();
     List<PostSummary> posts = postMapper.getPosts(c, pageable.getPageNumber());
-    return new PageImpl(posts, pageable, totalCount);
+    return new PageImpl<>(posts, pageable, totalCount);
   }
 
 }

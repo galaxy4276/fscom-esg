@@ -17,3 +17,15 @@ export const PostService = {
   create: body => client.post('/posts', body),
   getList: (category, offset) => client.get(`/posts?category=${category}&page=${offset}&size=10`)
 };
+
+
+export const FileService = {
+  upload: file => {
+    const formData = new FormData();
+    formData.set('file', file);
+    return client.post('/file', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data'
+      },
+    });
+  }};

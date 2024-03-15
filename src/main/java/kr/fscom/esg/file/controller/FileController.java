@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name = "파일 업로드 API")
 @RestController
-@RequestMapping("/file")
+@RequestMapping("/api/file")
 @RequiredArgsConstructor
 public class FileController {
 

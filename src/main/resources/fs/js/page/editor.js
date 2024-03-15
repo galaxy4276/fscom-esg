@@ -1,7 +1,8 @@
 import * as Quill from 'quill';
 import pageHook from '../utils/pageHook';
 import qs from 'query-string';
-import { PostService } from '../utils/api';
+import { FileService, PostService } from '../utils/api';
+import { pushErrorDialog } from '../utils/dialog';
 
 const editorElm = document.getElementById('editor');
 
@@ -39,17 +40,25 @@ const state = {
   });
 
   // 이미지 업로드 툴바 메뉴 이벤트 덮어쓰기
-  // const fileUploadInput = document.querySelector('#fileUploadInput');
-  // const imageUploadButton = document.querySelector('.ql-image');
-  // const clonedImageUploadButton = imageUploadButton.cloneNode(true);
-  // imageUploadButton.replaceWith(clonedImageUploadButton);
-  // clonedImageUploadButton.addEventListener('click', () => {
-  //   fileUploadInput.click();
-  // });
-  // fileUploadInput.addEventListener('change', e => {
-  //   const imageFile = e.target.file;
-  //   console.log({ imageFile });
-  // });
+  const fileUploadInput = document.querySelector('#fileUploadInput');
+  const imageUploadButton = document.querySelector('.ql-image');
+  const clonedImageUploadButton = imageUploadButton.cloneNode(true);
+  imageUploadButton.replaceWith(clonedImageUploadButton);
+  clonedImageUploadButton.addEventListener('click', () => {
+    fileUploadInput.click();
+  });
+  fileUploadInput.addEventListener('change', async e => {
+    const imageFile = e.target.files[0];
+    console.log({ imageFile });
+    try {
+      const { location } = await FileService.upload(imageFile);
+      console.log({ location });
+      quill.insertEmbed(0, 'image', location);
+    } catch (err) {
+      console.error(err);
+      pushErrorDialog();
+    }
+  });
 
   const previousBtns = Array.from(document.getElementsByClassName('previous-btn'));
   previousBtns.forEach(b => {
