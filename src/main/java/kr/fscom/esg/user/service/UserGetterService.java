@@ -3,7 +3,6 @@ package kr.fscom.esg.user.service;
 import kr.fscom.esg.common.ApplicationException;
 import kr.fscom.esg.user.domain.User;
 import kr.fscom.esg.user.repository.UserMapper;
-import kr.fscom.esg.user.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.context.SecurityContextHolder;

@@ -5,6 +5,7 @@ import java.util.Optional;
 import kr.fscom.esg.post.domain.Post;
 import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreation;
+import kr.fscom.esg.post.domain.PostSummary;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
@@ -15,6 +16,7 @@ public interface PostMapper {
 
   Optional<Post> getPost(@Param("id") Long id);
 
-  List<Post> getPosts(@Param("category") String category, @Param("page") int page);
+  List<PostSummary> getPosts(@Param("category") String category, @Param("page") int page);
 
+  Long getTotalCount(String category);
 }

@@ -7,13 +7,19 @@
     </insert>
 
     <select id="getPost" parameterType="java.lang.Long">
-        SELECT * FROM posts p WHERE p.id = #{id}
+        SELECT * FROM posts p WHERE p.id = #{id} AND p.deleted_at IS NOT NULL;
     </select>
 
-    <select id="getPosts">
-        SELECT *
+    <select id="getTotalCount">
+        SELECT COUNT(id)
         FROM posts p
-        WHERE p.category = #{category}
+        WHERE category = #{category} AND p.deleted_at IS NOT NULL;
+    </select>
+
+    <select id="getPosts" resultType="kr.fscom.esg.post.domain.PostSummary">
+        SELECT id as id, title as title, category as category, created_at as createdAt, user_id as userId
+        FROM posts p
+        WHERE p.category = #{category} AND p.deleted_at IS NOT NULL
         ORDER BY p.category DESC
         LIMIT 10
         OFFSET #{page}
