@@ -1,6 +1,7 @@
 package kr.fscom.esg.chatbot;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
+@Tag(name = "외부 챗봇 API(FastAPI)")
 @RestController
 @RequestMapping("/api/chatbot")
 @RequiredArgsConstructor

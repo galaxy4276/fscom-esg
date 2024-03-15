@@ -1,6 +1,7 @@
 package kr.fscom.esg.post.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreationRequest;
 import kr.fscom.esg.post.domain.PostSummary;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+@Tag(name = "게시글 REST API")
 @RestController
 @RequestMapping("/api/posts")
 @RequiredArgsConstructor
