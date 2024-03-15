@@ -1,13 +1,13 @@
 package kr.fscom.esg.post.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
-import java.awt.print.Pageable;
-import java.util.List;
 import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreationRequest;
 import kr.fscom.esg.post.domain.PostSummary;
 import kr.fscom.esg.post.service.PostCrudService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,11 +35,11 @@ public class PostController {
 
   @Operation(summary = "게시글 조회")
   @GetMapping
-  public ResponseEntity<List<PostSummary>> getPosts(
+  public ResponseEntity<PageImpl<PostSummary>> getPosts(
       @RequestParam(name = "category")PostCategory category,
       Pageable pageable
   ) {
-    List<PostSummary> posts = postCrudService.getList(pageable, category);
+    PageImpl<PostSummary> posts = postCrudService.getList(pageable, category);
     return ResponseEntity.ok(posts);
   }
 

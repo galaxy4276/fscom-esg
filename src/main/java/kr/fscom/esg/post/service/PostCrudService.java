@@ -1,7 +1,6 @@
 package kr.fscom.esg.post.service;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
-import java.awt.print.Pageable;
 import java.util.List;
 import kr.fscom.esg.authentication.service.SessionManager;
 import kr.fscom.esg.post.domain.PostCategory;
@@ -12,6 +11,8 @@ import kr.fscom.esg.post.repository.PostMapper;
 import kr.fscom.esg.user.domain.User;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 @Tag(name = "게시글 API")
@@ -29,9 +30,11 @@ public class PostCrudService {
     postMapper.createPost(creation);
   }
 
-  public List<PostSummary> getList(Pageable pageable, PostCategory category) {
+  public PageImpl<PostSummary> getList(Pageable pageable, PostCategory category) {
     String c = category.name().toLowerCase();
-    return postMapper.getPosts(c, pageable.getNumberOfPages());
+    Long totalCount = postMapper.getTotalCount(c);
+    List<PostSummary> posts = postMapper.getPosts(c, pageable.getPageNumber());
+    return new PageImpl(posts, pageable, totalCount);
   }
 
 }

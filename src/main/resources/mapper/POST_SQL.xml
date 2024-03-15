@@ -11,7 +11,7 @@
     </select>
 
     <select id="getTotalCount">
-        SELECT COUNT(id)
+        SELECT COUNT(p.id)
         FROM posts p
         WHERE category = #{category} AND p.deleted_at IS NOT NULL;
     </select>
