@@ -3,6 +3,7 @@ package kr.fscom.esg.post.service;
 import java.awt.print.Pageable;
 import java.util.List;
 import kr.fscom.esg.authentication.service.CustomUserDetails;
+import kr.fscom.esg.authentication.service.SessionManager;
 import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreation;
 import kr.fscom.esg.post.domain.PostCreationRequest;
@@ -24,13 +25,10 @@ public class PostCrudService {
 
   private final PostMapper postMapper;
   private final UserGetterService userGetterService;
+  private final SessionManager sessionManager;
 
   public void create(PostCreationRequest request) {
-    Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-    CustomUserDetails principal = (CustomUserDetails) authentication.getPrincipal();
-    String email = principal.getUsername();
-    User user = userGetterService.getUser(email);
-    log.info("userId: {}", user.getId());
+    User user = sessionManager.getSessionUser();
     PostCreation creation = PostCreation.from(request, user.getId());
     postMapper.createPost(creation);
   }
