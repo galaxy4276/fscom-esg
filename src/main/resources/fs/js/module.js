@@ -10,6 +10,7 @@ import './utils/api'
 import './page/main';
 import './page/login';
 import './page/editor';
+import './page/news';
 
 // component.js
 import './components';

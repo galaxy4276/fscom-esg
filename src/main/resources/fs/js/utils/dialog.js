@@ -63,6 +63,19 @@ export const pushDialog = (el, config = undefined) => {
     }
 
   }
+};
 
-
+export const pushErrorDialog = () => {
+  const content = document.createElement('div');
+  content.innerHTML = `
+    <div class="flex justify-center items-center">
+      <span>서버 에러가 발생하였습니다</span>
+    </div>
+  `;
+  pushDialog(content, {
+    cancel: false,
+    okCb: () => {
+      history.back();
+    },
+  });
 };

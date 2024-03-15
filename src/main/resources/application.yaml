@@ -13,6 +13,8 @@ spring:
     username: root
     password: dpvmdptm1!
   sql.init.platform: mariadb
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
   web:
     resources:
       static-locations[0]: file:src/main/resources/fs/

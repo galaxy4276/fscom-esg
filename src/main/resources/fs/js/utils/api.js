@@ -15,4 +15,5 @@ export const UserService = {
 
 export const PostService = {
   create: body => client.post('/posts', body),
+  getList: (category, offset) => client.get(`/posts?category=${category}&page=${offset}&size=10`)
 };
