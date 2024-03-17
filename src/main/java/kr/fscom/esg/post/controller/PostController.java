@@ -2,6 +2,7 @@ package kr.fscom.esg.post.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import kr.fscom.esg.post.domain.Post;
 import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreationRequest;
 import kr.fscom.esg.post.domain.PostSummary;
@@ -15,6 +16,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,7 +40,7 @@ public class PostController {
     return ResponseEntity.status(HttpStatus.CREATED).build();
   }
 
-  @Operation(summary = "게시글 조회")
+  @Operation(summary = "게시글 리스트 조회")
   @GetMapping
   public ResponseEntity<PageImpl<PostSummary>> getPosts(
       @RequestParam(name = "category")PostCategory category,
@@ -46,6 +48,13 @@ public class PostController {
   ) {
     PageImpl<PostSummary> posts = postCrudService.getList(pageable, category);
     return ResponseEntity.ok(posts);
+  }
+
+  @Operation(summary = "게시글 상세 조회")
+  @GetMapping("/{id}")
+  public ResponseEntity<Post> getPost(@PathVariable Long id) {
+    Post post = postCrudService.getPost(id);
+    return ResponseEntity.ok(post);
   }
 
 }

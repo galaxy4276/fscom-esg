@@ -4,8 +4,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import java.util.Objects;
 import kr.fscom.esg.authentication.service.SessionManager;
+import kr.fscom.esg.common.ApplicationException;
 import kr.fscom.esg.file.domain.EsgFile;
 import kr.fscom.esg.file.service.FileStorageHandler;
+import kr.fscom.esg.post.domain.Post;
 import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreation;
 import kr.fscom.esg.post.domain.PostCreationRequest;
@@ -42,6 +44,11 @@ public class PostCrudService {
     Long totalCount = postMapper.getTotalCount(c).getCount();
     List<PostSummary> posts = postMapper.getPosts(c, pageable.getPageNumber());
     return new PageImpl<>(posts, pageable, totalCount);
+  }
+
+  public Post getPost(Long id) {
+    return postMapper.getPost(id)
+        .orElseThrow(ApplicationException.NOT_FOUND::create);
   }
 
 }
