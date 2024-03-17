@@ -1,5 +1,6 @@
 package kr.fscom.esg.post.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -11,6 +12,7 @@ public class Post {
   private String text;
   private String title;
   private PostCategory category;
+  @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
   private Date createdAt;
   private Date deletedAt;
   private Long userId;
