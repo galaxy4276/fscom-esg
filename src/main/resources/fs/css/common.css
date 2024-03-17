@@ -456,3 +456,7 @@ button {
     width: 120px !important;
     min-width: 100px !important;
 }
+
+.postSection {
+    width: 100%;
+}

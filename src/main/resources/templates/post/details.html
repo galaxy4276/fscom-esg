@@ -14,7 +14,14 @@
 <th:block layout:fragment="content">
   <content-header title="한국ESG협회"></content-header>
   <article-layout data-tags="게시글" id="postSection">
+    <section class="flex flex-col justify-center">
+      <esg-text id="postTitle" size="large" color="title" bold="true"></esg-text> <!-- 제목 -->
+      <esg-text id="postDate" size="medium" color="paragraph"></esg-text> <!-- 작성일 -->
+      <div class='divider'></div>
+    </section>
 
+    <section>
+    </section>
   </article-layout>
 </th:block>
 
