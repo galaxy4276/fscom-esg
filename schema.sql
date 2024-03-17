@@ -37,6 +37,7 @@ CREATE TABLE IF NOT EXISTS `posts` (
      `text` text COMMENT '게시글 콘텐츠',
      `category` ENUM ('NEWS') COMMENT '게시글 구분',
     `created_at` timestamp COMMENT '생성일',
+    `represent_file_url` varchar COMMENT '대표 이미지 URL',
     `deleted_at` timestamp COMMENT '삭제일',
     `user_id` integer COMMENT '작성자 FK'
     );
@@ -47,3 +48,4 @@ ALTER TABLE `users` ADD FOREIGN KEY (`id`) REFERENCES `posts` (`user_id`);
 
 # posts 테이블에 title column 추가
 ALTER TABLE posts ADD title varchar(100);
+ALTER TABLE posts ADD represent_file_url varchar(100);

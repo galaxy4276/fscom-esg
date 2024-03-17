@@ -17,10 +17,17 @@
 
       <article-layout data-tags="게시글 작성" class="w-full">
         <form class="flex flex-col w-full gap-y-[20px] createArticleForm">
-          <section class="flex createArticleTitleSection">
+          <section class="flex createArticleTitleSection flex-col gap-y-4">
             <label class="input input-bordered flex items-center gap-2 w-full">
               <esg-text size="medium" bold="true" color="title" text="제목"></esg-text>
               <input type="text" class="grow articleTitle" placeholder="게시글 제목">
+            </label>
+
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">대표 이미지 선택</span>
+              </div>
+              <input type="file" class="file-input file-input-bordered w-full max-w-xs postRepresentImageUploader" />
             </label>
           </section>
           <section class='editorLayout'>
