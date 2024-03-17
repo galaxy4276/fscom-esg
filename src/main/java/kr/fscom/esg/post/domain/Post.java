@@ -9,6 +9,7 @@ import lombok.Data;
 public class Post {
   private Long id;
   private String text;
+  private String title;
   private PostCategory category;
   private Date createdAt;
   private Date deletedAt;
