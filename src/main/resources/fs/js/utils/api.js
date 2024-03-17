@@ -14,7 +14,18 @@ export const UserService = {
 
 
 export const PostService = {
-  create: body => client.post('/posts', body),
+  create: body => {
+    const formData = new FormData();
+    formData.append("title", body.title);
+    formData.append("content", body.content);
+    formData.append("category", body.category);
+    formData.append("representFile", body.representFile);
+    return client.post('/posts', formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
+  },
   getList: (category, offset) => client.get(`/posts?category=${category}&page=${offset}&size=10`)
 };
 

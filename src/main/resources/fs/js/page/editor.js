@@ -9,7 +9,7 @@ const editorElm = document.getElementById('editor');
 const state = {
   title: '',
   content: '',
-  imageIds: [],
+  representFile: null,
 };
 
 (() => {
@@ -40,25 +40,25 @@ const state = {
   });
 
   // 이미지 업로드 툴바 메뉴 이벤트 덮어쓰기
-  const fileUploadInput = document.querySelector('#fileUploadInput');
-  const imageUploadButton = document.querySelector('.ql-image');
-  const clonedImageUploadButton = imageUploadButton.cloneNode(true);
-  imageUploadButton.replaceWith(clonedImageUploadButton);
-  clonedImageUploadButton.addEventListener('click', () => {
-    fileUploadInput.click();
-  });
-  fileUploadInput.addEventListener('change', async e => {
-    const imageFile = e.target.files[0];
-    console.log({ imageFile });
-    try {
-      const { location } = await FileService.upload(imageFile);
-      console.log({ location });
-      quill.insertEmbed(0, 'image', location);
-    } catch (err) {
-      console.error(err);
-      pushErrorDialog();
-    }
-  });
+  // const fileUploadInput = document.querySelector('#fileUploadInput');
+  // const imageUploadButton = document.querySelector('.ql-image');
+  // const clonedImageUploadButton = imageUploadButton.cloneNode(true);
+  // imageUploadButton.replaceWith(clonedImageUploadButton);
+  // clonedImageUploadButton.addEventListener('click', () => {
+  //   fileUploadInput.click();
+  // });
+  // fileUploadInput.addEventListener('change', async e => {
+  //   const imageFile = e.target.files[0];
+  //   console.log({ imageFile });
+  //   try {
+  //     const { location } = await FileService.upload(imageFile);
+  //     console.log({ location });
+  //     quill.insertEmbed(0, 'image', location);
+  //   } catch (err) {
+  //     console.error(err);
+  //     pushErrorDialog();
+  //   }
+  // });
 
   const previousBtns = Array.from(document.getElementsByClassName('previous-btn'));
   previousBtns.forEach(b => {
@@ -72,6 +72,7 @@ const state = {
 // 게시글 작성 요청
 pageHook(['post'], () => {
   const postSubmitButton = document.getElementById('postSubmitButton');
+  const fileUploader = document.querySelector('.postRepresentImageUploader');
 
   const submit = async (e) => {
     e.preventDefault();
@@ -88,22 +89,27 @@ pageHook(['post'], () => {
 
     try {
       const { category } = qs.parse(location.search);
-      console.log({ category });
       const body = {
         category,
         ...state,
       };
       await PostService.create(body);
-      alert("게시글이 등록되었습니다.");
+      alert('게시글이 등록되었습니다.');
     } catch (error) {
       console.error(error);
       alert('서버 오류가 발생하였습니다.');
     } finally {
-      history.back();
+      // history.back();
     }
   }
 
   postSubmitButton.addEventListener('click', submit);
+  fileUploader.addEventListener('change', e => {
+    const file = e.target.files[0];
+    if (file) {
+      state.representFile = file;
+    }
+  })
 });
 
 (() => {

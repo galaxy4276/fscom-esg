@@ -14,4 +14,8 @@ public class PostModelController {
     return new ModelAndView("post/index");
   }
 
+  @GetMapping("/:id")
+  public ModelAndView postDetailsPage() {
+    return new ModelAndView("post/details");
+  }
 }

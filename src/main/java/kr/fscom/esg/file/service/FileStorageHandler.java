@@ -24,6 +24,7 @@ public class FileStorageHandler {
   private final FileMapper repository;
 
   public EsgFile save(MultipartFile multipartFile) {
+    if (multipartFile == null) return null;
     long size = multipartFile.getSize();
     String filename = createUniqueName(multipartFile.getOriginalFilename());
 

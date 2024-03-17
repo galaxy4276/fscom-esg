@@ -2,7 +2,10 @@ package kr.fscom.esg.post.service;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
+import java.util.Objects;
 import kr.fscom.esg.authentication.service.SessionManager;
+import kr.fscom.esg.file.domain.EsgFile;
+import kr.fscom.esg.file.service.FileStorageHandler;
 import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreation;
 import kr.fscom.esg.post.domain.PostCreationRequest;
@@ -14,6 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name = "게시글 API")
 @Service
@@ -23,10 +27,13 @@ public class PostCrudService {
 
   private final PostMapper postMapper;
   private final SessionManager sessionManager;
+  private final FileStorageHandler fileStorageHandler;
 
   public void create(PostCreationRequest request) {
     User user = sessionManager.getSessionUser();
-    PostCreation creation = PostCreation.from(request, user.getId());
+    EsgFile file = fileStorageHandler.save(request.getRepresentFile());
+    String location = Objects.requireNonNull(file.getLocation());
+    PostCreation creation = PostCreation.from(request, location, user.getId());
     postMapper.createPost(creation);
   }
 

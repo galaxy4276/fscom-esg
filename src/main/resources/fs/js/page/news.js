@@ -18,12 +18,15 @@ const getNews = async () => {
 
 pageHook(['/news'], async () => {
   const { content } = await getNews();
-  const postSection = document.querySelector('.newsAdminSection');
+  const postSection = document.querySelector('.newsLayout');
 
-  const cards = content.map(({ title, createdAt, src }) => {
+  const cards = content.map(({ title, createdAt, src, id }) => {
     const card = document.createElement('article-card');
     card.setAttribute('title', title);
     card.setAttribute('created-date', createdAt);
+    card.onclick = () => {
+      location.href = `/posts/${id}`;
+    }
     return card;
   });
 
