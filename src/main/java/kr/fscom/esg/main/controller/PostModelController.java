@@ -21,6 +21,11 @@ public class PostModelController {
     return new ModelAndView("post/index");
   }
 
+  @GetMapping("/{id}")
+  public ModelAndView postDetailsPage() {
+    return new ModelAndView("post/details");
+  }
+
 //  @GetMapping("/{id}")
 //  public ModelAndView postDetailsPage(@PathVariable("id") Long id) {
 //    Post post = postCrudService.getPost(id);
