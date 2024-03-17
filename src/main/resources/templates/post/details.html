@@ -1,13 +1,22 @@
 <!DOCTYPE html>
-<html lang='en'>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="common/templates/layout"
+>
 <head>
   <meta charset='UTF-8'>
-  <title>Title</title>
+  <title>게시글 정보</title>
 </head>
 <body>
-  <content-header title="게시글 정보"></content-header>
+
+<th:block layout:fragment="content">
+  <content-header title="한국ESG협회"></content-header>
   <article-layout data-tags="게시글" id="postSection">
 
   </article-layout>
+</th:block>
+
 </body>
 </html>

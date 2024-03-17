@@ -26,7 +26,8 @@ export const PostService = {
       },
     });
   },
-  getList: (category, offset) => client.get(`/posts?category=${category}&page=${offset}&size=10`)
+  getList: (category, offset) => client.get(`/posts?category=${category}&page=${offset}&size=10`),
+  getDetails: id => client.get(`posts/${id}`),
 };
 
 

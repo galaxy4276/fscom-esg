@@ -6,8 +6,10 @@
         VALUES (#{content}, #{title}, #{category}, #{createdAt}, NULL, #{userId});
     </insert>
 
-    <select id="getPost" parameterType="java.lang.Long">
-        SELECT * FROM posts p WHERE p.id = #{id} AND p.deleted_at IS NULL;
+    <select id="getPost" parameterType="java.lang.Long" resultType="kr.fscom.esg.post.domain.Post">
+        SELECT id as id, text as text, category as category, created_at as createdAt, deleted_at as deletedAt, user_id as userId
+        FROM posts p
+        WHERE p.id = #{id} AND p.deleted_at IS NULL;
     </select>
 
     <select id="getTotalCount" resultType="kr.fscom.esg.post.domain.PostCounter">

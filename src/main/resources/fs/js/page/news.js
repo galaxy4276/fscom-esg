@@ -25,7 +25,7 @@ pageHook(['/news'], async () => {
     card.setAttribute('title', title);
     card.setAttribute('created-date', createdAt);
     card.onclick = () => {
-      location.href = `/posts/${id}`;
+      location.href = `/post/${id}`;
     }
     return card;
   });
