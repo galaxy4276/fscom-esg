@@ -392,6 +392,7 @@ button {
 
 .articleCard {
     transition: transform .3s ease;
+    height: 100%;
     cursor: pointer;
     border: 1px solid rgb(220, 227, 239, 0.5);
 }
@@ -455,6 +456,10 @@ button {
 #userNavigatorDropdown {
     width: 120px !important;
     min-width: 100px !important;
+}
+
+.postMetaSection {
+    width: 100%;
 }
 
 .postSection {

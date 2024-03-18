@@ -2,7 +2,7 @@ spring:
   profiles.active: dev
   main.banner-mode: "off"
   servlet.multipart:
-    max-file-size: 11MB
+    max-file-size: 30MB
     max-request-size: 110MB
   thymeleaf:
     prefix: classpath:templates/

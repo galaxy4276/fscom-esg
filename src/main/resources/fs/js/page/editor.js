@@ -31,7 +31,7 @@ const state = {
       innerContent: quill.editor.innerHTML,
       quill,
     });
-    const html = quill.getText();
+    const html = quill.root.innerHTML;
     state.content = html;
   });
 
@@ -93,6 +93,7 @@ pageHook(['post'], () => {
         category,
         ...state,
       };
+      console.log({ body });
       await PostService.create(body);
       alert('게시글이 등록되었습니다.');
     } catch (error) {

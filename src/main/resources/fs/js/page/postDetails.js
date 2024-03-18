@@ -15,6 +15,7 @@ const getPostDetails = async (id) => {
 pageHook(['/post/'], async () => {
   const titleElm = document.getElementById('postTitle');
   const dateElm = document.getElementById('postDate');
+  const contentElm = document.getElementById('postContent');
 
   const id = (() => {
     const tokens = location.href.split('/');
@@ -24,4 +25,6 @@ pageHook(['/post/'], async () => {
   console.log({ post });
   domUtils.setEsgText(titleElm, post.title);
   domUtils.setEsgText(dateElm, post.createdAt);
+
+  contentElm.innerHTML = post.text;
 });
