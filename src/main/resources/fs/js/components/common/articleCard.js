@@ -14,9 +14,11 @@ export class ArticleCard extends HTMLElement {
           <h2 class="card-title">${title}</h2>
           <span class="text-slate-500">${createdDate}</span>
         </div>
-         <figure>
-            <img src="${banner}"> 
-        </figure>
+         ${banner && `
+           <figure>
+              <img src="${banner}"> 
+          </figure>
+         `}
       </div>
     `
   }
