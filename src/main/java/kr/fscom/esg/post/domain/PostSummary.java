@@ -9,6 +9,7 @@ public class PostSummary {
   private Long id;
   private String title;
   private PostCategory category;
+  private String representUrl;
   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
   private Date createdAt;
   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")

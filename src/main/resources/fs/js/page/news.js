@@ -20,10 +20,11 @@ pageHook(['/news'], async () => {
   const { content } = await getNews();
   const postSection = document.querySelector('.newsLayout');
 
-  const cards = content.map(({ title, createdAt, src, id }) => {
+  const cards = content.map(({ title, createdAt, representUrl, id }) => {
     const card = document.createElement('article-card');
     card.setAttribute('title', title);
     card.setAttribute('created-date', createdAt);
+    card.setAttribute('src', representUrl);
     card.onclick = () => {
       location.href = `/post/${id}`;
     }

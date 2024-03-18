@@ -19,7 +19,7 @@
     </select>
 
     <select id="getPosts" resultType="kr.fscom.esg.post.domain.PostSummary">
-        SELECT id as id, title as title, category as category, created_at as createdAt, user_id as userId
+        SELECT id as id, title as title, represent_file_url as representUrl, category as category, created_at as createdAt, user_id as userId
         FROM posts p
         WHERE p.category = #{category} AND p.deleted_at IS NULL
         ORDER BY p.category DESC
