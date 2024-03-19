@@ -23,7 +23,7 @@
         FROM posts p
         WHERE p.category = #{category} AND p.deleted_at IS NULL
         ORDER BY p.created_at DESC
-        LIMIT 10
+        LIMIT 9
         OFFSET #{page}
     </select>
 </mapper>

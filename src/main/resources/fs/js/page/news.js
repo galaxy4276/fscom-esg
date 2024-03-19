@@ -16,15 +16,47 @@ const getNews = async () => {
   }
 };
 
-pageHook(['/news'], async () => {
-  const { content } = await getNews();
-  const postSection = document.querySelector('.newsLayout');
+const renderPagination = ({ numberOfElements, totalElements, totalPages  }) => {
+  const delimeterElm = document.querySelector('.pageDelimeter');
+  const prevButtonElm = document.querySelector('.prevBtn');
+  const nextButtonElm = document.querySelector('.nextBtn');
 
+  const updatePageStatus = () =>
+    delimeterElm.innerText = String(states.page + 1);
+
+  updatePageStatus();
+
+  prevButtonElm.addEventListener('click', () => {
+    if (states.page === 0) {
+      return;
+    }
+    states.page = states.page - 1;
+    updatePageStatus();
+    update();
+  });
+  nextButtonElm.addEventListener('click', () => {
+    // const maxPage = totalElements % 9 !== 0 ? totalPages + 1 : totalPages;
+    // console.log({ maxPage });
+    if (states.page > totalPages) {
+      return;
+    }
+    states.page = states.page + 1;
+    updatePageStatus();
+    update();
+  });
+};
+
+const update = async () => {
+  const { content, ...rest } = await getNews();
+  const postSection = document.querySelector('.newsLayout');
+  postSection.innerHTML = '';
   const cards = content.map(({ title, createdAt, representUrl, id }) => {
     const card = document.createElement('article-card');
     card.setAttribute('title', title);
     card.setAttribute('created-date', createdAt);
-    card.setAttribute('src', representUrl);
+    if (representUrl) {
+      card.setAttribute('src', representUrl);
+    }
     card.onclick = () => {
       location.href = `/post/${id}`;
     }
@@ -35,6 +67,16 @@ pageHook(['/news'], async () => {
 
   cards.forEach(card => {
     postSection.appendChild(card);
-  })
-  console.log(data);
+  });
+
+  return rest;
+};
+
+pageHook(['/news'], async () => {
+  const { numberOfElements, totalElements, totalPages } = await update();
+  renderPagination({
+    numberOfElements,
+    totalElements,
+    totalPages
+  });
 });

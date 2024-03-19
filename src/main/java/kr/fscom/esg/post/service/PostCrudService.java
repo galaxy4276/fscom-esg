@@ -19,7 +19,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name = "게시글 API")
 @Service
@@ -40,9 +39,11 @@ public class PostCrudService {
   }
 
   public PageImpl<PostSummary> getList(Pageable pageable, PostCategory category) {
-    String c = category.name().toLowerCase();
+    log.info(pageable.toString());
+    String c = category.name();
     Long totalCount = postMapper.getTotalCount(c).getCount();
-    List<PostSummary> posts = postMapper.getPosts(c, pageable.getPageNumber());
+    log.warn("page number: {}, c: {}", pageable.getPageNumber(), c);
+    List<PostSummary> posts = postMapper.getPosts(c, pageable.getPageNumber() * 9);
     return new PageImpl<>(posts, pageable, totalCount);
   }
 
