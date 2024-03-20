@@ -19,4 +19,6 @@ public interface PostMapper {
   List<PostSummary> getPosts(@Param("category") String category, @Param("page") int page);
 
   PostCounter getTotalCount(@Param("category") String category);
+
+  void softDelete(@Param("id") Long id);
 }

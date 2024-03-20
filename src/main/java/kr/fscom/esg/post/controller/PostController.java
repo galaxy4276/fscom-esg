@@ -14,11 +14,11 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,7 +34,7 @@ public class PostController {
 
   @Operation(summary = "게시글 생성")
   @PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public ResponseEntity<Void> createPost(@ModelAttribute PostCreationRequest createPostRequest) {
+  public ResponseEntity<Void> createPostApi(@ModelAttribute PostCreationRequest createPostRequest) {
     log.warn("request value: {}", createPostRequest.toString());
     postCrudService.create(createPostRequest);
     return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -42,7 +42,7 @@ public class PostController {
 
   @Operation(summary = "게시글 리스트 조회")
   @GetMapping
-  public ResponseEntity<PageImpl<PostSummary>> getPosts(
+  public ResponseEntity<PageImpl<PostSummary>> getPostsApi(
       @RequestParam(name = "category")PostCategory category,
       Pageable pageable
   ) {
@@ -52,9 +52,16 @@ public class PostController {
 
   @Operation(summary = "게시글 상세 조회")
   @GetMapping("/{id}")
-  public ResponseEntity<Post> getPost(@PathVariable Long id) {
+  public ResponseEntity<Post> getPostApi(@PathVariable Long id) {
     Post post = postCrudService.getPost(id);
     return ResponseEntity.ok(post);
+  }
+
+  @Operation(summary = "게시글 삭제")
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> softDeleteApi(@PathVariable Long id) {
+    postCrudService.softDelete(id);
+    return ResponseEntity.status(HttpStatus.OK).build();
   }
 
 }

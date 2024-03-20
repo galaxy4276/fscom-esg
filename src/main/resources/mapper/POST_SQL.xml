@@ -26,4 +26,10 @@
         LIMIT 9
         OFFSET #{page}
     </select>
+
+    <update id="softDelete" parameterType="java.lang.Long">
+        UPDATE posts p
+        SET deleted_at = NOW()
+        WHERE p.id = #{id};
+    </update>
 </mapper>

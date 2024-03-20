@@ -73,7 +73,7 @@ const update = async () => {
   return rest;
 };
 
-const showAdminControls = () => {
+const setAdminControls = () => {
   const user = userUtils.get();
   if (!user || user.role !== 'ADMIN') return;
   const postWriteButton = document.querySelector('.postWriteBtn');
@@ -87,5 +87,5 @@ pageHook(['/news'], async () => {
     totalElements,
     totalPages
   });
-  showAdminControls();
+  setAdminControls();
 });

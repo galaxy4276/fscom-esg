@@ -52,4 +52,8 @@ public class PostCrudService {
         .orElseThrow(ApplicationException.NOT_FOUND::create);
   }
 
+  public void softDelete(Long id) {
+    postMapper.softDelete(id);
+  }
+
 }
