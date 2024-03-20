@@ -394,6 +394,7 @@ button {
 .articleCard {
     transition: transform .3s ease;
     height: 100%;
+    min-width: 277px;
     cursor: pointer;
     border: 1px solid rgb(220, 227, 239, 0.5);
 }

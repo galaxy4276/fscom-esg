@@ -1,6 +1,7 @@
 import pageHook from '../utils/pageHook';
 import { PostService } from '../utils/api';
 import { pushErrorDialog } from '../utils/dialog';
+import userUtils from '../utils/user';
 
 const states = {
   page: 0,
@@ -72,6 +73,13 @@ const update = async () => {
   return rest;
 };
 
+const showAdminControls = () => {
+  const user = userUtils.get();
+  if (!user || user.role !== 'ADMIN') return;
+  const postWriteButton = document.querySelector('.postWriteBtn');
+  postWriteButton.classList.remove('hidden');
+}
+
 pageHook(['/news'], async () => {
   const { numberOfElements, totalElements, totalPages } = await update();
   renderPagination({
@@ -79,4 +87,5 @@ pageHook(['/news'], async () => {
     totalElements,
     totalPages
   });
+  showAdminControls();
 });
