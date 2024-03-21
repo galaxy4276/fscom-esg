@@ -29,6 +29,10 @@ pageHook(['post'], () => {
       placeholder: '게시글 내용을 입력해주세요'
     });
 
+    quill.on('text-change', () => {
+      state.content = quill.root.innerHTML;
+    });
+
     document.querySelector('.articleTitle').addEventListener('change', e => {
       state.title = e.target.value;
     });
@@ -46,7 +50,6 @@ pageHook(['post'], () => {
       console.log({ imageFile });
       try {
         const { location } = await FileService.upload(imageFile);
-        console.log({ location });
         quill.insertEmbed(0, 'image', location);
       } catch (err) {
         console.error(err);
@@ -92,7 +95,7 @@ pageHook(['post'], () => {
       console.error(error);
       alert('서버 오류가 발생하였습니다.');
     } finally {
-      // history.back();
+      history.back();
     }
   }
 

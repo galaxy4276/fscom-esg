@@ -29,6 +29,11 @@ export const PostService = {
   getList: (category, offset) => client.get(`/posts?category=${category}&page=${offset}&size=10`),
   getDetails: id => client.get(`/posts/${id}`),
   delete: id => client.delete(`/posts/${id}`),
+  update: (id, body) => client.put(`/posts/${id}`, body, {
+    headers: {
+      'Content-Type': 'multipart/form-data',
+    },
+  }),
 };
 
 

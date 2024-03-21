@@ -40,4 +40,15 @@
         SET deleted_at = NOW()
         WHERE p.id = #{id};
     </update>
+
+    <update id="update" parameterType="kr.fscom.esg.post.domain.UpdatePost">
+        UPDATE posts p
+        SET
+            title = #{title},
+            text = #{content},
+            created_at = NOW(),
+            represent_file_url = #{representFileUrl}
+        WHERE
+            p.id = #{id};
+    </update>
 </mapper>

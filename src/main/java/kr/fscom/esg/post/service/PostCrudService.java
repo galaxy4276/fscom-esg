@@ -12,6 +12,7 @@ import kr.fscom.esg.post.domain.PostCategory;
 import kr.fscom.esg.post.domain.PostCreation;
 import kr.fscom.esg.post.domain.PostCreationRequest;
 import kr.fscom.esg.post.domain.PostSummary;
+import kr.fscom.esg.post.domain.UpdatePost;
 import kr.fscom.esg.post.repository.PostMapper;
 import kr.fscom.esg.user.domain.User;
 import lombok.RequiredArgsConstructor;
@@ -54,6 +55,12 @@ public class PostCrudService {
 
   public void softDelete(Long id) {
     postMapper.softDelete(id);
+  }
+
+  public void update(Long id, PostCreationRequest req) {
+    EsgFile file = fileStorageHandler.save(req.getRepresentFile());
+    UpdatePost dto = UpdatePost.from(id, req, file.getLocation());
+    postMapper.update(dto);
   }
 
 }
