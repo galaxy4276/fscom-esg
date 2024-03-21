@@ -2,7 +2,7 @@ const dialogRoot = document.getElementById('dialog-root');
 
 /**
  * 다이얼로그를 화면에 렌더링합니다.
- * @param el {HTMLElement}
+ * @param el {string}
  * @param config {{ okCb?: () => void, cancelCb: () => void, cancel: boolean } | undefined}
  */
 export const pushDialog = (el, config = undefined) => {
@@ -31,7 +31,9 @@ export const pushDialog = (el, config = undefined) => {
   const background = div.querySelector('#dialog-background');
   background.style.backgroundColor = 'rgb(71,85,105,0.4)';
 
-  content.appendChild(el);
+  const innerContent = document.createElement('div');
+  innerContent.innerHTML = el;
+  content.appendChild(innerContent);
   dialogRoot.appendChild(div);
 
   const ok = () => {

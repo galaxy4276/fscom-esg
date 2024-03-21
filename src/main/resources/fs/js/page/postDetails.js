@@ -28,13 +28,12 @@ const setAdminControls = (id) => {
   postDeleteButton.onclick = async () => {
     try {
       await PostService.delete(id);
-      pushDialog({
-        innerHTML: `
+      pushDialog(`
           <div>
             <esg-text text="게시글이 삭제되었습니다"></esg-text>
           </div>
-        `,
-        onclick: () => {
+        `, {
+        okCb: () => {
           history.back();
         },
       });

@@ -21,8 +21,9 @@ class EsgButton extends HTMLElement {
   static observedAttributes = ['show', 'disabled', 'text'];
 
   attributeChangedCallback(name, oldState, newState) {
+    if (!this.button) return;
     if (name === 'text') {
-      this.button.innerText = newState;
+      this.button.textContent = newState;
     }
   }
 
