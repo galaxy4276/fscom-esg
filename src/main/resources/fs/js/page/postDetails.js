@@ -4,7 +4,7 @@ import { pushDialog, pushErrorDialog } from '../utils/dialog';
 import domUtils from '../utils/dom';
 import userUtils from '../utils/user';
 
-const getPostDetails = async (id) => {
+export const getPostDetails = async (id) => {
   try {
     const data = await PostService.getDetails(id);
     return data;
@@ -45,6 +45,8 @@ const setAdminControls = (id) => {
 };
 
 pageHook(['/post/'], async () => {
+  if (location.href.includes("update")) return;
+
   const titleElm = document.getElementById('postTitle');
   const dateElm = document.getElementById('postDate');
   const contentElm = document.getElementById('postContent');

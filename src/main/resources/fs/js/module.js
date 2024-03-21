@@ -12,6 +12,7 @@ import './page/login';
 import './page/editor';
 import './page/news';
 import './page/postDetails';
+import './page/postUpdate';
 
 // component.js
 import './components';

@@ -7,7 +7,15 @@
     </insert>
 
     <select id="getPost" parameterType="java.lang.Long" resultType="kr.fscom.esg.post.domain.Post">
-        SELECT id as id, title as title, text as text, category as category, created_at as createdAt, deleted_at as deletedAt, user_id as userId
+        SELECT
+            id as id,
+            title as title,
+            text as text,
+            category as category,
+            created_at as createdAt,
+            deleted_at as deletedAt,
+            user_id as userId,
+            represent_file_url as representFileUrl
         FROM posts p
         WHERE p.id = #{id} AND p.deleted_at IS NULL;
     </select>

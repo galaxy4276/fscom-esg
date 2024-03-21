@@ -12,6 +12,11 @@ const client = axios.create({
   },
 });
 
+export const resourceClient = axios.create({
+  baseURL: '/',
+  timeout: 5000,
+});
+
 client.interceptors.response.use(res => {
   return res.data;
 }, error => Promise.reject(error.response.data));

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html
+  xmlns:th="http://www.thymeleaf.org"
+  lang="ko"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="common/templates/layout"
+>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link href="https://cdn.quilljs.com/1.0.0/quill.snow.css" rel="stylesheet">
+    <meta charset='UTF-8'>
+    <title>게시글 작성</title>
+  </head>
+  <body>
+  <th:block layout:fragment="content">
+    <content-header title="게시글 수정"></content-header>
+
+      <article-layout data-tags="게시글 수정" class="w-full">
+        <form class="flex flex-col w-full gap-y-[20px] createArticleForm">
+          <section class="flex createArticleTitleSection flex-col gap-y-4">
+            <label class="input input-bordered flex items-center gap-2 w-full">
+              <esg-text size="medium" bold="true" color="title" text="제목"></esg-text>
+              <input type="text" class="grow articleTitle" placeholder="게시글 제목">
+            </label>
+
+            <label class="form-control w-full max-w-xs">
+              <div class="label">
+                <span class="label-text">대표 이미지 선택</span>
+              </div>
+              <input type="file" class="file-input file-input-bordered w-full max-w-xs postRepresentImageUploader" />
+            </label>
+          </section>
+          <section class='editorLayout'>
+            <div id="toolbar-container">
+              <span class="ql-formats">
+                <select class="ql-font"></select>
+                <select class="ql-size"></select>
+              </span>
+              <span class="ql-formats">
+                <button class="ql-bold"></button>
+                <button class="ql-italic"></button>
+                <button class="ql-underline"></button>
+                <button class="ql-strike"></button>
+              </span>
+              <span class="ql-formats">
+                <button class="ql-image"></button>
+              </span>
+            </div>
+            <div id="editor" class="h-full"></div>
+          </section>
+          <section class="flex justify-center gap-x-5">
+            <button class="btn esg-btn-disabled btn-wide previous-btn">이전으로</button>
+            <button class="btn esg-btn-blue btn-wide" id="postSubmitButton">작성하기</button>
+          </section>
+        </form>
+        <input type="file" id="fileUploadInput" class="hidden">
+      </article-layout>
+
+  </th:block>
+  </body>
+</html>

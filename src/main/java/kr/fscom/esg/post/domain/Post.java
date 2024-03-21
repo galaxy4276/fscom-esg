@@ -12,6 +12,7 @@ public class Post {
   private String text;
   private String title;
   private PostCategory category;
+  private String representFileUrl;
   @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
   private Date createdAt;
   private Date deletedAt;

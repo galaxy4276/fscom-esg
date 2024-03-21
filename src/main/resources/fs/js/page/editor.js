@@ -12,65 +12,57 @@ const state = {
   representFile: null,
 };
 
-(() => {
-  if (!editorElm) return;
-  const quill = new Quill('#editor', {
-    theme: 'snow',
-    modules: {
-      syntax: true,
-      toolbar: '#toolbar-container',
-    },
-    placeholder: '게시글 내용을 입력해주세요'
-  });
-
-  quill.on('text-change', (delta, oldDelta, source) => {
-    console.log({
-      delta,
-      oldDelta,
-      source,
-      innerContent: quill.editor.innerHTML,
-      quill,
-    });
-    const html = quill.root.innerHTML;
-    state.content = html;
-  });
-
-  document.querySelector('.articleTitle').addEventListener('change', e => {
-    state.title = e.target.value;
-  });
-
-  // 이미지 업로드 툴바 메뉴 이벤트 덮어쓰기
-  const fileUploadInput = document.querySelector('#fileUploadInput');
-  const imageUploadButton = document.querySelector('.ql-image');
-  const clonedImageUploadButton = imageUploadButton.cloneNode(true);
-  imageUploadButton.replaceWith(clonedImageUploadButton);
-  clonedImageUploadButton.addEventListener('click', () => {
-    fileUploadInput.click();
-  });
-  fileUploadInput.addEventListener('change', async e => {
-    const imageFile = e.target.files[0];
-    console.log({ imageFile });
-    try {
-      const { location } = await FileService.upload(imageFile);
-      console.log({ location });
-      quill.insertEmbed(0, 'image', location);
-    } catch (err) {
-      console.error(err);
-      pushErrorDialog();
-    }
-  });
-
-  const previousBtns = Array.from(document.getElementsByClassName('previous-btn'));
-  previousBtns.forEach(b => {
-    b.addEventListener('click', e => {
-      e.preventDefault();
-      history.back();
-    });
-  });
-})();
-
 // 게시글 작성 요청
 pageHook(['post'], () => {
+  if (location.href.includes('update')) {
+    return;
+  }
+
+  (() => {
+    if (!editorElm) return;
+    const quill = new Quill('#editor', {
+      theme: 'snow',
+      modules: {
+        syntax: true,
+        toolbar: '#toolbar-container',
+      },
+      placeholder: '게시글 내용을 입력해주세요'
+    });
+
+    document.querySelector('.articleTitle').addEventListener('change', e => {
+      state.title = e.target.value;
+    });
+
+    // 이미지 업로드 툴바 메뉴 이벤트 덮어쓰기
+    const fileUploadInput = document.querySelector('#fileUploadInput');
+    const imageUploadButton = document.querySelector('.ql-image');
+    const clonedImageUploadButton = imageUploadButton.cloneNode(true);
+    imageUploadButton.replaceWith(clonedImageUploadButton);
+    clonedImageUploadButton.addEventListener('click', () => {
+      fileUploadInput.click();
+    });
+    fileUploadInput.addEventListener('change', async e => {
+      const imageFile = e.target.files[0];
+      console.log({ imageFile });
+      try {
+        const { location } = await FileService.upload(imageFile);
+        console.log({ location });
+        quill.insertEmbed(0, 'image', location);
+      } catch (err) {
+        console.error(err);
+        pushErrorDialog();
+      }
+    });
+
+    const previousBtns = Array.from(document.getElementsByClassName('previous-btn'));
+    previousBtns.forEach(b => {
+      b.addEventListener('click', e => {
+        e.preventDefault();
+        history.back();
+      });
+    });
+  })();
+
   const postSubmitButton = document.getElementById('postSubmitButton');
   const fileUploader = document.querySelector('.postRepresentImageUploader');
 
