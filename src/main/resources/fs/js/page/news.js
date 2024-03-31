@@ -17,7 +17,7 @@ const getNews = async () => {
   }
 };
 
-const renderPagination = ({ numberOfElements, totalElements, totalPages  }) => {
+const renderPagination = ({ numberOfElements, totalElements, totalPages }) => {
   const delimeterElm = document.querySelector('.pageDelimeter');
   const prevButtonElm = document.querySelector('.prevBtn');
   const nextButtonElm = document.querySelector('.nextBtn');
@@ -38,10 +38,11 @@ const renderPagination = ({ numberOfElements, totalElements, totalPages  }) => {
   nextButtonElm.addEventListener('click', () => {
     // const maxPage = totalElements % 9 !== 0 ? totalPages + 1 : totalPages;
     // console.log({ maxPage });
-    if (states.page > totalPages) {
+    if (states.page + 2 > totalPages) {
       return;
     }
-    states.page = states.page + 1;
+    states.page += 1;
+    console.log({ pages: states.page, totalPages });
     updatePageStatus();
     update();
   });
