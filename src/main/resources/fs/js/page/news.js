@@ -81,8 +81,21 @@ const setAdminControls = () => {
   postWriteButton.classList.remove('hidden');
 }
 
+const renderNoContent = () => {
+  const element = document.querySelector('.noContent');
+  const postWriteButton = document.querySelector('.postWriteBtn');
+  const paginationSection = document.querySelector('.paginationSection');
+  paginationSection.classList.add('hidden');
+  postWriteButton.classList.remove('hidden');
+  element.classList.remove('hidden');
+};
+
 pageHook(['/news'], async () => {
   const { numberOfElements, totalElements, totalPages } = await update();
+  if (totalElements === 0) {
+    renderNoContent();
+    return
+  }
   renderPagination({
     numberOfElements,
     totalElements,
