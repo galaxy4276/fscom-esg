@@ -56,6 +56,9 @@ class Text extends HTMLElement {
       case 'large': {
         return '20px';
       }
+      case "xlarge": {
+        return "24px";
+      }
       default: {
         return '14px';
       }
