@@ -50,7 +50,7 @@ pageHook(['post'], () => {
       console.log({ imageFile });
       try {
         const { location } = await FileService.upload(imageFile);
-        quill.insertEmbed(0, 'image', location);
+        quill.insertEmbed(quill.scroll.length(), 'image', location);
       } catch (err) {
         console.error(err);
         pushErrorDialog();
