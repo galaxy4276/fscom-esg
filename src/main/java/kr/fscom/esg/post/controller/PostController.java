@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name = "게시글 REST API")
 @RestController
@@ -66,8 +68,12 @@ public class PostController {
   }
 
   @Operation(summary = "게시글 수정")
-  @PutMapping(value = "/{id}/update", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-  public ResponseEntity<Void> updateApi(@PathVariable Long id, @ModelAttribute PostCreationRequest req) {
+  @PutMapping(value = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+  public ResponseEntity<Void> updateApi(
+      @PathVariable Long id,
+      @ModelAttribute PostCreationRequest req
+  ) {
+    log.info(req.toString());
     postCrudService.update(id, req);
     return ResponseEntity.status(HttpStatus.OK).build();
   }

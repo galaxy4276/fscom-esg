@@ -2,15 +2,19 @@ import pageHook from '../utils/pageHook';
 import { getPostDetails } from './postDetails';
 import * as Quill from 'quill';
 import { resourceClient } from '../utils/client';
-import { PostService } from '../utils/api';
+import { FileService, PostService } from '../utils/api';
 import { pushErrorDialog } from '../utils/dialog';
 
+const state = {
+  isUploadRepresentFile: false,
+};
+
 pageHook(['update'], async () => {
+  console.log('update Hook is On');
   const titleElm = document.querySelector('.articleTitle');
   const imageUploader = document.querySelector('.postRepresentImageUploader');
   const submitButton = document.getElementById('postSubmitButton');
 
-  console.log('update Hook is On');
   const id = (() => {
     const tokens = location.href.split('/');
     return Number.parseInt(tokens[tokens.length - 2]);
@@ -18,7 +22,8 @@ pageHook(['update'], async () => {
   const data = await getPostDetails(id);
 
   console.log({ data });
-  titleElm.outerText = data.title;
+  console.log({ titleElm });
+  titleElm.value = data.title;
 
   const quill = new Quill('#editor', {
     theme: 'snow',
@@ -30,6 +35,10 @@ pageHook(['update'], async () => {
   });
   quill.pasteHTML(data.text);
 
+  imageUploader.onclick = () => {
+    state.isUploadRepresentFile = true;
+  };
+
   if (data.representFileUrl) {
     const url = data.representFileUrl;
     const imageBlob = await resourceClient.get(url);
@@ -37,19 +46,43 @@ pageHook(['update'], async () => {
     const file = new File([imageBlob], filename, { type:"image/jpeg", lastModified:new Date().getTime() }, 'utf-8');
     const container = new DataTransfer();
     container.items.add(file);
-    console.log({ container });
     imageUploader.files = container.files;
   }
 
-  submitButton.onclick = async () => {
+  const fileUploadInput = document.querySelector('#fileUploadInput');
+  const imageUploadButton = document.querySelector('.ql-image');
+  const clonedImageUploadButton = imageUploadButton.cloneNode(true);
+  imageUploadButton.replaceWith(clonedImageUploadButton);
+  clonedImageUploadButton.addEventListener('click', () => {
+    fileUploadInput.click();
+  });
+  fileUploadInput.addEventListener('change', async e => {
+    const imageFile = e.target.files[0];
+    console.log({ imageFile });
+    try {
+      const { location } = await FileService.upload(imageFile);
+      quill.insertEmbed(0, 'image', location);
+    } catch (err) {
+      console.error(err);
+      pushErrorDialog();
+    }
+  });
+
+  submitButton.onclick = async (e) => {
+    e.preventDefault();
     try {
       const formData = new FormData();
-      formData.set('title', titleElm.outerText);
-      formData.set('representFile', imageUploader.files[0]);
-      formData.set('category', null);
+      formData.set('title', titleElm.value);
+      if (state.isUploadRepresentFile) {
+        const file  = imageUploader.files[0]
+        console.log({ file });
+        formData.set('representFile', file);
+      }
+      formData.set('category', 'NEWS');
       formData.set('content', quill.root.innerHTML);
       await PostService.update(id, formData);
     } catch (error) {
+      console.error(error);
       pushErrorDialog();
     } finally {
       history.back();

@@ -3,6 +3,7 @@ package kr.fscom.esg.post.service;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import kr.fscom.esg.authentication.service.SessionManager;
 import kr.fscom.esg.common.ApplicationException;
 import kr.fscom.esg.file.domain.EsgFile;
@@ -20,6 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 @Tag(name = "게시글 API")
 @Service
@@ -58,8 +60,17 @@ public class PostCrudService {
   }
 
   public void update(Long id, PostCreationRequest req) {
-    EsgFile file = fileStorageHandler.save(req.getRepresentFile());
-    UpdatePost dto = UpdatePost.from(id, req, file.getLocation());
+    Post exists = postMapper.getPost(id)
+        .orElseThrow(ApplicationException.NOT_FOUND::create);
+    boolean noFile = req.getRepresentFile() == null;
+    String location = null;
+    if (!noFile) {
+      EsgFile file = fileStorageHandler.save(req.getRepresentFile());
+      location = file.getLocation();
+    } else {
+      location = exists.getRepresentFileUrl();
+    }
+    UpdatePost dto = UpdatePost.from(id, req, location);
     postMapper.update(dto);
   }
 
