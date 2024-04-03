@@ -13,8 +13,46 @@
   <th:block layout:fragment="content">
     <content-header title="비전"></content-header>
 
-    <article-layout data-tags="비전">
-      <img th:src="@{/fs/img/vision.png}" class="w-full" alt="시연용">
+    <article-layout data-tags="소개,비전">
+
+      <section class="flex flex-col gap-y-[15px] w-full">
+        <h4 class="text-[48px] font-bold text-esggreen">비전전략체계</h4>
+        <div class="flex gap-x-[15px] w-full">
+          <div class="h-[48px] w-[102px] bg-esggreen flex justify-center items-center rounded-[4px]">
+            <esg-text color="white" text="미 션" size="large"></esg-text>
+          </div>
+          <div class="w-full rounded-[4px] border border-slate-200 px-6 py-2 bg-white flex items-center">
+            <esg-text color="title" text="대한민국 탄소중립 실현 기업의 지속가능한 통합적 가치 창출"></esg-text>
+          </div>
+        </div>
+
+        <div class="flex gap-x-[15px] w-full">
+          <div class="h-[48px] w-[102px] bg-esggreen flex justify-center items-center rounded-[4px]">
+            <esg-text color="white" text="비 전" size="large"></esg-text>
+          </div>
+          <div class="w-full rounded-[4px] border border-slate-200 px-6 py-2 bg-white flex items-center">
+            <esg-text color="title" text="글로벌 수준의 ESG 가치 창출 지원, ESG 경영 문화 확산 기여"></esg-text>
+          </div>
+        </div>
+
+        <div class="flex gap-x-[15px] w-full">
+          <div class="h-[48px] w-[102px] bg-esggreen flex justify-center items-center rounded-[4px]">
+            <esg-text color="white" text="핵심 가치" size="large"></esg-text>
+          </div>
+          <div class="w-full rounded-[4px] border border-slate-200 px-6 py-2 bg-white flex items-center">
+            <esg-text color="title" text="신뢰, 전문성, 배려존중, 고객감동"></esg-text>
+          </div>
+        </div>
+      </section>
+
+      <div class="mt-[50px]"></div>
+
+      <section>
+        <h4 class="text-[48px] font-bold text-esggreen">핵심 가치</h4>
+        <div class="w-full justify-center">
+          <img th:src="@{/fs/img/vision-goal.png}" alt="핵심가치.png">
+        </div>
+      </section>
     </article-layout>
   </th:block>
   </body>
