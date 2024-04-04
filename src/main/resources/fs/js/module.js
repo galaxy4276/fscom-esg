@@ -13,6 +13,7 @@ import './page/editor';
 import './page/news';
 import './page/postDetails';
 import './page/postUpdate';
+import './page/sponsor';
 
 // component.js
 import './components';
