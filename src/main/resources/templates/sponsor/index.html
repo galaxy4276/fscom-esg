@@ -14,7 +14,118 @@
       <content-header title="후원"></content-header>
 
       <article-layout data-tags="후원">
-        <img th:src="@{fs/img/introduce.png}" class="w-full" alt="시연용">
+        <section class="w-full flex flex-col items-center">
+          <div class="flex justify-center">
+            <esg-text
+              text="한국ESG협회"
+              size="48px"
+              color="green"
+              bold="true"
+            >
+            </esg-text>
+            <esg-text
+              text="와 함께 해 주세요!"
+              size="48px"
+              color="title"
+              bold="true"
+            >
+            </esg-text>
+          </div>
+
+          <esg-text
+            text="지속가능한 경영 문화 확산, 사회적 가치 창출"
+            size="28px"
+            color="title"
+          >
+          </esg-text>
+          <esg-text
+            text="대한민국의 건강한 내일을 위해 함께 힘을 모아주세요!"
+            size="24px"
+            color="paragraph"
+          >
+          </esg-text>
+        </section>
+
+        <section class="w-full pt-[50px]">
+          <esg-text
+            text="후원금은 다음 목적으로 사용됩니다."
+            size="24px"
+            bold="true"
+            color="title"
+          >
+          </esg-text>
+        </section>
+        <section class="grid grid-cols-3 gap-x-[10px] text-center">
+          <div class="card bg-base-100 shadow-lg border border-slate-200">
+            <div class='card-body'>
+              <esg-text text="지속 가능한 경영 문화 확산 및 교육 프로그램 개선"></esg-text>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-lg border border-slate-200">
+            <div class='card-body'>
+              <esg-text text="환경 보호 및 사회적 책임 프로젝트 지원"></esg-text>
+            </div>
+          </div>
+
+          <div class="card bg-base-100 shadow-lg border border-slate-200">
+            <div class='card-body'>
+              <esg-text text="지속 가능한 투자 연구 및 정보 공유"></esg-text>
+            </div>
+          </div>
+        </section>
+
+        <section class='flex flex-col w-[500px] pt-[50px] pb-[20px]'>
+          <esg-text
+            text="후원하기"
+            size="24px"
+            bold="true"
+            color="title"
+          >
+          </esg-text>
+
+          <div class="card border border-slate-200 rounded-[4px] w-[500px]">
+            <div class='card-body'>
+              <form class="flex flex-col gap-y-[15px]">
+                <label class="input input-bordered flex items-center gap-2">
+                  이름
+                  <input type="text" class="w-[200px]" placeholder="..." />
+                </label>
+
+                <label class="input input-bordered flex items-center gap-2">
+                  연락처
+                  <input type="text" class="=w-[200px]" placeholder="010-1234-1234" />
+                </label>
+
+                <label class="input input-bordered flex items-center gap-2">
+                  후원 메시지
+                  <input type="text" class="w-[300px]" placeholder="..." />
+                </label>
+
+                <div class="flex flex-col gap-y-[15px]">
+                  <esg-text size="medium" color="title" text="후원 금액"></esg-text>
+                  <input type="text" class="grow input input-bordered" placeholder="50000" />
+                  <div class='flex gap-x-[10px] justify-center'>
+                    <button class="btn">
+                      5000
+                    </button>
+                    <button class="btn">
+                      10000
+                    </button>
+                    <button class="btn">
+                      20000
+                    </button>
+                    <button class="btn">
+                      30000
+                    </button>
+                  </div>
+                </div>
+
+                <button class="btn btn-slate mt-[30px]">후원하기</button>
+              </form>
+            </div>
+          </div>
+        </section>
       </article-layout>
     </th:block>
   </body>
