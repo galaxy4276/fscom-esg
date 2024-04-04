@@ -60,7 +60,7 @@ class Text extends HTMLElement {
         return "24px";
       }
       default: {
-        return '14px';
+        return s;
       }
     }
   }
@@ -71,6 +71,7 @@ const colors = {
   title: '#334155',
   paragraph: '#64748B',
   white: "white",
+  green: "#8AC32A",
 }
 
 if (!customElements.get("esg-text")) {
