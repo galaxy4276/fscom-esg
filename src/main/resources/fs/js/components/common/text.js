@@ -43,28 +43,17 @@ class Text extends HTMLElement {
   }
 
   getSize(s) {
-    switch (s) {
-      case 'small': {
-        return '14px';
-      }
-      case 'normal': {
-        return '16px';
-      }
-      case 'medium': {
-        return '18px';
-      }
-      case 'large': {
-        return '20px';
-      }
-      case "xlarge": {
-        return "24px";
-      }
-      default: {
-        return s;
-      }
-    }
+    return sizes[s]
   }
 
+}
+
+const sizes = {
+  small: '14px',
+  normal: '16px',
+  medium: '18px',
+  large: '20px',
+  xlarge: '24px'
 }
 
 const colors = {
