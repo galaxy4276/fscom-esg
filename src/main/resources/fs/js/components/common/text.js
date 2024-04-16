@@ -43,7 +43,9 @@ class Text extends HTMLElement {
   }
 
   getSize(s) {
-    return sizes[s]
+    const size = sizes[s]
+    if (size) return s
+    return size
   }
 
 }
