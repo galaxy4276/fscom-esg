@@ -2,12 +2,23 @@ class Text extends HTMLElement {
   element = null
 
   connectedCallback() {
-    const text = this.getAttribute('text');
+    let text = this.getAttribute('text');
     const sizeProp = this.getAttribute('size');
     const boldProp = this.getAttribute('bold');
     const colorProp = this.getAttribute('color');
     const hrefProp = this.getAttribute('href');
     const classNames = this.getAttribute('class');
+    const em = this.getAttribute('em')
+
+    if (em) {
+      const tokens = text.split('');
+      text = '';
+      tokens.forEach(c => {
+        if (em.includes(c)) {
+
+        }
+      })
+    }
 
     this.innerHTML = `
       <span class="${classNames}">${text}</span>
@@ -44,7 +55,7 @@ class Text extends HTMLElement {
 
   getSize(s) {
     const size = sizes[s]
-    if (size) return s
+    if (!size) return s
     return size
   }
 
@@ -63,6 +74,7 @@ const colors = {
   paragraph: '#64748B',
   white: "white",
   green: "#8AC32A",
+  brightgreen: "#34D399"
 }
 
 if (!customElements.get("esg-text")) {
