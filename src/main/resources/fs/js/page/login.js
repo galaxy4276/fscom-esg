@@ -195,23 +195,24 @@ const userJoinValidator = {
     id: 'email-error__input',
     pattern: emailRegex,
     cb: () => {
-      const vender = document.querySelector('.email-select').value;
-      const frontEmail = document.getElementById('frontEmail').value;
-      if (vender !== '직접 입력') {
-        const computed = `${frontEmail}@${vender}`;
-        console.log({ computed });
-        const pass = emailRegex.test(computed);
-        console.log({ emailPass: pass });
-        return { pass, message: '이메일 형식이 아닙니다', };
-      }
-      const manual =  document.getElementById('manual-email__input').value;
-      const computed = `${frontEmail}@${manual}`;
-      console.log({ computed });
-      const pass = emailRegex.test(computed);
-      return {
-        pass,
-        message: '이메일 형식이 아닙니다',
-      };
+      return { pass: true }
+      // const vender = document.querySelector('.email-select').value;
+      // const frontEmail = document.getElementById('frontEmail').value;
+      // if (vender !== '직접 입력') {
+      //   const computed = `${frontEmail}@${vender}`;
+      //   console.log({ computed });
+      //   const pass = emailRegex.test(computed);
+      //   console.log({ emailPass: pass });
+      //   return { pass, message: '이메일 형식이 아닙니다', };
+      // }
+      // const manual =  document.getElementById('manual-email__input').value;
+      // const computed = `${frontEmail}@${manual}`;
+      // console.log({ computed });
+      // const pass = emailRegex.test(computed);
+      // return {
+      //   pass,
+      //   message: '이메일 형식이 아닙니다',
+      // };
     },
   },
   username: {
