@@ -52,7 +52,7 @@ pageHook('/auth/login', () => {
       await userUtils.login(loginState.email, loginState.password);
       location.href = '/';
     } catch (error) {
-      console.log(error);
+      console.dir(error);
       alert(error.message);
     }
   };

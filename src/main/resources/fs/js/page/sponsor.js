@@ -8,7 +8,6 @@ const initPriceButtonEvents = () => {
       e.preventDefault();
       let price = button.innerText;
       price = price.substring(0, price.length - 1)
-      console.log({ button, price })
       priceInput.value = price;
     });
   });

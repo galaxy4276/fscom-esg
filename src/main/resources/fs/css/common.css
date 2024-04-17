@@ -464,3 +464,8 @@ button {
 .postSection {
     width: 100%;
 }
+
+.hDivideLine {
+    height: 200px;
+    border: 2px solid #34D399;
+}
