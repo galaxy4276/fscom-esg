@@ -195,24 +195,27 @@ const userJoinValidator = {
     id: 'email-error__input',
     pattern: emailRegex,
     cb: () => {
-      return { pass: true }
-      // const vender = document.querySelector('.email-select').value;
-      // const frontEmail = document.getElementById('frontEmail').value;
-      // if (vender !== '직접 입력') {
-      //   const computed = `${frontEmail}@${vender}`;
-      //   console.log({ computed });
-      //   const pass = emailRegex.test(computed);
-      //   console.log({ emailPass: pass });
-      //   return { pass, message: '이메일 형식이 아닙니다', };
-      // }
-      // const manual =  document.getElementById('manual-email__input').value;
-      // const computed = `${frontEmail}@${manual}`;
-      // console.log({ computed });
-      // const pass = emailRegex.test(computed);
-      // return {
-      //   pass,
-      //   message: '이메일 형식이 아닙니다',
-      // };
+      const vender = document.querySelector('.email-select').value;
+      const frontEmail = document.getElementById('frontEmail').value;
+      if (vender !== '직접 입력') {
+        const computed = `${frontEmail}@${vender}`;
+        console.log({ computed });
+        const pass = emailRegex.test(computed);
+        console.log({ pass, emailRegex, email: computed });
+        if (!pass) {
+          console.log("이메일부정확");
+          return { pass, message: '이메일 형식이 아닙니다' }
+        }
+        return { pass };
+      }
+      const manual =  document.getElementById('manual-email__input').value;
+      const computed = `${frontEmail}@${manual}`;
+      console.log({ computed });
+      const pass = emailRegex.test(computed);
+      return {
+        pass,
+        message: '이메일 형식이 아닙니다',
+      };
     },
   },
   username: {
@@ -243,6 +246,7 @@ const userJoinValidator = {
       const password = passwordElm.value;
       const verifyPassword = verifyPasswordElm.value;
       if (password !== verifyPassword) {
+        console.log(`패스워드 부정확 ${password} ${verifyPassword}`);
         return {
           pass: false,
           message: '패스워드가 일치하지 않습니다',
@@ -285,6 +289,7 @@ export const join = async () => {
     const target = document.getElementById(targetId);
 
     const targetValue = target.value;
+    console.log({ targetValue, pattern, valid: pattern.test(targetValue) });
     const pass = pattern.test(targetValue);
 
     if (!pass) {
@@ -296,7 +301,9 @@ export const join = async () => {
     return acc.concat(true);
   }, []);
 
-  const userPass = userValidation.every(b => b === true);
+  console.log({ userValidation });
+  // const userPass = userValidation.every(b => b === true);
+  const userPass = userValidation.some(b => b === true);
 
   console.log({ userPass });
 
@@ -308,7 +315,7 @@ export const join = async () => {
   const role = sessionStorage.getItem('join-role');
 
   try {
-    await client.post('/api/auth', {
+    await client.post('/auth', {
       role: formatter.sessionStorageRole(role),
       email: getComputedEmail(data.user.frontEmail),
       rawPassword: data.user.password,
