@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html
+        xmlns:th="http://www.thymeleaf.org"
+        lang="ko"
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+        layout:decorate="common/templates/mng_layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        /* center css */
+        #top {
+            width: 100vw;
+            height: 9vh;
+            font-size: 30px;
+            text-align: left;
+            color: #aba8a5;
+        }
+
+        #center {
+            width: 65vw;
+        }
+
+        #left {
+            float: left;
+            width: 10vw;
+            height: 91vh;
+            background: #222223;
+            color: #f5f5f5;
+        }
+
+        /* 공통 CSS와 차이 */
+        .btn-search-init {
+            display: none;
+        }
+
+        .table-area td {
+            position: static;
+        }
+
+        .pagenation a {
+            display: inline;
+        }
+    </style>
+    <title>Index</title>
+
+
+</head>
+<body>
+<th:block layout:fragment="content">
+    <div id="body">
+        <!--    <th:block th:replace="mon/layout/mon_modal"></th:block>-->
+
+<!--        <div id="top">-->
+<!--            <th:block th:replace="mng/layouts/mng_main_top"></th:block>-->
+<!--        </div>-->
+        <div class="row">
+            <div id="left" class="left">
+                <th:block th:replace="mng/layouts/mng_main_left"></th:block>
+            </div>
+
+            <div id="center" class="center">
+                <th:block th:replace="mng/layouts/mng_main_center"></th:block>
+            </div>
+        </div>
+
+    </div>
+</th:block>
+</body>
+</html>

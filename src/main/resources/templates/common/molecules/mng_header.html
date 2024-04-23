@@ -1,0 +1,127 @@
+<!-- Header Molecules Component  -->
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<style>
+
+</style>
+<th:block th:fragment="header">
+    <header class="w-full h-[72px] flex justify-between absolute top-0 shadow-sm z-50 whitespace-nowrap bg-transparent">
+        <button class="flex items-center px-[25px] visible" id="header-button">
+            <esg-text text="한국ESG협회" size="large" href="/"></esg-text>
+        </button>
+
+        <div class="hidden">
+            <ul class="flex gap-x-20 text-xl items-center text-white">
+                <li>
+                    <p class="under top-nav__dropdown" id="top-nav__dropdown--intro">소개</p>
+                    <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-intro">
+                        <ul class="dropdown-content">
+                            <li class="top-nav__dropdown--menu go-hello">회장 인사말</li>
+                            <li class="top-nav__dropdown--menu go-intro">함께하는 사람들</li>
+                            <li class="top-nav__dropdown--menu go-vision">비전</li>
+                        </ul>
+                    </nav>
+                </li>
+                <li>
+                    <p class="under top-nav__dropdown" id="top-nav__dropdown--eval">평가</p>
+                    <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-eval">
+                        <ul class="dropdown-content">
+                        </ul>
+                    </nav>
+                </li>
+                <li>
+                    <p class="under top-nav__dropdown" id="top-nav__dropdown--work">사업</p>
+                    <nav class="top-nav__dropdown--content" id="top-nav__dropdown--content-work">
+                        <ul class="dropdown-content">
+                            <li class="top-nav__dropdown--menu go-jm" id="">자문</li>
+                            <li class="top-nav__dropdown--menu go-edu">교육</li>
+                        </ul>
+                    </nav>
+                </li>
+                <li>
+                    <a href='/news' class="under" id="go-news">소식</a>
+                </li>
+                <li>
+                    <a href='/sponsor' class="under" id="go-give">후원</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="flex">
+            <div id="user-identity" class="text-white px-[30px] font-bold h-full flex items-center justify-center">
+                로그인
+            </div>
+            <section class="userIdentificialSection hidden" style="color:black !important;">
+                <p class="under top-nav__dropdown" id="userNavigator"></p>
+                <nav class="top-nav__dropdown--content" id="userNavigatorDropdown">
+                    <ul class="dropdown-content">
+                        <li class="top-nav__dropdown--menu go-user">내 정보</li>
+                        <li class="top-nav__dropdown--menu go-management">관리자페이지</li>
+                        <li class="top-nav__dropdown--menu logout">로그아웃</li>
+                    </ul>
+                </nav>
+            </section>
+            <button class="w-[72px] h-[72px] bg-black flex justify-center items-center" id="header__drawer--open-button">
+                <img th:src="@{/fs/svg/hamburger.svg}">
+            </button>
+        </div>
+
+        <div id="headerNavOverlay"></div>
+        <div class="header-nav headerNavHidden" id="headerNavContainer">
+            <div class="flex w-full h-[50px] px-[14px] py-[14px] items-center justify-end">
+                <button class="w-[32px] h-[32px] flex items-center justify-center">
+                    <img th:src="@{/fs/svg/gray-close-btn.svg}" class="w-[28px] h-[28px]" id="headerNavCloseButton">
+                </button>
+            </div>
+            <div class="flex flex-col p-[15px]">
+                <div class="layout-full-center">
+                    <img th:src="@{/fs/img/k-esg-logo-01.png}" class="h-[80px] w-[225px] border-b-[1px] border-slate-200 pb-[5px]">
+                </div>
+
+                <div>
+                    <div class="w-full flex justify-between p-[15px] cursor-pointer" id="navIntroOpener">
+                        <esg-text text="소개" size="medium" bold="true" color="title"></esg-text>
+                        <img th:src="@{/fs/svg/arrow-down.svg}" id="navIntroButton" class="transition duration-200" />
+                    </div>
+                    <div class="flex flex-col gap-y-[8px] px-[30px] dropdownContent" id="navIntroDropdownContent">
+                        <esg-text size="normal" color="paragraph" text="회장 인사말" href="/introduce"></esg-text>
+                        <esg-text size="normal" color="paragraph" text="임원 소개" href="/introduce/executors"></esg-text>
+                        <esg-text size="normal" color="paragraph" text="비전" href="/introduce/vision"></esg-text>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="w-full flex justify-between p-[15px] cursor-pointer go-eval">
+                        <esg-text text="평가" size="medium" bold="true" color="title" href="/evaluation"></esg-text>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="w-full flex justify-between p-[15px] cursor-pointer" id="navBusinessIntroOpener">
+                        <esg-text text="사업" size="medium" bold="true" color="title"></esg-text>
+                        <img th:src="@{/fs/svg/arrow-down.svg}" id="navBusiessButton" class="transition duration-200" />
+                    </div>
+                    <div class="flex flex-col gap-y-[8px] px-[30px] dropdownContent" id="navBusinessDropdownContent">
+                        <esg-text size="normal" color="paragraph" text="자문" href="/business/adv"></esg-text>
+                        <esg-text size="normal" color="paragraph" text="교육" href="/business/edu"></esg-text>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="w-full flex justify-between p-[15px] cursor-pointer go-news">
+                        <esg-text text="소식" size="medium" bold="true" color="title" href="/news"></esg-text>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="w-full flex justify-between p-[15px] cursor-pointer go-give">
+                        <esg-text text="후원" size="medium" bold="true" color="title" href="/sponsor"></esg-text>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+</th:block>
+</html>

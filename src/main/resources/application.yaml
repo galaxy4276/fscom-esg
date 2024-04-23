@@ -9,9 +9,9 @@ spring:
     suffix: .html
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
-    url: jdbc:mariadb://127.0.0.1:3306/ESG_HOMEPAGE?autoReconnect=true&allowMultiQueries=true&useSSL=false
-    username: root
-    password: dpvmdptm1!
+    url: jdbc:mariadb://viwm.myds.me:3306/esg_homepage?autoReconnect=true&allowMultiQueries=true&useSSL=false
+    username: cppuser
+    password: Cppuserpassword1!
   sql.init.platform: mariadb
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss
@@ -47,5 +47,5 @@ springdoc:
   swagger-ui:
     path: /doc
 esg:
-    upload-path: /Users/user/Documents/dev/esg
+  upload-path: C:\\Users\\FSWJH\\Documents\\dev\\esg
 #  upload-path: /home/apps/ESG_HOMEPAGE/uploads

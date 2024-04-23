@@ -200,6 +200,8 @@ drawerOpenCloseButton.addEventListener('click', () => {
     $(".go-edu").click(() => location.href = "/business/edu")
     $(".go-news").click(() => location.href = "/news")
     $(".go-give").click(() => location.href = "/sponsor")
+    $(".go-management").click(() => location.href = "/mng")
+
     $('.logout').click(() => {
       userUtils.logout();
       location.reload();

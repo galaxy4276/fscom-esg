@@ -1,3 +1,14 @@
 spring:
+  devtools:
+    livereload:
+      enabled: false
   thymeleaf:
     cache: true
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    url: jdbc:mariadb://127.0.0.1:3306/ESG_HOMEPAGE?autoReconnect=true&allowMultiQueries=true&useSSL=false
+    username: FS_MNG
+    password: ywdq1o34ei
+
+server:
+  port: 10001

@@ -1,0 +1,50 @@
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<input id="ctxRoot" type="hidden" th:value="${#httpServletRequest.getContextPath()}" />
+
+
+<style>
+    .admin-menu{
+        height:91vh;
+
+    }
+
+    .admin-menu p{
+        text-align: left;
+        padding: 10px 20px;
+        margin: 0;
+        font-size: 16px;
+    }
+
+    .admin-menu p.on {
+        background: #ff503f;
+    }
+
+    .menu-name{
+        cursor: pointer;
+    }
+
+    .menu-name:hover{
+        background-color: #ff503f;
+        color: white;
+        font-weight: bold;
+        text-shadow: 1px 1px black;
+    }
+
+    @media (max-width:1280px) {
+        .admin-menu p { font-size: 14px; }
+    }
+</style>
+
+<div>
+    <div class="admin-menu">
+        <p class="menu-name " onclick="location.href='/mng'">대시보드</p>
+        <p class="menu-name " onclick="location.href='mng/userManagement'">사용자관리</p>
+        <p class="menu-name " onclick="location.href='/mng/3'">메뉴3</p>
+        <p class="menu-name " onclick="location.href='/mng/4'">메뉴4</p>
+        <p class="menu-name " onclick="location.href='/mng/5'">메뉴5</p>
+        <p class="menu-name " onclick="location.href='/mng/6'">메뉴6</p>
+        <p class="menu-name " onclick="location.href='/mng/7'">메뉴7</p>
+        <p class="menu-name " onclick="location.href='/mng/8'">메뉴8</p>
+        <p class="menu-name " onclick="location.href='/mng/9'">메뉴9</p>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <script src="http://localhost:35729/livereload.js"></script>
+    <link rel="stylesheet" th:href="@{/fs/css/common.css}"/>
+    <link rel="stylesheet" th:href="@{/fs/css/tailwind-out.css}"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+</head>
+<th:block th:replace="common/molecules/mng_header :: header"></th:block>
+<body class="font-pretendard">
+
+<div class="esg-wrapper py-[72px]" style="align-items:normal !important;">
+    <th:block layout:fragment="content"></th:block>
+</div>
+<div id='dialog-root'></div>
+</body>
+<script type="text/javascript" th:src="@{/fs/js/out/index.out.js}"></script>
+</html>
