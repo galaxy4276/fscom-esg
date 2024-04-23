@@ -6,12 +6,58 @@
     <link rel="stylesheet" th:href="@{/fs/css/common.css}"/>
     <link rel="stylesheet" th:href="@{/fs/css/tailwind-out.css}"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        /* center css */
+        #top {
+            width: 100vw;
+            height: 9vh;
+            font-size: 30px;
+            text-align: left;
+            color: #aba8a5;
+        }
+
+        #center {
+            width: 65vw;
+        }
+
+        #left {
+            float: left;
+            width: 10vw;
+            height: 91vh;
+            background: #222223;
+            color: #f5f5f5;
+        }
+
+        /* 공통 CSS와 차이 */
+        .btn-search-init {
+            display: none;
+        }
+
+        .table-area td {
+            position: static;
+        }
+
+        .pagenation a {
+            display: inline;
+        }
+    </style>
 </head>
 <th:block th:replace="common/molecules/mng_header :: header"></th:block>
 <body class="font-pretendard">
 
 <div class="esg-wrapper py-[72px]" style="align-items:normal !important;">
-    <th:block layout:fragment="content"></th:block>
+    <div id="body">
+        <div class="row">
+            <div id="left" class="left">
+                <th:block th:replace="common/molecules/mng_left"></th:block>
+            </div>
+
+            <div id="center" class="center">
+                <th:block layout:fragment="content"></th:block>
+            </div>
+        </div>
+    </div>
 </div>
 <div id='dialog-root'></div>
 </body>
