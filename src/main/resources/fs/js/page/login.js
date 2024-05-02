@@ -3,6 +3,7 @@ import formatter from '../utils/formatter';
 import validator from '../utils/validator';
 import client from '../utils/client';
 import userUtils from '../utils/user';
+import { pushErrorDialog } from '../utils/dialog';
 
 const changeBgGray = () => {
   document.querySelector('body').style.backgroundColor = '#FAFAFA';
@@ -52,8 +53,9 @@ pageHook('/auth/login', () => {
       await userUtils.login(loginState.email, loginState.password);
       location.href = '/';
     } catch (error) {
-      console.dir(error);
-      alert(error.message);
+      console.log('로그인 에러가 발생함');
+      console.dir(error.message);
+      pushErrorDialog(error.message);
     }
   };
 }, true);

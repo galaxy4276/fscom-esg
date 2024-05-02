@@ -23,13 +23,9 @@ const userUtils = {
     // TODO: user update (PUT) API
   },
   login: async (email, password) => {
-    try {
-      await UserService.login(email, password);
-      const user = await UserService.getUser();
-      userUtils.save(user);
-    } catch (error) {
-      throw Error(error);
-    }
+    await UserService.login(email, password);
+    const user = await UserService.getUser();
+    userUtils.save(user);
   },
   logout: () => {
     localStorage.removeItem('user');
