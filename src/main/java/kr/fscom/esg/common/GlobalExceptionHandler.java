@@ -5,6 +5,7 @@ import java.nio.file.AccessDeniedException;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.MissingServletRequestParameterException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
@@ -21,17 +22,23 @@ public class GlobalExceptionHandler {
     return ResponseEntity.status(res.getHttpStatus()).body(res);
   }
 
-  @ExceptionHandler(AccessDeniedException.class)
-  protected ResponseEntity<BasicErrorResponse> handleAccessDeniedException(
-      AccessDeniedException ex
-  ) {
-    ex.printStackTrace();
-    BasicException basicEx = ApplicationException.FORBIDDEN.create();
-    return ResponseEntity.status(basicEx.getErrorResponse().getHttpStatus()).body(
-        basicEx.getErrorResponse()
-    );
-  }
 
+  @ExceptionHandler(BadCredentialsException.class)
+  protected ResponseEntity<BasicErrorResponse> badCredentials(BadCredentialsException ex) {
+    return ResponseEntity
+        .status(HttpStatus.BAD_REQUEST)
+        .body(ApplicationException.MISMATCH_PASSWORD.create().getErrorResponse());
+  }
+//  @ExceptionHandler(AccessDeniedException.class)
+//  protected ResponseEntity<BasicErrorResponse> handleAccessDeniedException(
+//      AccessDeniedException ex
+//  ) {
+//    ex.printStackTrace();
+//    BasicException basicEx = ApplicationException.FORBIDDEN.create();
+//    return ResponseEntity.status(basicEx.getErrorResponse().getHttpStatus()).body(
+//        basicEx.getErrorResponse()
+//    );
+//  }
 
   @ExceptionHandler(ConstraintViolationException.class)
   protected ResponseEntity<BasicErrorResponse> handleConstraintViolationException(

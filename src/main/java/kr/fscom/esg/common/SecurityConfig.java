@@ -1,5 +1,6 @@
 package kr.fscom.esg.common;
 
+import kr.fscom.esg.authentication.service.CustomAccessDeniedHandler;
 import kr.fscom.esg.authentication.service.CustomUserDetailsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -17,8 +18,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @RequiredArgsConstructor
 public class SecurityConfig {
 
-  private final CustomAccessDeniedHandler accessDeniedHandler;
   private final CustomUserDetailsService userDetailsService;
+  private final CustomAccessDeniedHandler accessDeniedHandler;
 
   @Bean
   public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
