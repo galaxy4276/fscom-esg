@@ -12,3 +12,6 @@ spring:
 
 server:
   port: 10001
+
+esg:
+  upload-path: /home/apps/ESG_HOMEPAGE/uploads
