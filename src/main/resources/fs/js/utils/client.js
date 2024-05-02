@@ -19,7 +19,10 @@ export const resourceClient = axios.create({
 
 client.interceptors.response.use(res => {
   return res.data;
-}, error => Promise.reject(error.response.data));
+}, error => {
+  console.dir(error.response.data);
+  return Promise.reject(error.response.data);
+});
 
 export const chatBotClient = axios.create({
   baseURL: "http://1.223.40.19:1729/",

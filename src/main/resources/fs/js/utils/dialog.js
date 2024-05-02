@@ -31,9 +31,16 @@ export const pushDialog = (el, config = undefined) => {
   const background = div.querySelector('#dialog-background');
   background.style.backgroundColor = 'rgb(71,85,105,0.4)';
 
-  const innerContent = document.createElement('div');
-  innerContent.innerHTML = el;
-  content.appendChild(innerContent);
+  if (typeof el === "string") {
+    const innerContent = document.createElement('div');
+    innerContent.innerHTML = el;
+    content.appendChild(innerContent);
+  } else {
+    console.log("element 올라감");
+    console.log(el);
+    content.appendChild(el)
+  }
+
   dialogRoot.appendChild(div);
 
   const ok = () => {
@@ -67,11 +74,11 @@ export const pushDialog = (el, config = undefined) => {
   }
 };
 
-export const pushErrorDialog = () => {
+export const pushErrorDialog = (message) => {
   const content = document.createElement('div');
   content.innerHTML = `
     <div class="flex justify-center items-center">
-      <span>서버 에러가 발생하였습니다</span>
+      <span>${message ? message : "서버 에러가 발생하였습니다"}</span>
     </div>
   `;
   pushDialog(content, {
