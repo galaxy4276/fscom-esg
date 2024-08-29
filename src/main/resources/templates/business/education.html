@@ -14,7 +14,42 @@
   <content-header title="교육"></content-header>
 
   <article-layout data-tags="사업,교육">
-    <img th:src="@{/fs/img/eval.png}" class="w-full" alt="시연용">
+    <div class="flex w-full">
+      <h4 class="text-[48px] font-bold text-esggreen">교육</h4>
+    </div>
+
+    <section id="education-section" class="esg-card w-full mt-[10px]">
+      <div class='card-body'>
+        <esg-text
+          text="기업과 조직의 지속 가능한 성장과 발전을 위해 다양한 ESG 교육 프로그램을 제공합니다."
+          size="medium"
+          color="title"
+        ></esg-text>
+        <esg-text
+          text="한국ESG협회는 각 교육 대상의 특성과 요구에 맞는 차별화된 교육을 통해 기업, 정부, 지자체 등 사회 각 주체가 ESG 경영을 실천하고, 지속 가능한 발전에 기여하고 있습니다."
+          size="medium"
+          color="title"
+        ></esg-text>
+      </div>
+    </section>
+
+    <!--  특징  -->
+    <div class="flex w-full flex-col mt-[50px]">
+      <h4 class="text-[48px] font-bold text-esggreen">ESG 교육 프로그램의 특징</h4>
+      <article class="flex gap-x-3">
+        <div class="esg-card mt-[10px]">
+          <div class='card-body'>
+            <esg-text
+              text="각 분야의 전문가들로 구성된 강사진이 ESG 경영의 이론과 실무를 체계적으로 교육합니다."
+              size="medium"
+              color="title"
+            >
+            </esg-text>
+          </div>
+        </div>
+      </article>
+    </div>
+
   </article-layout>
 </th:block>
 </body>

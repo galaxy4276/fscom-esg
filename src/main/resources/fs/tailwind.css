@@ -95,3 +95,7 @@
 .esg-main-question-card {
     @apply text-white w-[300px] bg-white h-[48px] rounded-[4px] md:w-[630px] flex items-center gap-x-[5px] p-[12px] cursor-pointer;
 }
+
+.esg-card {
+    @apply card card-side bg-base-100 shadow-xl w-full flex flex-col border border-slate-200;
+}

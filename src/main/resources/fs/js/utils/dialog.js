@@ -10,7 +10,7 @@ export const pushDialog = (el, config = undefined) => {
   div.innerHTML = `
     <div class='dialog fixed overflow-auto w-full h-full left-0 top-0 flex justify-center items-center z-50'>
         <div id='dialog-background' class="absolute top-0 left-0 z-50 flex layout-full-center">
-           <div class="esg-dialog-box">
+           <div class="esg-dialog-box"> 
              <div class='esg-dialog__content flex-[1]'>
             </div>
               <div class='esg-dialog__control flex gap-x-4 justify-center'>
